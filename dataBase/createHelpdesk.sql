@@ -56,6 +56,18 @@ CREATE TABLE VOLUNTEER (
     ON DELETE CASCADE
 );
 
+CREATE TABLE AVAILABILITIES (
+    availID INT,
+    volunteerID INT,
+    startTime DATETIME NOT NULL,
+    endTime DATETIME NOT NULL,
+    available TINYINT(1) UNSIGNED NOT NULL COMMENT 'Option: YES/NO',
+    PRIMARY KEY (availID),
+    FOREIGN KEY (volunteerID) REFERENCES VOLUNTEER (volunteerID)
+    ON UPDATE CASCADE
+    ON DELETE CASCADE
+);
+
 INSERT INTO USERTYPE (typeID, type) VALUES (1, 'Customer'),
     (2, 'Volunteer'),
     (3, 'Service Provider');
