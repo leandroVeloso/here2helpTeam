@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>here2help - Contact</title>
+    <title>here2help - Sign up</title>
 
     <!-- Bootstrap Core CSS - Uses Bootswatch Flatly Theme: http://bootswatch.com/flatly/ -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -69,15 +69,15 @@
     
 
     
-    <!-- Contact Section -->
-    <section id="contact">
+    <!-- Signup Section -->
+    <section id="signup">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
                     </br>
                     </br>
 
-                    <h2>Contact Me</h2>
+                    <h2>Sign up</h2>
                     <hr class="star-primary">
                 </div>
             </div>
@@ -85,41 +85,90 @@
                 <div class="col-lg-8 col-lg-offset-2">
                     <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19. -->
                     <!-- The form should work on most web servers, but if the form is not working you may need to configure your web server differently. -->
-                    <form name="sentMessage" id="contactForm" novalidate>
+                    <form action="processSignup.php" method="POST">
                         <div class="row control-group">
                             <div class="form-group col-xs-12 floating-label-form-group controls">
-                                <label>Name</label>
-                                <input type="text" class="form-control" placeholder="Name" id="name"name="name" required data-validation-required-message="Please enter your name.">
+                                <label>First name</label>
+                                <input type="text" class="form-control" placeholder="First name" id="fname"name="fname" required data-validation-required-message="Please enter your first name.">
                                 <p class="help-block text-danger"></p>
                             </div>
                         </div>
                         <div class="row control-group">
                             <div class="form-group col-xs-12 floating-label-form-group controls">
-                                <label>Email Address</label>
-                                <input type="email" class="form-control" placeholder="Email Address" id="email"name="email" required data-validation-required-message="Please enter your email address.">
+                                <label>Last name</label>
+                                <input type="text" class="form-control" placeholder="Last name" id="lname"name="lname" required data-validation-required-message="Please enter your last name.">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        <div class="row control-group">
+                            <div class="form-group col-xs-4 floating-label-form-group controls">
+                                <label>Unit number</label>
+                                <input type="text" class="form-control" placeholder="Unit Number" id="unumber"name="unumber" required data-validation-required-message="Please enter your unit number.">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label>Street</label>
+                                <input type="text" class="form-control" placeholder="Street" id="street"name="street" required data-validation-required-message="Please enter your street name.">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label>Suburb</label>
+                                <input type="text" class="form-control" placeholder="Suburb" id="suburb"name="suburb" required data-validation-required-message="Please enter your suburb.">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label>State</label>
+                                <input type="text" class="form-control" placeholder="State" id="State"name="state" required data-validation-required-message="Please enter your state.">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label>Postcode</label>
+                                <input type="number" class="form-control" placeholder="Postcode" id="postcode"name="postcode" required data-validation-required-message="Please enter your post code.">
                                 <p class="help-block text-danger"></p>
                             </div>
                         </div>
                         <div class="row control-group">
                             <div class="form-group col-xs-12 floating-label-form-group controls">
                                 <label>Phone Number</label>
-                                <input type="tel" class="form-control" placeholder="Phone Number" id="phone" name="phone" required data-validation-required-message="Please enter your phone number.">
+                                <input type="number" class="form-control" placeholder="Phone Number" id="pnumber"name="pnumber" required data-validation-required-message="Please enter your phone number.">
                                 <p class="help-block text-danger"></p>
                             </div>
                         </div>
                         <div class="row control-group">
                             <div class="form-group col-xs-12 floating-label-form-group controls">
-                                <label>Message</label>
-                                <textarea rows="5" class="form-control" placeholder="Message" id="message" name = "message"required data-validation-required-message="Please enter a message."></textarea>
+                                <label>Email</label>
+                                <input type="email" class="form-control" placeholder="Email" id="email"name="email" required data-validation-required-message="Please enter your Email.">
                                 <p class="help-block text-danger"></p>
                             </div>
                         </div>
-                        <div id="success"></div>
-                        <div class="row">
-                            <div class="form-group col-xs-12">
-                                <button type="submit" class="btn btn-success btn-lg">Send</button>
+                        <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label>Password</label>
+                                <input type="password" class="form-control" placeholder="Password" id="password"name="password" required data-validation-required-message="Please enter your password.">
+                                <p class="help-block text-danger"></p>
                             </div>
-                        </div>     
+                        </div>
+                        <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label>Confirm Password</label>
+                                <input type="password" class="form-control" placeholder="Confirm Password" id="conpassword"name="conpassword" required data-validation-required-message="Please re-enter your password.">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        <br>
+                            <button type="submit" value=" Submit" class="btn btn-success" id="submit"> Submit</button>
+                            <a href="signup.php">
+                            
+                        </a>
+
                     </form>
                 </div>
             </div>
@@ -162,7 +211,7 @@
 
     <!-- Contact Form JavaScript -->
     <script src="js/jqBootstrapValidation.js"></script>
-    <script src="js/contact_me.js"></script>
+    <!--<script src="js/contact_me.js"></script>-->
 
     <!-- Custom Theme JavaScript -->
     <script src="js/freelancer.js"></script>
