@@ -85,11 +85,11 @@
                 <div class="col-lg-8 col-lg-offset-2">
                     <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19. -->
                     <!-- The form should work on most web servers, but if the form is not working you may need to configure your web server differently. -->
-                    <form action="processSignin.php" method="POST">
+                    <form action="PHP_Process_Files/processSignin.php" method="POST">
                         <div class="row control-group">
                             <div class="form-group col-xs-12 floating-label-form-group controls">
                                 <label>Email</label>
-                                <input type="text" class="form-control" placeholder="Email" id="email"name="email" required data-validation-required-message="Please enter your email.">
+                                <input type="email" class="form-control" placeholder="Email" id="email"name="email" required data-validation-required-message="Please enter your email.">
                                 <p class="help-block text-danger"></p>
                             </div>
                         </div>

@@ -1,26 +1,38 @@
 <?php
-// Check for empty fields
-if(empty($_POST['name'])  		||
-   empty($_POST['email']) 		||
-   empty($_POST['phone']) 		||
-   empty($_POST['message'])	||
-   !filter_var($_POST['email'],FILTER_VALIDATE_EMAIL))
-   {
-	echo "No arguments Provided!";
-	return false;
-   }
-	
-$name = $_POST['name'];
-$email_address = $_POST['email'];
-$phone = $_POST['phone'];
-$message = $_POST['message'];
-	
-// Create the email and send the message
-$to = 'here2helpdesk@gmail.com'; // Add your email address inbetween the '' replacing yourname@yourdomain.com - This is where the form will send a message to.
-$email_subject = "Website Contact Form:  $name";
-$email_body = "You have received a new message from your website contact form.\n\n"."Here are the details:\n\nName: $name\n\nEmail: $email_address\n\nPhone: $phone\n\nMessage:\n$message";
-$headers = "From: here2helpdesk@gmail.com\n"; // This is the email address the generated message will be from. We recommend using something like noreply@yourdomain.com.
-$headers .= "Reply-To: $email_address";	
-mail($to,$email_subject,$email_body,$headers);
-return true;			
+   include("../mail/phpmailer/class.phpmailer.php");
+   include("../mail/phpmailer/class.smtp.php");
+   // Check for empty fields
+   if(empty($_POST['name'])  		||
+      empty($_POST['email']) 		||
+      empty($_POST['phone']) 		||
+      empty($_POST['message'])	||
+      !filter_var($_POST['email'],FILTER_VALIDATE_EMAIL))
+      {
+   	echo "No arguments Provided!";
+   	return false;
+      }
+   	
+   $name = $_POST['name'];
+   $email_address = $_POST['email'];
+   $phone = $_POST['phone'];
+   $message = $_POST['message'];
+
+   $mail = new PHPMailer(); // create a new object
+   $mail->IsSMTP(); // enable SMTP
+   $mail->SMTPDebug = 1; // debugging: 1 = errors and messages, 2 = messages only
+   $mail->SMTPAuth = true; // authentication enabled
+   $mail->SMTPSecure = 'ssl'; // secure transfer enabled REQUIRED for GMail
+   $mail->Host = "smtp.gmail.com";
+   $mail->Port = 465; // or 587
+   $mail->IsHTML(true);
+   $mail->Username = "here2helpdesk@gmail.com";
+   $mail->Password = "helpyhelp2";
+   $mail->SetFrom("here2helpdesk@gmail.com");
+   $mail->Subject = "Contact Message";
+   $mail->Body = "From: ".$_POST['name']."<br> Phone: ".$_POST['phone']." <br>Email: ".$_POST['email']."<br> Message:". $_POST['message'];
+   $mail->AddAddress("here2helpdesk@gmail.com");
+    if(!$mail->Send())
+      true;
+   else
+      false; 
 ?>
