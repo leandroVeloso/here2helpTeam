@@ -1,6 +1,6 @@
 <?php
 	// Includes PDO file
-	include_once('inc_files/pdo.inc');
+	include_once('pdo.inc');
 	
 	// If is a signed in user then destroy session and redirect user to index page with a successful message
 	if(verifyIfUserIsSignedIn()){

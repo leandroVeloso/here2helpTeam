@@ -16,7 +16,7 @@
 
     <?php 
             // Includes logo and menu
-            include 'Inavigation.inc';
+            include 'navigation.inc';
     ?>
     
 
