@@ -1,6 +1,6 @@
 <?php
 	 // Includes pdo file 
-    include_once('../Inc_Files/pdo.inc');
+    include_once('../pdo.inc');
 	// Declare global variables
 	$signInInputs = $_POST;
 
