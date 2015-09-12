@@ -2,7 +2,7 @@
 
 	// Creates a new global pdo variable
 	$pdo = new PDO('mysql:host=localhost;dbname=helpdesk', 'root', '');
-	//$pdo = new PDO('mysql:host=localhost;dbname=helpdesk', 'root', 'root');
+	//$pdo = new PDO('mysql:host=localhost;dbname=Helpdesk', 'root', 'root');
 	$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 	// Starts session

@@ -26,7 +26,7 @@
 
 			if(!checkEmail()){
 				// Creates pdo query , prepare its variables and execute it in order to find a user that matches the password
-				$signUp = $pdo->prepare('INSERT INTO `user` (`hash`,`email`, `firstName`, `lastName`, `phone`, `typeID`,`unitNumber`,`street`, `suburb`, `state`, `postcode`) VALUES (:hash, :email, :firstName, :lastName, :phone, 1, :unitNumber, :street, :suburb, :state, :postcode)');
+				$signUp = $pdo->prepare('INSERT INTO `USER` (`hash`,`email`, `firstName`, `lastName`, `phone`, `typeID`,`unitNumber`,`street`, `suburb`, `state`, `postcode`) VALUES (:hash, :email, :firstName, :lastName, :phone, 1, :unitNumber, :street, :suburb, :state, :postcode)');
 				$signUp->bindValue(':hash',md5($_POST['password']));
 				$signUp->bindValue(':email', $_POST['email']);
 				$signUp->bindValue(':firstName', $_POST['fname']);
@@ -63,7 +63,7 @@
 	function checkEmail(){
 		global $signUpInputs, $pdo;
 		try{
-			$checkEmailQuery = $pdo->prepare('SELECT email FROM user WHERE email = :email');
+			$checkEmailQuery = $pdo->prepare('SELECT email FROM USER WHERE email = :email');
 			$checkEmailQuery->bindValue(':email', $_POST['email']);
 			$checkEmailQuery->execute();
 			$result = $checkEmailQuery->fetchColumn();
