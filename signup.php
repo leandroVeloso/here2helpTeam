@@ -104,7 +104,7 @@
                             <div class="form-group col-xs-12 label-form-group controls" id ="emaildiv">
                                 <label>Email</label>
                                 <input type="email" value="<?php if(isset($_SESSION['errors']) && $_SESSION['errors']) echo $_SESSION['userInputs']['email']; ?>" class="form-control" placeholder="Email" onblur="changeEmailStyle()" id="email" name="email" required data-validation-required-message="Please enter your Email.">
-                                <p class="help-block text-danger" id= "emailError"></p>
+                                <p class="help-block text-danger" id= "errorSpan"></p>
                             </div>
                         </div>
                         <div class="row control-group">
@@ -127,13 +127,24 @@
                     </form>
                 </div>
             </div>
+        </div>
 
-            <div id="modal-content" class="modal fade" tabindex="-1" role="dialog">
+    </section>
+
+    <?php 
+            // Includes logo and menu
+            include 'footer.inc';
+            // Includes Javascript files
+            include 'javascripts.inc';
+    ?>
+
+
+            <div id="modalEmail-content" class="modal fade" tabindex="-1" role="dialog">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title">E-mail is already in use. Please try another!</h4>
+                            <h4 class="modal-title">Email is already in use, please choose another!</h4>
                         </div>
                         <div class="modal-footer"> 
                             <a href="#" class="btn btn-primary" data-dismiss="modal">Close</a>
@@ -155,15 +166,6 @@
                     </div>
                 </div>
             </div>
-
-    </section>
-
-    <?php 
-            // Includes logo and menu
-            include 'footer.inc';
-            // Includes Javascript files
-            include 'javascripts.inc';
-    ?>
 
 </body>
 

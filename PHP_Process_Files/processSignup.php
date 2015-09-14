@@ -12,7 +12,7 @@
 			$_SESSION['errors'] = "true";
 			$_SESSION['userInputs'] = $signUpInputs;
 			// Redirects user to index page with an error message
-		    header('Location: ../signup.php#signin=email');
+		    header('Location: ../signup.php#signup=email');
 		    exit();
 		}
 	}
@@ -30,7 +30,7 @@
 				$signUp->bindValue(':hash',md5($_POST['password']));
 				$signUp->bindValue(':email', $_POST['email']);
 				$signUp->bindValue(':firstName', $_POST['fname']);
-				$signUp->bindValue(':lastName', $_POST['email']);
+				$signUp->bindValue(':lastName', $_POST['lname']);
 				$signUp->bindValue(':phone', $_POST['pnumber']);
 				$signUp->bindValue(':unitNumber', $_POST['unumber']);
 				$signUp->bindValue(':street', $_POST['street']);
