@@ -12,16 +12,17 @@
 		global $signInInputs, $pdo;
 		try{
 			// Creates pdo query , prepare its variables and execute it in order to find a user that matches the password
-			$signIn = $pdo->prepare('SELECT email, hash FROM USER WHERE email = :email AND hash = :password');
+			$signIn = $pdo->prepare('SELECT email, hash, userID FROM USER WHERE email = :email AND hash = :password LIMIT 1');
 			$signIn->bindValue(':email', $signInInputs['email']);
 			$signIn->bindValue(':password', md5($signInInputs['password']));
 			$signIn->execute();
-			$result = $signIn->fetchColumn();
+			$result = $signIn->fetch();
 			$signIn->execute();
 
 			// If result is different than null then creates some session variables informing user ID and type
 			if ($result != null) {
 				$_SESSION['signin'] = "1";
+				$_SESSION['userID'] = $result['userID'];
 				// Redirects user to index page with a success message 
 			    header('Location: ../requests.php#signin=success');
 			    exit();
