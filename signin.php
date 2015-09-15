@@ -1,6 +1,6 @@
 <?php   
     // Includes pdo file 
-    include_once('inc_files/pdo.inc');
+    include_once( $_SERVER['DOCUMENT_ROOT'] .'Inc_files/pdo.inc');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -8,7 +8,7 @@
 <head>
     <?php 
             // Includes head content
-            include 'Inc_files/head.inc';
+            include $_SERVER['DOCUMENT_ROOT'] . 'Inc_files/head.inc';
     ?>
 </head>
 
@@ -16,7 +16,7 @@
 
     <?php 
             // Includes logo and menu
-            include 'Inc_files/navigation.inc';
+            include $_SERVER['DOCUMENT_ROOT'] . 'Inc_files/navigation.inc';
     ?>
 
     
@@ -66,9 +66,9 @@
 
     <?php 
             // Includes logo and menu
-            include 'Inc_files/footer.inc';
+            include $_SERVER['DOCUMENT_ROOT'] . 'Inc_files/footer.inc';
             // Includes Javascript files
-            include 'Inc_files/javascripts.inc';
+            include $_SERVER['DOCUMENT_ROOT'] . 'Inc_files/javascripts.inc';
     ?>
 
     <div id="modalSignUp-content" class="modal fade" tabindex="-1" role="dialog">
