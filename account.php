@@ -1,7 +1,6 @@
 <?php   
     // Includes pdo file 
     include_once('pdo.inc');
-
 ?>
 <!DOCTYPE html>
 <html lang="en">

@@ -1,4 +1,5 @@
 <?php   
+    ini_set('include_path', $_SERVER['DOCUMENT_ROOT'].'Inc_files');
     // Includes pdo file 
     include_once('pdo.inc');
 ?>
