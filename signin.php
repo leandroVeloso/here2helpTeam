@@ -71,7 +71,7 @@
                             <button type="submit" value=" Submit" class="btn btn-success btn-lg" id="submit"> Submit</button>
                             <a href="signup.php">
                             <button type="button" value=" Signup" class="btn btn-warning btn-lg" id="signup"> Sign up</button>
-                            
+                            </a>         
                     </form>
                 </div>
             </div>
