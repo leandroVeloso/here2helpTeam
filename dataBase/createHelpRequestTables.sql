@@ -19,16 +19,18 @@ CREATE TABLE REQUEST(
     requestID INT(4) AUTO_INCREMENT,
     clientID INT(4) NOT NULL,
     serviceID INT(4),
+    requestName VARCHAR(50), # Name of request
     startDate DATE NOT NULL,
     endDate DATE,
     startTime TIME,
     endTime TIME,
     minPrice DECIMAL(8,2),
     maxPrice DECIMAL (8,2),
-    comment TEXT,
+    comment TEXT, # General information about the request
     priorityID INT(2),
     locationID INT(4),
-    lastModified DATETIME NOT NULL,
+    creationDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    lastModified TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP  ON UPDATE CURRENT_TIMESTAMP,
     PRIMARY KEY (requestID),
     FOREIGN KEY (addressID) REFERENCES ADDRESS(addressID)
       ON UPDATE CASCADE
