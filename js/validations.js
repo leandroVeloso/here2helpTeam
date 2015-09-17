@@ -26,15 +26,27 @@ function checkPassword(){
 
 // Function to change email style
 function changeEmailStyle(){
-        document.getElementById("emailError").innerHTML = "";
+        document.getElementById("errorSpan").innerHTML = "";
         document.getElementById('emaildiv').className = "form-group col-xs-8 label-form-group controls";
          
 }
 
 // Function to change password style
 function changePasswordStyle(){
-        document.getElementById("emailError").innerHTML = "";
+        document.getElementById("errorSpan").innerHTML = "";
         document.getElementById('passworddiv').className = "form-group col-xs-8 label-form-group controls";
+         
+}
+// Function to change lastname style
+function changeLastNameStyle(){
+        document.getElementById("errorSpan").innerHTML = "";
+        document.getElementById('lnamediv').className = "form-group col-xs-8 label-form-group controls";
+         
+}
+// Function to change firstname style
+function changeFirstNameStyle(){
+        document.getElementById("errorSpan").innerHTML = "";
+        document.getElementById('fnamediv').className = "form-group col-xs-8 label-form-group controls";
          
 }
 
@@ -43,29 +55,29 @@ function checkForUrlMessages(){
     // If there's a hash in the URL then check for its messages
     if(window.location.hash) {
         var hash = window.location.hash.substring(1); //Puts hash in variable, and removes the # character
-        if(hash == "signin=email"){
-            document.getElementById("emailError").innerHTML = "E-mail is already in use. Please try another.";
-            document.getElementById('divemail').className = "form-group has-error col-xs-8 label-form-group controls";
+        if(hash == "signup=email"){
+            document.getElementById("errorSpan").innerHTML = "E-mail is already in use. Please try another.";
+            document.getElementById('emaildiv').className = "form-group has-error col-xs-8 label-form-group controls";
             history.pushState('', document.title, window.location.pathname);
 
             // set focus when modal is opened
-            $('#modal-content').on('shown.bs.modal', function () {
+            $('#modalEmail-content').on('shown.bs.modal', function () {
                 $("#txtname").focus();
             });
 
             // show the modal onload
-            $('#modal-content').modal({
+            $('#modalEmail-content').modal({
                 show: true
             });
 
             
-            $('#modal-content').modal({
+            $('#modalEmail-content').modal({
                 show: true
             });
         }
 
         if(hash == "signin=warning"){
-            document.getElementById("emailError").innerHTML = "Email or password wrong";
+            document.getElementById("errorSpan").innerHTML = "Email or password wrong";
             document.getElementById('emaildiv').className = "form-group has-error col-xs-8 label-form-group controls";
             document.getElementById('passworddiv').className = "form-group has-error col-xs-8 label-form-group controls";
             history.pushState('', document.title, window.location.pathname);
@@ -86,6 +98,48 @@ function checkForUrlMessages(){
 
             
             $('#modal-content').modal({
+                show: true
+            });
+        }
+
+        if(hash == "recoverPassword=success"){
+            history.pushState('', document.title, window.location.pathname);
+
+            // set focus when modal is opened
+            $('#modalRecoverSuccess-content').on('shown.bs.modal', function () {
+                $("#txtname").focus();
+            });
+
+            // show the modal onload
+            $('#modalRecoverSuccess-content').modal({
+                show: true
+            });
+
+            
+            $('#modalRecoverSuccess-content').modal({
+                show: true
+            });
+        }
+
+        if(hash == "recoverPassword=warning"){
+            history.pushState('', document.title, window.location.pathname);
+            document.getElementById('emaildiv').className = "form-group has-error col-xs-8 label-form-group controls";
+            document.getElementById('fnamediv').className = "form-group has-error col-xs-8 label-form-group controls";
+            document.getElementById('lnamediv').className = "form-group has-error col-xs-8 label-form-group controls";
+            document.getElementById("errorSpan").innerHTML = "Information don't match. Please try again.";
+
+            // set focus when modal is opened
+            $('#modalRecoverWarning-content').on('shown.bs.modal', function () {
+                $("#txtname").focus();
+            });
+
+            // show the modal onload
+            $('#modalRecoverWarning-content').modal({
+                show: true
+            });
+
+            
+            $('#modalRecoverWarning-content').modal({
                 show: true
             });
         }

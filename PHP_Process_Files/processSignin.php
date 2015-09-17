@@ -1,6 +1,6 @@
 <?php
 	 // Includes pdo file 
-    include_once('../Inc_Files/pdo.inc');
+    include_once('../pdo.inc');
 	// Declare global variables
 	$signInInputs = $_POST;
 
@@ -12,7 +12,7 @@
 		global $signInInputs, $pdo;
 		try{
 			// Creates pdo query , prepare its variables and execute it in order to find a user that matches the password
-			$signIn = $pdo->prepare('SELECT email, hash FROM user WHERE email = :email AND hash = :password');
+			$signIn = $pdo->prepare('SELECT email, hash FROM USER WHERE email = :email AND hash = :password');
 			$signIn->bindValue(':email', $signInInputs['email']);
 			$signIn->bindValue(':password', md5($signInInputs['password']));
 			$signIn->execute();

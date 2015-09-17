@@ -1,7 +1,11 @@
 <?php   
     ini_set('include_path', $_SERVER['DOCUMENT_ROOT'].'Inc_files');
     // Includes pdo file 
+<<<<<<< HEAD
     include_once($_SERVER['DOCUMENT_ROOT'].'Inc_files/pdo.php');
+=======
+    include_once('pdo.inc');
+>>>>>>> 386015224b93546ddc67dea88990955c718f15d5
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -9,7 +13,11 @@
 <head>
     <?php 
             // Includes head content
+<<<<<<< HEAD
             include $_SERVER['DOCUMENT_ROOT'] .'Inc_files/head.php';
+=======
+            include 'head.inc';
+>>>>>>> 386015224b93546ddc67dea88990955c718f15d5
     ?>
 </head>
 
@@ -17,7 +25,11 @@
 
     <?php 
             // Includes logo and menu
+<<<<<<< HEAD
             include $_SERVER['DOCUMENT_ROOT'] .'Inc_files/navigation.php';
+=======
+            include 'navigation.inc';
+>>>>>>> 386015224b93546ddc67dea88990955c718f15d5
     ?>
     
 
@@ -52,9 +64,15 @@
 
     <?php 
             // Includes logo and menu
+<<<<<<< HEAD
             include $_SERVER['DOCUMENT_ROOT'] .'Inc_files/footer.php';
             // Includes Javascript files
             include $_SERVER['DOCUMENT_ROOT'] .'Inc_files/javascripts.php';
+=======
+            include 'footer.inc';
+            // Includes Javascript files
+            include 'javascripts.inc';
+>>>>>>> 386015224b93546ddc67dea88990955c718f15d5
     ?>
 
 </body>

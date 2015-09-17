@@ -1,6 +1,6 @@
 <?php
  	// Includes pdo file 
-    include_once('../Inc_Files/pdo.inc');
+    include_once('../pdo.inc');
 	// Declare global variables
 	$signUpInputs = array();
 	$signUpInputs = $_POST;
@@ -12,7 +12,7 @@
 			$_SESSION['errors'] = "true";
 			$_SESSION['userInputs'] = $signUpInputs;
 			// Redirects user to index page with an error message
-		    header('Location: ../signup.php#signin=email');
+		    header('Location: ../signup.php#signup=email');
 		    exit();
 		}
 	}
@@ -26,11 +26,11 @@
 
 			if(!checkEmail()){
 				// Creates pdo query , prepare its variables and execute it in order to find a user that matches the password
-				$signUp = $pdo->prepare('INSERT INTO `user` (`hash`,`email`, `firstName`, `lastName`, `phone`, `typeID`,`unitNumber`,`street`, `suburb`, `state`, `postcode`) VALUES (:hash, :email, :firstName, :lastName, :phone, 1, :unitNumber, :street, :suburb, :state, :postcode)');
+				$signUp = $pdo->prepare('INSERT INTO `USER` (`hash`,`email`, `firstName`, `lastName`, `phone`, `typeID`,`unitNumber`,`street`, `suburb`, `state`, `postcode`) VALUES (:hash, :email, :firstName, :lastName, :phone, 1, :unitNumber, :street, :suburb, :state, :postcode)');
 				$signUp->bindValue(':hash',md5($_POST['password']));
 				$signUp->bindValue(':email', $_POST['email']);
 				$signUp->bindValue(':firstName', $_POST['fname']);
-				$signUp->bindValue(':lastName', $_POST['email']);
+				$signUp->bindValue(':lastName', $_POST['lname']);
 				$signUp->bindValue(':phone', $_POST['pnumber']);
 				$signUp->bindValue(':unitNumber', $_POST['unumber']);
 				$signUp->bindValue(':street', $_POST['street']);
@@ -63,7 +63,7 @@
 	function checkEmail(){
 		global $signUpInputs, $pdo;
 		try{
-			$checkEmailQuery = $pdo->prepare('SELECT email FROM user WHERE email = :email');
+			$checkEmailQuery = $pdo->prepare('SELECT email FROM USER WHERE email = :email');
 			$checkEmailQuery->bindValue(':email', $_POST['email']);
 			$checkEmailQuery->execute();
 			$result = $checkEmailQuery->fetchColumn();
