@@ -99,12 +99,22 @@
                     </div>
                     
                     <br>
-                    <a href="editAccount.php">
-                        <button type="button" value="Edit" class="btn btn-info btn-lg" id="edit">Edit</button>
-                    </a>
-                    <a href="PHP_Process_Files/processDelete.php">
-                        <button type="button" value="Delete" class="btn btn-error btn-lg" id="delete">Delete</button>
-                    </a>
+
+                    <div class="row">
+                        <div style="display:inline-block;">
+                            <a href="editAccount.php">
+                                <button type="button" value="Edit" class="btn btn-info btn-lg" id="edit">Edit Account</button>
+                            </a>
+                        </div>
+                        
+                        <div style="display:inline-block;" data-toggle="modal" data-target="#confirmDeleteModal">
+                            <button type="button" value="Delete" class="btn btn-danger btn-lg" id="delete">Delete Account</button>
+                        </div>
+                        <a href="changePassword.php">
+                            <button type="button" value="ChangePassword" class="btn btn-success btn-lg" id="delete">Change Password</button>
+                        </a>
+
+                    </div>
                 </div>
             </div>
         </div>
@@ -116,6 +126,29 @@
             // Includes Javascript files
             include 'javascripts.inc';
     ?>
+
+    <div id="confirmDeleteModal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">ATTENTION!</h4>
+                </div>
+                <div class="modal-body">
+                <p>You're about to delete your account and all your requests.</p>
+                <p>Are you sure you want do delete it?</p>
+                <br>
+                <p>You won't be able to recover it later.</p>
+              </div>
+              <div class="modal-footer">
+                <form action="PHP_Process_Files/processDeleteAccount.php" method="POST">
+                    <button type="submit" class="btn btn-danger" value="yes">YES, I WANT TO DELETE MY ACCOUNT</button>
+                <button type="button" class="btn btn-success" data-dismiss="modal">NO</button>
+                </form>
+              </div>
+            </div>
+        </div>
+    </div>
 
 </body>
 

@@ -102,6 +102,100 @@ function checkForUrlMessages(){
             });
         }
 
+        if(hash == "deleteAccount=success"){
+            history.pushState('', document.title, window.location.pathname);
+
+            // set focus when modal is opened
+            $('#modalDeleteAccount-content').on('shown.bs.modal', function () {
+                $("#txtname").focus();
+            });
+
+            // show the modal onload
+            $('#modalDeleteAccount-content').modal({
+                show: true
+            });
+
+            
+            $('#modal-content').modal({
+                show: true
+            });
+        }
+
+        if(hash == "updateAccount=failed"){
+            history.pushState('', document.title, window.location.pathname);
+
+            // set focus when modal is opened
+            $('#modalEditAccountFail-content').on('shown.bs.modal', function () {
+                $("#txtname").focus();
+            });
+
+            // show the modal onload
+            $('#modalEditAccountFail-content').modal({
+                show: true
+            });
+
+            
+            $('#modalEditAccountFail-content').modal({
+                show: true
+            });
+        }
+        if(hash == "updateAccount=success"){
+            history.pushState('', document.title, window.location.pathname);
+
+            // set focus when modal is opened
+            $('#modalEditAccountSuccess-content').on('shown.bs.modal', function () {
+                $("#txtname").focus();
+            });
+
+            // show the modal onload
+            $('#modalEditAccountSuccess-content').modal({
+                show: true
+            });
+
+            
+            $('#modalEditAccountSuccess-content').modal({
+                show: true
+            });
+        }
+
+        if(hash == "passChange=success"){
+            history.pushState('', document.title, window.location.pathname);
+            // set focus when modal is opened
+            $('#modalPassSuccess-content').on('shown.bs.modal', function () {
+                $("#txtname").focus();
+            });
+
+            // show the modal onload
+            $('#modalPassSuccess-content').modal({
+                show: true
+            });
+
+            
+            $('#modalPassSuccess-content').modal({
+                show: true
+            });
+        }
+
+        if(hash == "passChange=failed"){
+            history.pushState('', document.title, window.location.pathname);
+
+            // set focus when modal is opened
+            $('#modalPassError-content').on('shown.bs.modal', function () {
+                $("#txtname").focus();
+            });
+
+            // show the modal onload
+            $('#modalPassError-content').modal({
+                show: true
+            });
+
+            
+            $('#modalPassError-content').modal({
+                show: true
+            });
+        }
+
+
         if(hash == "recoverPassword=success"){
             history.pushState('', document.title, window.location.pathname);
 

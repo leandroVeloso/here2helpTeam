@@ -13,9 +13,8 @@
 			$accountInfo->bindValue(':userID', $_SESSION['userID']);
 			$accountInfo->execute();
 			$result = $accountInfo->fetch();
-			$accountInfo->execute();
 
-			$_SESSION['viewAccountInfo'] = $result;
+			$_SESSION['userAccountInfo'] = $result;
 			header('Location: ../account.php');
 		    exit();
 			

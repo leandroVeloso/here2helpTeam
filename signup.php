@@ -80,7 +80,7 @@
                                     <option value="South Australia">South Australia</option>
                                     <option value="Tasmania">Tasmania</option>
                                     <option value="Victoria">Victoria </option>
-                                    <option value="TWestern Australia">TWestern Australia</option>
+                                    <option value="Western Australia">Western Australia</option>
                                   </select>
                                   <p class="help-block text-danger"></p>
                             </div>
