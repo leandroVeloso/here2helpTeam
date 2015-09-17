@@ -10,8 +10,15 @@ CREATE TABLE SERVICE(
 # Create table to store priority level of help request.
 CREATE TABLE PRIORITY(
     priorityID INT(2) AUTO_INCREMENT,
-    priority VARCHAR(50) NOT NULL,
+    priority VARCHAR(50) NOT NULL UNIQUE,
     PRIMARY KEY(priorityID)
+);
+
+# Create table to store status of help request.
+CREATE TABLE STATUS(
+    statusID INT(1),
+    status VARCHAR(50) NOT NULL UNIQUE,
+    PRIMARY KEY(statusID)
 );
 
 # Create table to store help request
@@ -29,6 +36,7 @@ CREATE TABLE REQUEST(
     comment TEXT, # General information about the request
     priorityID INT(2),
     locationID INT(4),
+    statusID INT(1) DEFAULT 1,
     creationDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     lastModified TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP  ON UPDATE CURRENT_TIMESTAMP,
     PRIMARY KEY (requestID),
@@ -44,4 +52,10 @@ CREATE TABLE REQUEST(
     FOREIGN KEY (priorityID) REFERENCES PRIORITY(priorityID)
       ON UPDATE CASCADE
       ON DELETE SET NULL
+      FOREIGN KEY (statusID) REFERENCES STATUS(statusID)
+        ON UPDATE CASCADE
+        ON DELETE SET NULL
 );
+
+INSERT INTO PRIORITY VALUES (1, 'High'), (2, 'Medium'), (3, 'Low');
+INSERT INTO STATUS VALUES (1, 'Open'), (2, 'Closed'), (3, 'Waiting Aproval'), (4, 'In Progress'), (5, 'Cancelled');
