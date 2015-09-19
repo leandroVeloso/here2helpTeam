@@ -5,15 +5,12 @@
 	include("../mail/phpmailer/class.phpmailer.php");
 	// Declare global variables
 	$recoverPasswordInputs = $_POST;
-
 	recoverPassword();
 
 	// Function to search for a user with a given email and password
 	function recoverPassword(){
-		// Inform global variables
 		global $recoverPasswordInputs, $pdo;
 		try{
-			// Creates pdo query , prepare its variables and execute it in order to find a user that matches the password
 			$recoverPassword = $pdo->prepare('SELECT hash FROM USER WHERE email = :email AND firstName = :firstName AND lastName = :lastName');
 			$recoverPassword->bindValue(':email', $recoverPasswordInputs['email']);
 			$recoverPassword->bindValue(':firstName', $recoverPasswordInputs['fname']);
@@ -21,23 +18,17 @@
 			$recoverPassword->execute();
 			$result = $recoverPassword -> fetch();
 
-			// If result is different than null then creates some session variables informing user ID and type
 			if ($result != null) {
 				sendEmail(updatePassword());
 		    	header('Location: ../signin.php#recoverPassword=success');
-
 			    exit();
-
-			} else {
-				// Redirects user to index page with an error message
+			}else {
 			    header('Location: ../recoverPassword.php#recoverPassword=warning');
 			    exit();
 			} 
-			
 		}
-		catch (PDOException $e){
-			echo $e->getMessage();
-		}
+		catch (PDOException $e)
+			{echo $e->getMessage();}
 	}
 
 	//this function updates user's password on the database
@@ -65,7 +56,6 @@
 	    return implode($pass); // used implode turn the array into a string
 	}
 
-
 	//this function sends email with new generated password to the user's email
 	function sendEmail($newPassword){
 		global $recoverPasswordInputs;
@@ -85,5 +75,4 @@
 	    $mail->AddAddress( $recoverPasswordInputs['email']);
 	    $mail->Send();
 	}
-
 ?>
