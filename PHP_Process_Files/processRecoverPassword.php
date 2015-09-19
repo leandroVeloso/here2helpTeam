@@ -58,7 +58,7 @@
 	    $genKey = "0123456789abcdefghijklmnopqrstuwxyzABCDEFGHIJKLMNOPQRSTUWXYZ!@#$%&*()_+";//set the random generator key from a-z and A-Z and 0-9
 	    $pass = array(); //declare $pass as the variable to store array
 	    $genKeyLength = strlen($genKey) - 1; //put the length -1 in cache
-	    for ($i = 0; $i < 8; $i++) {
+	    for ($i = 0; $i < 10; $i++) {
 	        $n = rand(0, $genKeyLength);//set $n to store the generated random key
 	        $pass[] = $genKey[$n]; //set $pass to store the array of generated key
 	    }

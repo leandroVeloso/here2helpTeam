@@ -102,6 +102,120 @@ function checkForUrlMessages(){
             });
         }
 
+        if(hash == "createRequest=failed"){
+            history.pushState('', document.title, window.location.pathname);
+
+            // set focus when modal is opened
+            $('#modalFail-content').on('shown.bs.modal', function () {
+                $("#txtname").focus();
+            });
+
+            // show the modal onload
+            $('#modalFail-content').modal({
+                show: true
+            });
+
+            
+            $('#modalFail-content').modal({
+                show: true
+            });
+        }
+
+        if(hash == "createRequest=success"){
+            history.pushState('', document.title, window.location.pathname);
+
+            // set focus when modal is opened
+            $('#modalCreateRequestSuccess-content').on('shown.bs.modal', function () {
+                $("#txtname").focus();
+            });
+
+            // show the modal onload
+            $('#modalCreateRequestSuccess-content').modal({
+                show: true
+            });
+
+            
+            $('#modalCreateRequestSuccess-content').modal({
+                show: true
+            });
+        }
+
+        if(hash == "deleteRequest=success"){
+            history.pushState('', document.title, window.location.pathname);
+
+            // set focus when modal is opened
+            $('#modalDeleteRequestSuccess-content').on('shown.bs.modal', function () {
+                $("#txtname").focus();
+            });
+
+            // show the modal onload
+            $('#modalDeleteRequestSuccess-content').modal({
+                show: true
+            });
+
+            
+            $('#modalDeleteRequestSuccess-content').modal({
+                show: true
+            });
+        }
+
+        if(hash == "deleteRequest=failed"){
+            history.pushState('', document.title, window.location.pathname);
+
+            // set focus when modal is opened
+            $('#modalDeleteRequestFail-content').on('shown.bs.modal', function () {
+                $("#txtname").focus();
+            });
+
+            // show the modal onload
+            $('#modalDeleteRequestFail-content').modal({
+                show: true
+            });
+
+            
+            $('#modalDeleteRequestFail-content').modal({
+                show: true
+            });
+        }
+
+        if(hash == "editRequest=success"){
+            history.pushState('', document.title, window.location.pathname);
+
+            // set focus when modal is opened
+            $('#modalEditRequestSuccess-content').on('shown.bs.modal', function () {
+                $("#txtname").focus();
+            });
+
+            // show the modal onload
+            $('#modalEditRequestSuccess-content').modal({
+                show: true
+            });
+
+            
+            $('#modalEditRequestSuccess-content').modal({
+                show: true
+            });
+        }
+
+        if(hash == "editRequest=failed"){
+            history.pushState('', document.title, window.location.pathname);
+
+            // set focus when modal is opened
+            $('#modalEditRequestFail-content').on('shown.bs.modal', function () {
+                $("#txtname").focus();
+            });
+
+            // show the modal onload
+            $('#modalEditRequestFail-content').modal({
+                show: true
+            });
+
+            
+            $('#modalEditRequestFail-content').modal({
+                show: true
+            });
+        }
+
         if(hash == "deleteAccount=success"){
             history.pushState('', document.title, window.location.pathname);
 

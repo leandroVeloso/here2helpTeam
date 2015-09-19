@@ -1,6 +1,7 @@
 <?php   
     // Includes pdo file 
     include_once('pdo.inc');
+    verifyIfUserIsSignedIn();
 ?>
 <!DOCTYPE html>
 <html lang="en">

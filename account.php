@@ -1,6 +1,8 @@
 <?php   
     // Includes pdo file 
     include_once('pdo.inc');
+    include_once('PHP_Process_Files/processViewAccount.php');
+    verifyIfUserIsSignedIn();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -85,7 +87,7 @@
                     <div class="row control-group">
                         <div class="form-group col-xs-12 label-form-group controls">
                             <label>Phone Number</label>
-                            <input type="number" disabled value="<?php if(isset($_SESSION['userAccountInfo']) && $_SESSION['userAccountInfo']) echo $_SESSION['userAccountInfo']['phone']; ?>" class="form-control" placeholder="Phone Number" id="pnumber" name="pnumber" required data-validation-required-message="Please enter your phone number.">
+                            <input type="number" disabled value="<?php if(isset($_SESSION['userAccountInfo']) && $_SESSION['userAccountInfo']) echo $_SESSION['userAccountInfo']['phoneNo']; ?>" class="form-control" placeholder="Phone Number" id="pnumber" name="pnumber" required data-validation-required-message="Please enter your phone number.">
                             <p class="help-block text-danger"></p>
                         </div>
                     </div>

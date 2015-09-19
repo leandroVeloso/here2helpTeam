@@ -1,6 +1,7 @@
 <?php   
     // Includes pdo file 
     include_once('pdo.inc');
+    verifyIfUserIsSignedIn();
 
 ?>
 <!DOCTYPE html>
@@ -37,14 +38,14 @@
                      <div class="row control-group">
                             <div class="form-group col-xs-8 label-form-group controls" id ="divpass">
                                 <label>Password</label>
-                                <input type="password" class="form-control" placeholder="Password" id="password" name="password" onblur="checkPassword()"onblur="checkPassword()" required data-validation-required-message="Please enter your password.">
+                                <input type="password" maxlength="10" class="form-control" placeholder="Password" id="password" name="password" onblur="checkPassword()"onblur="checkPassword()" required data-validation-required-message="Please enter your password.">
                                 <p class="help-block text-danger"></p>
                             </div>
                         </div>
                         <div class="row control-group">
                             <div class="form-group col-xs-8 label-form-group controls" id ="divconpass">
                                 <label>Confirm Password</label>
-                                <input type="password" class="form-control" placeholder="Confirm Password" onblur="checkPassword()" id="conpassword" name="conpassword" required data-validation-required-message="Please re-enter your password.">
+                                <input type="password" maxlength="10" class="form-control" placeholder="Confirm Password" onblur="checkPassword()" id="conpassword" name="conpassword" required data-validation-required-message="Please re-enter your password.">
                                 <p class="help-block text-danger" id= "passwordError"></p>
                             </div>
                         </div>

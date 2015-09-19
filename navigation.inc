@@ -23,7 +23,7 @@
                         <a href="#page-top"></a>
                     </li>
                     <li>
-                        <a href="PHP_Process_Files/processViewAccount.php">My Account</a>
+                        <a href="account.php">My Account</a>
                     </li>
                     <li>
                         <a href="requests.php">My Requests</a>

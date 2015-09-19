@@ -41,14 +41,14 @@
                             <p class="help-block text-danger" id= "errorSpan"></p>
                             <div class="form-group col-xs-8 floating-label-form-group controls" id="emaildiv" >
                                 <label>Email</label>
-                                <input type="email" class="form-control" onblur="changeEmailStyle()" placeholder="Email" id="email"name="email" required data-validation-required-message="Please enter your email.">
+                                <input type="email" class="form-control" onblur="changeEmailStyle()" maxlength="200" placeholder="Email" id="email"name="email" required data-validation-required-message="Please enter your email.">
                                 <p class="help-block text-danger"></p>
                             </div>
                         </div>
                         <div class="row control-group">
                             <div class="form-group col-xs-8 floating-label-form-group controls" id="passworddiv" >
                                 <label>Password</label>
-                                <input type="password" class="form-control" onblur="changePasswordStyle()" placeholder="Password" id="password"name="password" required data-validation-required-message="Please enter your password.">
+                                <input type="password" class="form-control" onblur="changePasswordStyle()" maxlength="10" placeholder="Password" id="password"name="password" required data-validation-required-message="Please enter your password.">
                                 <p class="help-block text-danger"></p>
                             </div>
                         </div>

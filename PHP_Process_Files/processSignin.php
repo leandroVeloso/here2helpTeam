@@ -17,7 +17,6 @@
 			$signIn->bindValue(':password', md5($signInInputs['password']));
 			$signIn->execute();
 			$result = $signIn->fetch();
-			$signIn->execute();
 
 			// If result is different than null then creates some session variables informing user ID and type
 			if ($result != null) {

@@ -12,8 +12,11 @@
 	function verifyIfUserIsSignedIn(){
 		if(isset($_SESSION['signin']) &&  $_SESSION['signin'] == 1)
 			return true;
-		else
+		else{
+			header('Location: /index.php');
+			exit();
 			return false;
+		}
 	}
 
 ?>

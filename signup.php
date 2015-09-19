@@ -39,35 +39,35 @@
                         <div class="row control-group">
                             <div class="form-group col-xs-12 label-form-group controls">
                                 <label>First name</label>
-                                <input type="text" value="<?php if(isset($_SESSION['errors']) && $_SESSION['errors']) echo $_SESSION['userInputs']['fname']; ?>" class="form-control" placeholder="First name" id="fname" name="fname" required data-validation-required-message="Please enter your first name.">
+                                <input type="text" maxlength="50" value="<?php if(isset($_SESSION['errors']) && $_SESSION['errors']) echo $_SESSION['userInputs']['fname']; ?>" class="form-control" placeholder="First name" id="fname" name="fname" required data-validation-required-message="Please enter your first name.">
                                 <p class="help-block text-danger"></p>
                             </div>
                         </div>
                         <div class="row control-group">
                             <div class="form-group col-xs-12 label-form-group controls">
                                 <label>Last name</label>
-                                <input type="text" value="<?php if(isset($_SESSION['errors']) && $_SESSION['errors']) echo $_SESSION['userInputs']['lname']; ?>" class="form-control" placeholder="Last name" id="lname" name="lname" required data-validation-required-message="Please enter your last name.">
+                                <input type="text" maxlength="50" value="<?php if(isset($_SESSION['errors']) && $_SESSION['errors']) echo $_SESSION['userInputs']['lname']; ?>" class="form-control" placeholder="Last name" id="lname" name="lname" required data-validation-required-message="Please enter your last name.">
                                 <p class="help-block text-danger"></p>
                             </div>
                         </div>
                         <div class="row control-group">
                             <div class="form-group col-xs-4 label-form-group controls">
                                 <label>Unit number</label>
-                                <input type="text"  onkeypress="return isNumber(event)" value="<?php if(isset($_SESSION['errors']) && $_SESSION['errors']) echo $_SESSION['userInputs']['unumber']; ?>" class="form-control" placeholder="Unit Number" id="unumber" name="unumber" required data-validation-required-message="Please enter your unit number.">
+                                <input type="number" min="0" step="1" maxlength="10" onkeypress="return isNumber(event)" value="<?php if(isset($_SESSION['errors']) && $_SESSION['errors']) echo $_SESSION['userInputs']['unumber']; ?>" class="form-control" placeholder="Unit Number" id="unumber" name="unumber" required data-validation-required-message="Please enter your unit number.">
                                 <p class="help-block text-danger"></p>
                             </div>
                         </div>
                         <div class="row control-group">
                             <div class="form-group col-xs-12 label-form-group controls">
                                 <label>Street</label>
-                                <input type="text" value="<?php if(isset($_SESSION['errors']) && $_SESSION['errors']) echo $_SESSION['userInputs']['street']; ?>" class="form-control" placeholder="Street" id="street" name="street" required data-validation-required-message="Please enter your street name.">
+                                <input type="text" maxlength="50" value="<?php if(isset($_SESSION['errors']) && $_SESSION['errors']) echo $_SESSION['userInputs']['street']; ?>" class="form-control" placeholder="Street" id="street" name="street" required data-validation-required-message="Please enter your street name.">
                                 <p class="help-block text-danger"></p>
                             </div>
                         </div>
                         <div class="row control-group">
                             <div class="form-group col-xs-12 label-form-group controls">
                                 <label>Suburb</label>
-                                <input type="text" value="<?php if(isset($_SESSION['errors']) && $_SESSION['errors']) echo $_SESSION['userInputs']['suburb']; ?>" class="form-control" placeholder="Suburb" id="suburb" name="suburb" required data-validation-required-message="Please enter your suburb.">
+                                <input type="text" maxlength="50" value="<?php if(isset($_SESSION['errors']) && $_SESSION['errors']) echo $_SESSION['userInputs']['suburb']; ?>" class="form-control" placeholder="Suburb" id="suburb" name="suburb" required data-validation-required-message="Please enter your suburb.">
                                 <p class="help-block text-danger"></p>
                             </div>
                         </div>
@@ -89,35 +89,35 @@
                         <div class="row control-group">
                             <div class="form-group col-xs-4 label-form-group controls">
                                 <label>Postcode</label>
-                                <input type="text" onkeypress="return isNumber(event)" value="<?php if(isset($_SESSION['errors']) && $_SESSION['errors']) echo $_SESSION['userInputs']['postcode']; ?>" class="form-control" placeholder="Postcode" id="postcode"name="postcode" required data-validation-required-message="Please enter your post code.">
+                                <input type="number" min="0" step="1" maxlength="4" onkeypress="return isNumber(event)" value="<?php if(isset($_SESSION['errors']) && $_SESSION['errors']) echo $_SESSION['userInputs']['postcode']; ?>" class="form-control" placeholder="Postcode" id="postcode"name="postcode" required data-validation-required-message="Please enter your post code.">
                                 <p class="help-block text-danger"></p>
                             </div>
                         </div>
                         <div class="row control-group">
                             <div class="form-group col-xs-12 label-form-group controls">
                                 <label>Phone Number</label>
-                                <input type="number" value="<?php if(isset($_SESSION['errors']) && $_SESSION['errors']) echo $_SESSION['userInputs']['pnumber']; ?>" class="form-control" placeholder="Phone Number" id="pnumber" name="pnumber" required data-validation-required-message="Please enter your phone number.">
+                                <input type="number" min="0" step="1" maxlength="11" value="<?php if(isset($_SESSION['errors']) && $_SESSION['errors']) echo $_SESSION['userInputs']['pnumber']; ?>" class="form-control" placeholder="Phone Number" id="pnumber" name="pnumber" required data-validation-required-message="Please enter your phone number.">
                                 <p class="help-block text-danger"></p>
                             </div>
                         </div>
                         <div class="row control-group">
                             <div class="form-group col-xs-12 label-form-group controls" id ="emaildiv">
                                 <label>Email</label>
-                                <input type="email" value="<?php if(isset($_SESSION['errors']) && $_SESSION['errors']) echo $_SESSION['userInputs']['email']; ?>" class="form-control" placeholder="Email" onblur="changeEmailStyle()" id="email" name="email" required data-validation-required-message="Please enter your Email.">
+                                <input type="email" maxlength="100" value="<?php if(isset($_SESSION['errors']) && $_SESSION['errors']) echo $_SESSION['userInputs']['email']; ?>" class="form-control" placeholder="Email" onblur="changeEmailStyle()" id="email" name="email" required data-validation-required-message="Please enter your Email.">
                                 <p class="help-block text-danger" id= "errorSpan"></p>
                             </div>
                         </div>
                         <div class="row control-group">
                             <div class="form-group col-xs-8 label-form-group controls" id ="divpass">
                                 <label>Password</label>
-                                <input type="password" class="form-control" placeholder="Password" id="password" name="password" onblur="checkPassword()"onblur="checkPassword()" required data-validation-required-message="Please enter your password.">
+                                <input type="password" class="form-control" placeholder="Password" id="password" maxlength="10" name="password" onblur="checkPassword()"onblur="checkPassword()" required data-validation-required-message="Please enter your password.">
                                 <p class="help-block text-danger"></p>
                             </div>
                         </div>
                         <div class="row control-group">
                             <div class="form-group col-xs-8 label-form-group controls" id ="divconpass">
                                 <label>Confirm Password</label>
-                                <input type="password" class="form-control" placeholder="Confirm Password" onblur="checkPassword()" id="conpassword" name="conpassword" required data-validation-required-message="Please re-enter your password.">
+                                <input type="password" class="form-control" placeholder="Confirm Password" onblur="checkPassword()" maxlength="10" id="conpassword" name="conpassword" required data-validation-required-message="Please re-enter your password.">
                                 <p class="help-block text-danger" id= "passwordError"></p>
                             </div>
                         </div>

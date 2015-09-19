@@ -1,14 +1,12 @@
 <?php
-
-	include_once('../pdo.inc');
-
-	getAccountInfo();
-
-	function getAccountInfo(){
+	
+	seletcAccountInfo();
+	
+	function seletcAccountInfo(){
 		// Inform global variables
 		global $pdo;
 		try{
-			// Creates pdo query , prepare its variables and execute it in order to get all user's information
+
 			$accountInfo = $pdo->prepare(
 			  'SELECT *
 			  FROM ADDRESS A
@@ -19,13 +17,9 @@
 			  WHERE U.userID = :userID');
 			$accountInfo->bindValue(':userID', $_SESSION['userID']);
 			$accountInfo->execute();
-			$result = $accountInfo->fetch();
-			$accountInfo->execute();
+			$result2 = $accountInfo->fetch();
 
-			$_SESSION['viewAccountInfo'] = $result;
-			header('Location: ../account.php');
-		    exit();
-
+			$_SESSION['userAccountInfo'] = $result2;
 		}
 		catch (PDOException $e){
 			echo $e->getMessage();

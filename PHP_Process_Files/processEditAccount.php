@@ -8,29 +8,37 @@
 		// Inform global variables
 		global $pdo;
 		try{
-			// Creates pdo query , prepare its variables and execute it in order to get all user's information
-			$updateAccountInfo = $pdo->prepare('UPDATE `USER` SET  `hash` = :hash,`email`= :email, `firstName` = :firstName, `lastName`= :lastName, `phone` = :phone, `unitNumber` = :unitNumber,`street` = :street, `suburb` = :suburb, `state` = :state, `postcode` = :postcode WHERE userID = :userID');
-			$updateAccountInfo->bindValue(':hash',md5($_POST['password']));
-			$updateAccountInfo->bindValue(':email', $_POST['email']);
-			$updateAccountInfo->bindValue(':firstName', $_POST['fname']);
-			$updateAccountInfo->bindValue(':lastName', $_POST['lname']);
-			$updateAccountInfo->bindValue(':phone', $_POST['pnumber']);
-			$updateAccountInfo->bindValue(':unitNumber', $_POST['unumber']);
-			$updateAccountInfo->bindValue(':street', $_POST['street']);
-			$updateAccountInfo->bindValue(':suburb', $_POST['suburb']);
-			$updateAccountInfo->bindValue(':state', $_POST['state']);
-			$updateAccountInfo->bindValue(':postcode', $_POST['postcode']);
-			$updateAccountInfo->bindValue(':userID', $_SESSION['userID']);
+			$updateAccountInfoAdress = $pdo->prepare('UPDATE `ADDRESS` SET `unitNumber` = :unitNumber, `street` = :street, `suburb` = :suburb, `state` = :state, `postcode` = :postcode WHERE adressID = :adressID');
+		    $updateAccountInfoAdress->bindValue(':unitNumber', $_POST['unumber']);
+		    $updateAccountInfoAdress->bindValue(':street', $_POST['street']);
+		    $updateAccountInfoAdress->bindValue(':suburb', $_POST['suburb']);
+		    $updateAccountInfoAdress->bindValue(':state', $_POST['state']);
+		    $updateAccountInfoAdress->bindValue(':postcode', $_POST['postcode']);
+		    $updateAccountInfoAdress->bindValue(':adressID', $_SESSION['userAccountInfo']['adressID']);
+		    $resultAddress = $updateAccountInfoAdress->execute();
+
+		    $updateAccountInfo = $pdo->prepare('UPDATE `USER` SET `firstName` = :firstName, `lastName` = :lastName, `phoneNo` = :phone WHERE userID = :userID' );
+	        $updateAccountInfo->bindValue(':firstName', $_POST['fname']);
+	        $updateAccountInfo->bindValue(':lastName', $_POST['lname']);
+	        $updateAccountInfo->bindValue(':phone', $_POST['pnumber']);
+	        $updateAccountInfo->bindValue(':userID', $_SESSION['userID']);
 			$result = $updateAccountInfo->execute();
 
-			$accountInfo = $pdo->prepare('SELECT * FROM USER WHERE userID = :userID');
+			$accountInfo = $pdo->prepare(
+			  'SELECT *
+			  FROM ADDRESS A
+			  INNER JOIN USER U
+			    ON U.addressID = A.addressID
+			  INNER JOIN USERTYPE T
+			    ON U.typeID = T.typeID
+			  WHERE U.userID = :userID');
 			$accountInfo->bindValue(':userID', $_SESSION['userID']);
 			$accountInfo->execute();
 			$result2 = $accountInfo->fetch();
 
 			$_SESSION['userAccountInfo'] = $result2;
 		
-			if ($result && $result2) {
+			if ($result && $result2 && $resultAddress) {
 					// Redirects user to index page with a success message 
 				    header('Location: ../editAccount.php#updateAccount=success');
 				    exit();
