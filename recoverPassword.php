@@ -15,7 +15,7 @@
                     <div class="col-lg-12 text-center">
                         </br></br>
                         <h2>Recover Password</h2>
-                        <h5>Please confirm the following information in order to recover your password:</h5>
+                        <h5>Please confirm the following information in order to recover your password</h5>
                         <hr class="star-primary">
                     </div>
                 </div>

@@ -6,7 +6,7 @@
     </head>
 
     <body id="page-top" class="index">
-        <?php include 'navigation.inc'; // Includes logo and menu?>        
+        <?php include 'navigation.inc'; // Includes logo and menu?>
         <!-- Signin Section -->
         <section id="signin">
             <div class="container">
@@ -42,7 +42,7 @@
                             <button type="submit" value=" Submit" class="btn btn-success btn-lg" id="submit"> Submit</button>
                             <a href="signup.php">
                                 <button type="button" value=" Signup" class="btn btn-warning btn-lg" id="signup"> Sign up</button>
-                            </a>         
+                            </a>
                         </form>
                     </div>
                 </div>
@@ -53,9 +53,9 @@
                 <div class="modal-content">
                      <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title">Your account was successfully created!<br> Please, sign in to acccess it.</h4>
+                        <h4 class="modal-title">Your account was successfully created!<br> Please sign in to acccess it.</h4>
                       </div>
-                    <div class="modal-footer"> 
+                    <div class="modal-footer">
                         <a href="#" class="btn btn-primary" data-dismiss="modal">Close</a>
                     </div>
                 </div>
@@ -68,13 +68,13 @@
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         <h4 class="modal-title">Your password was successfully changed. <br>It was sent to your registered email.</h4>
                       </div>
-                    <div class="modal-footer"> 
+                    <div class="modal-footer">
                         <a href="#" class="btn btn-primary" data-dismiss="modal">Close</a>
                     </div>
                 </div>
             </div>
         </div>
-        <?php 
+        <?php
             // Includes logo and menu
             include 'footer.inc';
             // Includes Javascript files

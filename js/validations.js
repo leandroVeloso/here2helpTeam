@@ -2,25 +2,25 @@
 function checkPassword(){
     var pass = document.getElementById("password").value;
     var confPass = document.getElementById("conpassword").value
-    // Verifies if password is greater or equal than 6 
+    // Verifies if password is greater or equal than 6
     if(pass.length >= 6){
         //  If passwords don't match then change label style and show error message
         if(pass != confPass && confPass != ""){
             document.getElementById("passwordError").innerHTML = "Passwords don't match";
             document.getElementById('divconpass').className = "form-group has-error col-xs-8 label-form-group controls";
-            
+
         }else{
             //  If passwords match then change label style and hide error message
             document.getElementById("passwordError").innerHTML = "";
             document.getElementById('divconpass').className = "form-group col-xs-8 label-form-group controls";
             document.getElementById('divpass').className = "form-group col-xs-8 label-form-group controls";
-            
+
         }
     }else{
         //  If password is less than 6 then change label style and show error message
-        document.getElementById("passwordError").innerHTML = "Passwords must contain at least 6 characteres!";
+        document.getElementById("passwordError").innerHTML = "Passwords must contain at least 6 characters!";
         document.getElementById('divpass').className = "form-group has-error col-xs-8 label-form-group controls";
-        
+
     }
 }
 
@@ -28,26 +28,26 @@ function checkPassword(){
 function changeEmailStyle(){
         document.getElementById("errorSpan").innerHTML = "";
         document.getElementById('emaildiv').className = "form-group col-xs-8 label-form-group controls";
-         
+
 }
 
 // Function to change password style
 function changePasswordStyle(){
         document.getElementById("errorSpan").innerHTML = "";
         document.getElementById('passworddiv').className = "form-group col-xs-8 label-form-group controls";
-         
+
 }
 // Function to change lastname style
 function changeLastNameStyle(){
         document.getElementById("errorSpan").innerHTML = "";
         document.getElementById('lnamediv').className = "form-group col-xs-8 label-form-group controls";
-         
+
 }
 // Function to change firstname style
 function changeFirstNameStyle(){
         document.getElementById("errorSpan").innerHTML = "";
         document.getElementById('fnamediv').className = "form-group col-xs-8 label-form-group controls";
-         
+
 }
 
 // Function to check if there's message (hash) in the URL
@@ -56,7 +56,7 @@ function checkForUrlMessages(){
     if(window.location.hash) {
         var hash = window.location.hash.substring(1); //Puts hash in variable, and removes the # character
         if(hash == "signup=email"){
-            document.getElementById("errorSpan").innerHTML = "E-mail is already in use. Please try another.";
+            document.getElementById("errorSpan").innerHTML = "Email is already in use. Please try another.";
             document.getElementById('emaildiv').className = "form-group has-error col-xs-8 label-form-group controls";
             history.pushState('', document.title, window.location.pathname);
 
@@ -70,7 +70,7 @@ function checkForUrlMessages(){
                 show: true
             });
 
-            
+
             $('#modalEmail-content').modal({
                 show: true
             });
@@ -96,7 +96,7 @@ function checkForUrlMessages(){
                 show: true
             });
 
-            
+
             $('#modal-content').modal({
                 show: true
             });
@@ -115,7 +115,7 @@ function checkForUrlMessages(){
                 show: true
             });
 
-            
+
             $('#modalFail-content').modal({
                 show: true
             });
@@ -134,7 +134,7 @@ function checkForUrlMessages(){
                 show: true
             });
 
-            
+
             $('#modalCreateRequestSuccess-content').modal({
                 show: true
             });
@@ -153,7 +153,7 @@ function checkForUrlMessages(){
                 show: true
             });
 
-            
+
             $('#modalDeleteRequestSuccess-content').modal({
                 show: true
             });
@@ -172,7 +172,7 @@ function checkForUrlMessages(){
                 show: true
             });
 
-            
+
             $('#modalDeleteRequestFail-content').modal({
                 show: true
             });
@@ -191,7 +191,7 @@ function checkForUrlMessages(){
                 show: true
             });
 
-            
+
             $('#modalEditRequestSuccess-content').modal({
                 show: true
             });
@@ -210,7 +210,7 @@ function checkForUrlMessages(){
                 show: true
             });
 
-            
+
             $('#modalEditRequestFail-content').modal({
                 show: true
             });
@@ -229,7 +229,7 @@ function checkForUrlMessages(){
                 show: true
             });
 
-            
+
             $('#modal-content').modal({
                 show: true
             });
@@ -248,7 +248,7 @@ function checkForUrlMessages(){
                 show: true
             });
 
-            
+
             $('#modalEditAccountFail-content').modal({
                 show: true
             });
@@ -266,7 +266,7 @@ function checkForUrlMessages(){
                 show: true
             });
 
-            
+
             $('#modalEditAccountSuccess-content').modal({
                 show: true
             });
@@ -284,7 +284,7 @@ function checkForUrlMessages(){
                 show: true
             });
 
-            
+
             $('#modalPassSuccess-content').modal({
                 show: true
             });
@@ -303,7 +303,7 @@ function checkForUrlMessages(){
                 show: true
             });
 
-            
+
             $('#modalPassError-content').modal({
                 show: true
             });
@@ -323,7 +323,7 @@ function checkForUrlMessages(){
                 show: true
             });
 
-            
+
             $('#modalRecoverSuccess-content').modal({
                 show: true
             });
@@ -346,7 +346,7 @@ function checkForUrlMessages(){
                 show: true
             });
 
-            
+
             $('#modalRecoverWarning-content').modal({
                 show: true
             });
@@ -365,7 +365,7 @@ function checkForUrlMessages(){
                 show: true
             });
 
-            
+
             $('#modalSignUp-content').modal({
                 show: true
             });
@@ -384,7 +384,7 @@ function checkForUrlMessages(){
                 show: true
             });
 
-            
+
             $('#modalSignOut-content').modal({
                 show: true
             });
@@ -403,7 +403,7 @@ function checkForUrlMessages(){
                 show: true
             });
 
-            
+
             $('#modalSignOut-content').modal({
                 show: true
             });

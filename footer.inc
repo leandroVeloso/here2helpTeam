@@ -4,7 +4,7 @@
 		        <div class="container">
 		            <div class="row">
 		                <div class="col-lg-12">
-		                    Copyright &copy; here2help 2015
+		                    Copyright &copy; here2help 2015.
 		                </div>
 		            </div>
 		        </div>

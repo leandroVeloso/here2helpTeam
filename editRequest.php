@@ -1,5 +1,5 @@
-<?php   
-    // Includes pdo file 
+<?php
+    // Includes pdo file
     include_once('pdo.inc');
     include_once('PHP_Process_Files/processViewRequest.php');
     include_once('PHP_Process_Files/processSelect.php');
@@ -59,7 +59,7 @@
                                 <div class="form-group col-xs-8 label-form-group controls">
                                     <label>Service Priority</label>
                                     <select class="form-control" id="priorityID"  name="priorityID" required>
-                                        <?php                                      
+                                        <?php
                                             foreach($priorities as $priority){
                                                 if($myRequest['priorityID'] == $priority['priorityID'])
                                                     $selected = "selected";
@@ -75,7 +75,7 @@
                             <div class="row control-group">
                                 <div class="form-group col-xs-12 label-form-group controls">
                                     <label>Description</label>
-                                    <textarea class="form-control" id="comment" rows="4"  placeholder="Describe details of your request" name="requestDescription" required data-validation-required-message="Please enter a description for your request"><?php echo $myRequest['comment'];?></textarea>
+                                    <textarea class="form-control" id="comment" rows="4"  placeholder="Provide details of your request" name="requestDescription" required data-validation-required-message="Please enter a description for your request"><?php echo $myRequest['comment'];?></textarea>
                                     <p class="help-block text-danger"></p>
                                 </div>
                             </div>
@@ -99,8 +99,8 @@
                                 <div class="control col-xs-12">
                                     <label>Date</label>
                                     <br>
-                                    Define here the date period that the service can be executed
-                                </div> 
+                                    Specify the <b>days</b> you would like the service provider to handle the request.
+                                </div>
                                 <div class="control col-xs-4">
                                     <div class="input-group">
                                         <input id="startDate" type="text"   placeholder="Start Date" value="<?php echo date("d-m-Y", strtotime($myRequest['startDate']));?>" required  name="startDate" class="date-picker form-control" />
@@ -118,8 +118,8 @@
                                 <div class="control col-xs-12">
                                     <label>Time</label>
                                     <br>
-                                    Define here the time period that the service can be executed
-                                </div> 
+                                    Specify the <b>times</b> you would like the service provider to handle the request.
+                                </div>
                                 <div class="control col-xs-4">
                                     <div class="input-group">
                                         <input type="time" step='1' min="00:00:00" max="24:00:00"  value="<?php echo $myRequest['startTime'];?>" name="startTime" id="startTime" class="form-control clockpicker" required placeholder="Start Time">
@@ -134,7 +134,7 @@
                                         </span>
                                     </div>
                                 </div>
-                            </div> 
+                            </div>
                             <br><br>
                             <h4 >WHERE</h4>
                             <hr>
@@ -180,7 +180,7 @@
                                 <div class="row control-group">
                                     <div class="form-group col-xs-4 label-form-group controls">
                                         <label>Postcode</label>
-                                        <input type="text" onkeypress="return isNumber(event)" required  maxlength="4" value='<?php echo $myRequest['postcode'];?>' class="form-control" placeholder="Postcode" id="postcode"name="postcode" data-validation-required-message="Please enter your post code.">
+                                        <input type="text" onkeypress="return isNumber(event)" required  maxlength="4" value='<?php echo $myRequest['postcode'];?>' class="form-control" placeholder="Postcode" id="postcode"name="postcode" data-validation-required-message="Please enter your postcode.">
                                         <p class="help-block text-danger"></p>
                                     </div>
                                 </div>
@@ -202,9 +202,9 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title">Request's details successfully updated.</h4>
+                        <h4 class="modal-title">Request's details successfully updated!</h4>
                     </div>
-                    <div class="modal-footer"> 
+                    <div class="modal-footer">
                         <a href="#" class="btn btn-primary" data-dismiss="modal">Close</a>
                     </div>
                 </div>
@@ -215,9 +215,9 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title">Something went wrong! Please, try again</h4>
+                        <h4 class="modal-title">Something went wrong! Please try again.</h4>
                     </div>
-                    <div class="modal-footer"> 
+                    <div class="modal-footer">
                         <a href="#" class="btn btn-primary" data-dismiss="modal">Close</a>
                     </div>
                 </div>

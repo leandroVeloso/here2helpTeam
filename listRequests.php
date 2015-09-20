@@ -33,7 +33,7 @@
                         <br>
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                My HelpDesk Requests
+                                My Requests
                             </div>
                             <!-- /.panel-heading -->
                             <div class="panel-body">
@@ -73,9 +73,9 @@
             <div class="modal-dialog">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title">Something went wrong! Please, try again</h4>
+                        <h4 class="modal-title">Something went wrong! Please try again.</h4>
                     </div>
-                    <div class="modal-footer"> 
+                    <div class="modal-footer">
                         <a href="#" class="btn btn-primary" data-dismiss="modal">Close</a>
                     </div>
                 </div>
@@ -86,9 +86,9 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title">Your request was successfully deleted</h4>
+                        <h4 class="modal-title">Your request was successfully deleted!</h4>
                     </div>
-                    <div class="modal-footer"> 
+                    <div class="modal-footer">
                         <a href="#" class="btn btn-primary" data-dismiss="modal">Close</a>
                     </div>
                 </div>
@@ -99,9 +99,9 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title">Your request was successfully created</h4>
+                        <h4 class="modal-title">Your request was successfully created!</h4>
                     </div>
-                    <div class="modal-footer"> 
+                    <div class="modal-footer">
                         <a href="#" class="btn btn-primary" data-dismiss="modal">Close</a>
                     </div>
                 </div>

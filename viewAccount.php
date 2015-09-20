@@ -1,4 +1,4 @@
-<?php  // Includes pdo file 
+<?php  // Includes pdo file
     include_once('pdo.inc');
     include_once('PHP_Process_Files/processViewAccount.php');
     verifyIfUserIsSignedIn();
@@ -67,7 +67,7 @@
                         <div class="row control-group">
                             <div class="form-group col-xs-4 label-form-group controls">
                                 <label>Postcode</label>
-                                <input type="text" disabled onkeypress="return isNumber(event)" value="<?php if(isset($_SESSION['userAccountInfo']) && $_SESSION['userAccountInfo']) echo $_SESSION['userAccountInfo']['postcode']; ?>" class="form-control" placeholder="Postcode" id="postcode"name="postcode" required data-validation-required-message="Please enter your post code.">
+                                <input type="text" disabled onkeypress="return isNumber(event)" value="<?php if(isset($_SESSION['userAccountInfo']) && $_SESSION['userAccountInfo']) echo $_SESSION['userAccountInfo']['postcode']; ?>" class="form-control" placeholder="Postcode" id="postcode"name="postcode" required data-validation-required-message="Please enter your postcode.">
                                 <p class="help-block text-danger"></p>
                             </div>
                         </div>
@@ -81,7 +81,7 @@
                         <div class="row control-group">
                             <div class="form-group col-xs-12 label-form-group controls" id ="emaildiv">
                                 <label>Email</label>
-                                <input type="email" disabled value="<?php if(isset($_SESSION['userAccountInfo']) && $_SESSION['userAccountInfo']) echo $_SESSION['userAccountInfo']['email']; ?>" class="form-control" placeholder="Email" onblur="changeEmailStyle()" id="email" name="email" required data-validation-required-message="Please enter your Email.">
+                                <input type="email" disabled value="<?php if(isset($_SESSION['userAccountInfo']) && $_SESSION['userAccountInfo']) echo $_SESSION['userAccountInfo']['email']; ?>" class="form-control" placeholder="Email" onblur="changeEmailStyle()" id="email" name="email" required data-validation-required-message="Please enter your email.">
                                 <p class="help-block text-danger" id= "errorSpan"></p>
                             </div>
                         </div>
@@ -103,7 +103,7 @@
                 </div>
             </div>
         </section>
-        <?php 
+        <?php
                 // Includes logo and menu
                 include 'footer.inc';
                 // Includes Javascript files
@@ -117,8 +117,8 @@
                         <h4 class="modal-title">ATTENTION!</h4>
                     </div>
                     <div class="modal-body">
-                    <p>You're about to delete your account and all your requests.</p>
-                    <p>Are you sure you want do delete it?</p>
+                    <p>You're about to delete your account and all of your requests.</p>
+                    <p>Are you sure you want to delete your account?</p>
                     <br>
                     <p>You won't be able to recover it later.</p>
                   </div>

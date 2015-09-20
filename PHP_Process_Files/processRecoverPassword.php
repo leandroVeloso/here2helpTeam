@@ -1,5 +1,5 @@
 <?php
-	 // Includes pdo file 
+	 // Includes pdo file
     include_once('../pdo.inc');
     include("../mail/phpmailer/class.smtp.php");
 	include("../mail/phpmailer/class.phpmailer.php");
@@ -25,7 +25,7 @@
 			}else {
 			    header('Location: ../recoverPassword.php#recoverPassword=warning');
 			    exit();
-			} 
+			}
 		}
 		catch (PDOException $e)
 			{echo $e->getMessage();}
@@ -44,7 +44,7 @@
 		return $newPass;
 	}
 
-	//this fucntion generates a new password 
+	//this function generates a new password
 	function createNewPassword() {
 	    $genKey = "0123456789abcdefghijklmnopqrstuwxyzABCDEFGHIJKLMNOPQRSTUWXYZ!@#$%&*()_+";//set the random generator key from a-z and A-Z and 0-9
 	    $pass = array(); //declare $pass as the variable to store array
@@ -71,7 +71,7 @@
 	    $mail->Password = "helpyhelp2";//set the password to make a direct sign in
 	    $mail->SetFrom("here2helpdesk@gmail.com");
 	    $mail->Subject = "Recover Password - here2help";
-	    $mail->Body = "Hi ". $recoverPasswordInputs['fname']." ". $recoverPasswordInputs['lname']."<br> This is your password: <b>".$newPassword."</b> <br><br> To change your password, please access your manage account page.";
+	    $mail->Body = "Hi ". $recoverPasswordInputs['fname']." ". $recoverPasswordInputs['lname']."<br> This is your temporary password: <b>".$newPassword."</b> <br><br> To change your password, please access your manage account page.";
 	    $mail->AddAddress( $recoverPasswordInputs['email']);
 	    $mail->Send();
 	}
