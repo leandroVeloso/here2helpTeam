@@ -1,5 +1,5 @@
-<?php   
-    // Includes pdo file 
+<?php
+    // Includes pdo file
     include_once('pdo.inc');
     include_once('PHP_Process_Files/processViewRequest.php');
     verifyIfUserIsSignedIn();
@@ -77,7 +77,7 @@
                                 <label>Date</label>
                                 <br>
                                 Define here the date period that the service can be executed
-                            </div> 
+                            </div>
                             <div class="control col-xs-4">
                                 <div class="input-group">
                                     <input id="startDate" type="text" disabled  placeholder="Start Date" value="<?php echo  date("d-m-Y", strtotime($myRequest['startDate']));?>" required  name="startDate" class="date-picker form-control" />
@@ -96,7 +96,7 @@
                                 <label>Time</label>
                                 <br>
                                 Define here the time period that the service can be executed
-                            </div> 
+                            </div>
                             <div class="control col-xs-4">
                                 <div class="input-group">
                                     <input type="time" step='1' min="00:00:00" max="24:00:00" disabled value="<?php echo $myRequest['startTime'];?>" name="startTime" id="startTime" class="form-control clockpicker" required placeholder="Start Time">
@@ -111,7 +111,7 @@
                                     </span>
                                 </div>
                             </div>
-                        </div> 
+                        </div>
                         <br><br>
                         <h4 >WHERE</h4>
                         <hr>
@@ -193,7 +193,7 @@
                 </div>
             </div>
         </div>
-        <?php 
+        <?php
             // Includes logo and menu
             include 'footer.inc';
             // Includes Javascript files
