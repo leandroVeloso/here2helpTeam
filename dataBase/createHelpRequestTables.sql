@@ -1,9 +1,10 @@
 USE Helpdesk;
 
-# create table to store service types.
+# Create table to store service types.
 CREATE TABLE SERVICE(
-    serviceID INT(4),
+    serviceID INT(4) AUTO_INCREMENT,
     service VARCHAR(100) NOT NULL UNIQUE,
+    lastModified TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     PRIMARY KEY(serviceID)
 );
 
@@ -11,22 +12,30 @@ CREATE TABLE SERVICE(
 CREATE TABLE PRIORITY(
     priorityID INT(2) AUTO_INCREMENT,
     priority VARCHAR(50) NOT NULL UNIQUE,
+    lastModified TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     PRIMARY KEY(priorityID)
 );
 
+# Insert priorities [1] High, [2] Medium and [3] Low.
+INSERT INTO PRIORITY VALUES ('High'), ('Medium'), ('Low');
+
 # Create table to store status of help request.
 CREATE TABLE STATUS(
-    statusID INT(1),
+    statusID INT(1) AUTO_INCREMENT,
     status VARCHAR(50) NOT NULL UNIQUE,
+    lastModified TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     PRIMARY KEY(statusID)
 );
+
+# Insert status of request [1] Open, [2] Closed, [3] Waiting approval from customer, [4] In progress and [5] Cancelled.
+INSERT INTO STATUS VALUES ('Open'), ('Closed'), ('Waiting Aproval'), ('In Progress'), ('Cancelled');
 
 # Create table to store help request
 CREATE TABLE REQUEST(
     requestID INT(4) AUTO_INCREMENT,
     clientID INT(4) NOT NULL,
-    serviceID INT(4),
-    requestName VARCHAR(50), # Name of request
+    serviceID INT(4) NOT NULL,
+    requestName VARCHAR(50) NOT NULL, # Name of request
     startDate DATE NOT NULL,
     endDate DATE,
     startTime TIME,
@@ -37,8 +46,8 @@ CREATE TABLE REQUEST(
     priorityID INT(2),
     locationID INT(4),
     statusID INT(1) DEFAULT 1,
-    creationDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    lastModified TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP  ON UPDATE CURRENT_TIMESTAMP,
+    creationDate TIMESTAMP NOT NULL,
+    lastModified TIMESTAMP NOT NULL ON UPDATE CURRENT_TIMESTAMP,
     PRIMARY KEY (requestID),
     FOREIGN KEY (locationID) REFERENCES ADDRESS(addressID)
       ON UPDATE CASCADE
@@ -56,6 +65,3 @@ CREATE TABLE REQUEST(
         ON UPDATE CASCADE
         ON DELETE SET NULL
 );
-
-INSERT INTO PRIORITY VALUES (1, 'High'), (2, 'Medium'), (3, 'Low');
-INSERT INTO STATUS VALUES (1, 'Open'), (2, 'Closed'), (3, 'Waiting Aproval'), (4, 'In Progress'), (5, 'Cancelled');
