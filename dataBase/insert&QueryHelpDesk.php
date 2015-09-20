@@ -37,41 +37,28 @@ $accountInfo->execute();
 $result = $accountInfo->fetch();
 
 /*------------------------------------------------------------------------------
- Insert help request details into database. This is implemented in processRequest.php.
+ Insert help request details into database. This is implemented in processCreateRequest.php.
 --------------------------------------------------------------------------------*/
 
-$request = $pdo->prepare('INSERT INTO `REQUEST` (`requestName`, `startDate`, `endDate`, `startTime`, 'endTime', `minPrice`, `maxPrice`, 'comment', 'priorityID', 'addressID')
-VALUES (:requestName, :startDate, :endDate, :startTime, :endTime, :minPrice, :maxPrice, :comment, :priorityID, :addressID)');
-$request->bindValue(':requestName', $_POST['requestName']);
-$request->bindValue(':startDate', $_POST['startDate']);
-$request->bindValue(':endDate', $_POST['endDate']);
-$request->bindValue(':startTime', $_POST['startTime']);
-$request->bindValue(':endTime', $_POST['endTime']);
-$request->bindValue(':minPrice', $_POST['minPrice']);
-$request->bindValue(':maxPrice', $_POST['maxPrice']);
-$request->bindValue(':comment', $_POST['comment']);
-$request->bindValue(':priorityID', $_POST['priorityID']);
-$request->bindValue(':addressID', $_POST['addressID']);
+$request = $pdo->prepare(
+'INSERT INTO `REQUEST` (`clientID`, `requestName`, `startDate`, `endDate`, `startTime`, `endTime`, `minPrice`, `maxPrice`, `comment`, `priorityID`, `locationID`, `statusID`, `serviceID`, `creationDate`, `lastModified`)
+VALUES (:clientID, :requestName, :startDate, :endDate, :startTime, :endTime, :minPrice, :maxPrice, :comment, :priorityID, :locationID, 1, :serviceID, NULL, NULL)'); // Server uses previous version of MySQL hence creationDate and lastModified must be set to NULL
+$request->bindValue(':clientID', $_SESSION['userAccountInfo']['userID']);
+$request->bindValue(':requestName', $requestInputs['requestName']);
+$request->bindValue(':startDate',date("Y-m-d", strtotime($requestInputs['startDate'])));
+$request->bindValue(':endDate', date("Y-m-d", strtotime($requestInputs['endDate'])));
+$request->bindValue(':startTime', $requestInputs['startTime']);
+$request->bindValue(':endTime', $requestInputs['endTime']);
+$request->bindValue(':minPrice', $requestInputs['minPrice']);
+$request->bindValue(':maxPrice', $requestInputs['maxPrice']);
+$request->bindValue(':comment', $requestInputs['requestDescription']);
+$request->bindValue(':priorityID', $requestInputs['priorityID']);
+$request->bindValue(':serviceID', $requestInputs['serviceID']);
 
 $result = $request->execute();
 
 /*------------------------------------------------------------------------------
- Retrieve customers help requests from database.
---------------------------------------------------------------------------------*/
-
-$requests = $pdo->prepare(
-  'SELECT requestName
-  FROM REQUESTS R
-  INNER JOIN USER U
-    ON R.clientID = U.userID
-  WHERE U.userID = :userID');
-$requests->bindValue(':userID', $_SESSION['userID']);
-
-$requests->execute();
-$result = $requests->fetch();
-
-/*------------------------------------------------------------------------------
- Retrieve customers help request details from database.
+ Retrieve all of customer's help requests from database. This is implemented in processSelectRequests.php
 --------------------------------------------------------------------------------*/
 
 $requests = $pdo->prepare(
@@ -85,6 +72,30 @@ $requests = $pdo->prepare(
     ON S.statusID = R.statusID
   WHERE U.userID = :userID');
 $requests->bindValue(':userID', $_SESSION['userID']);
+
+$requests->execute();
+$result = $requests->fetch();
+
+/*------------------------------------------------------------------------------
+ Retrieve customer's help request details from database. This is implemented in processViewRequest.php
+--------------------------------------------------------------------------------*/
+
+$requests = $pdo->prepare(
+  'SELECT *
+  FROM REQUESTS R
+  INNER JOIN USER U
+    ON R.clientID = U.userID
+  INNER JOIN PRIORITY P
+    ON P.priorityID = R.priorityID
+  INNER JOIN STATUS S
+    ON S.statusID = R.statusID
+  INNER JOIN ADDRESS A
+    ON A.addressID = R.locationID
+  INNER JOIN SERVICE SE
+    ON SE.serviceID = R.serviceID
+  WHERE U.userID = :userID');
+$requests->bindValue(':userID', $_SESSION['userID']);
+$requests->bindValue(':requestID', $_SESSION['requestID']);
 
 $requests->execute();
 $result = $requests->fetch();
