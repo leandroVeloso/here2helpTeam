@@ -15,7 +15,7 @@
                         <div class="intro-text">
                             <span class="name">here2help - Help Desk</span>
                             <hr class="star-light">
-                            <span class="skills">here2help is a Brisbane based, volunteer run help desk. We work hard to assist those in our community who struggle to negotiate with service providers such as plumbers, electricians, car repairs, air conditioning, building work etc. If you struggle to communicate in English or work odd hours we can contact service providers on your behalf, negotiate the best price and book services.</span>
+                            <span class="skills">Here2help is a Brisbane based, volunteer run help desk. We work hard to assist those in our community who struggle to negotiate with service providers such as plumbers, electricians and painters. If you struggle to communicate in English or work odd hours we can contact service providers on your behalf, negotiate the best price and book services.</span>
                         </div>
                     </div>
                 </div>
