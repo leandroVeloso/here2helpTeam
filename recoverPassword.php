@@ -1,5 +1,5 @@
-<?php 
-    include_once('pdo.inc'); // Includes pdo file 
+<?php
+    include_once('pdo.inc'); // Includes pdo file
     verifyIfUserIsSignedIn();
 ?>
 <!DOCTYPE html>
@@ -8,7 +8,7 @@
         <?php include 'head.inc';  // Includes head content ?>
     </head>
     <body id="page-top" class="index">
-        <?php include 'navigation.inc'; // Includes logo and menu?> 
+        <?php include 'navigation.inc'; // Includes logo and menu?>
         <!-- Recover Password Section -->
         <section id="signin">
             <div class="container">
@@ -16,7 +16,7 @@
                     <div class="col-lg-12 text-center">
                         </br></br>
                         <h2>Recover Password</h2>
-                        <h5>Please, confirm the following information in order to recover via email your password</h5>
+                        <h5>Please confirm the following information in order to recover your password:</h5>
                         <hr class="star-primary">
                     </div>
                 </div>
@@ -54,15 +54,15 @@
                 <div class="modal-content">
                      <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title">Information don't match. Please try again.</h4>
+                        <h4 class="modal-title">Information doesn't match. Please try again.</h4>
                       </div>
-                    <div class="modal-footer"> 
+                    <div class="modal-footer">
                         <a href="#" class="btn btn-primary" data-dismiss="modal">Close</a>
                     </div>
                 </div>
             </div>
         </div>
-        <?php 
+        <?php
             // Includes logo and menu
             include 'footer.inc';
             // Includes Javascript files
