@@ -10,7 +10,7 @@ $requestAddress->bindValue(':suburb', $_POST['suburb']);
 $requestAddress->bindValue(':state', $_POST['state']);
 $requestAddress->bindValue(':postcode', $_POST['postcode']);
 
-$request = $pdo->prepare('INSERT INTO `USER` (`email`, `hash`, `firstName`, `lastName`, 'addressID', `phoneNo`, `typeID`) VALUES (:hash, :email, :firstName, :lastName, LAST_MODIFIED_ID, :phone, 1)');
+$request = $pdo->prepare('INSERT INTO 'USER' ('email', 'hash', 'firstName', 'lastName', 'addressID', 'phoneNo', 'typeID') VALUES (:hash, :email, :firstName, :lastName, LAST_MODIFIED_ID, :phone, 1)');
 $request->bindValue(':hash',md5($_POST['password']));
 $request->bindValue(':email', $_POST['email']);
 $request->bindValue(':firstName', $_POST['fname']);
@@ -41,7 +41,7 @@ $result = $accountInfo->fetch();
 --------------------------------------------------------------------------------*/
 
 $request = $pdo->prepare(
-'INSERT INTO `REQUEST` (`clientID`, `requestName`, `startDate`, `endDate`, `startTime`, `endTime`, `minPrice`, `maxPrice`, `comment`, `priorityID`, `locationID`, `statusID`, `serviceID`, `creationDate`, `lastModified`)
+'INSERT INTO 'REQUEST' ('clientID', 'requestName', 'startDate', 'endDate', 'startTime', 'endTime', 'minPrice', 'maxPrice', 'comment', 'priorityID', 'locationID', 'statusID', 'serviceID', 'creationDate', 'lastModified')
 VALUES (:clientID, :requestName, :startDate, :endDate, :startTime, :endTime, :minPrice, :maxPrice, :comment, :priorityID, :locationID, 1, :serviceID, NULL, NULL)'); // Server uses previous version of MySQL hence creationDate and lastModified must be set to NULL
 $request->bindValue(':clientID', $_SESSION['userAccountInfo']['userID']);
 $request->bindValue(':requestName', $requestInputs['requestName']);
@@ -99,3 +99,46 @@ $requests->bindValue(':requestID', $_SESSION['requestID']);
 
 $requests->execute();
 $result = $requests->fetch();
+
+/*------------------------------------------------------------------------------
+ Update customer's help request details in database. This is implemented in processEditRequest.php
+--------------------------------------------------------------------------------*/
+$request = $pdo->prepare(
+  'UPDATE 'REQUEST'
+   SET 'requestName' = :requestName,
+      'startDate' = :startDate,
+      'endTime' = :endDate,
+      'startTime' = startTime,
+      'endTime' = :endTime,
+      'minPrice' = :minPrice,
+      'maxPrice' = :maxPrice,
+      'comment' = :comment,
+      'priorityID' = :priorityID,
+      'serviceID' = :serviceID
+    WHERE requestID = :requestID');
+$request->bindValue(':requestName', $requestInputs['requestName']);
+$request->bindValue(':startDate',  date("Y-m-d", strtotime($requestInputs['startDate'])));
+$request->bindValue(':endDate', date("Y-m-d", strtotime($requestInputs['endDate'])));
+$request->bindValue(':startTime', $requestInputs['startTime']);
+$request->bindValue(':endTime', $requestInputs['endTime']);
+$request->bindValue(':minPrice', $requestInputs['minPrice']);
+$request->bindValue(':maxPrice', $requestInputs['maxPrice']);
+$request->bindValue(':comment', $requestInputs['requestDescription']);
+$request->bindValue(':priorityID', $requestInputs['priorityID']);
+$request->bindValue(':serviceID', $requestInputs['serviceID']);
+$request->bindValue(':requestID', $requestInputs['editID']);
+
+$requestAddress = $pdo->prepare(
+  'UPDATE 'ADDRESS'
+   SET 'unitNumber' = :unitNumber,
+    'street' = :street,
+    'suburb' = :suburb,
+    'state' = :state,
+    'postcode' = :postcode
+  WHERE addressID = :adressID');
+$requestAddress->bindValue(':unitNumber', $requestInputs['unumber']);
+$requestAddress->bindValue(':street', $requestInputs['street']);
+$requestAddress->bindValue(':suburb', $requestInputs['suburb']);
+$requestAddress->bindValue(':state', $requestInputs['state']);
+$requestAddress->bindValue(':postcode', $requestInputs['postcode']);
+$requestAddress->bindValue(':adressID', $resultAdress['addressID']);
