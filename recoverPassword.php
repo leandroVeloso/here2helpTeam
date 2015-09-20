@@ -15,7 +15,7 @@
                     <div class="col-lg-12 text-center">
                         </br></br>
                         <h2>Recover Password</h2>
-                        <h5>Please, confirm the following information in order to recover via email your password</h5>
+                        <h5>Please confirm the following information in order to recover your password:</h5>
                         <hr class="star-primary">
                     </div>
                 </div>
@@ -53,7 +53,7 @@
                 <div class="modal-content">
                      <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title">Information don't match. Please try again.</h4>
+                        <h4 class="modal-title">Information doesn't match. Please try again.</h4>
                       </div>
                     <div class="modal-footer">
                         <a href="#" class="btn btn-primary" data-dismiss="modal">Close</a>
