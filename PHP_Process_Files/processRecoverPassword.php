@@ -71,7 +71,7 @@
 	    $mail->Password = "helpyhelp2";//set the password to make a direct sign in
 	    $mail->SetFrom("here2helpdesk@gmail.com");
 	    $mail->Subject = "Recover Password - here2help";
-	    $mail->Body = "Hi ". $recoverPasswordInputs['fname']." ". $recoverPasswordInputs['lname']."<br> This is your temporary password: <b>".$newPassword."</b> <br><br> To change your password, please access your manage account page.";
+	    $mail->Body = "Hi ". $recoverPasswordInputs['fname']." ". $recoverPasswordInputs['lname'].",<br><br> This is your temporary password: <b>".$newPassword."</b> <br><br> To change your password, please login to here2help.com and access your manage account page. <br><br>Cheers, <br><br> The here2help team <br><br>website: here2help.com <br> email: here2helpdesk@gmail.com <br> phone: 3333 3333";
 	    $mail->AddAddress( $recoverPasswordInputs['email']);
 	    $mail->Send();
 	}
