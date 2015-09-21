@@ -1,19 +1,16 @@
 <?php
-	 // Includes pdo file 
+	 // Includes pdo file
     include_once('../pdo.inc');
     include("../mail/phpmailer/class.smtp.php");
 	include("../mail/phpmailer/class.phpmailer.php");
 	// Declare global variables
 	$recoverPasswordInputs = $_POST;
-
 	recoverPassword();
 
 	// Function to search for a user with a given email and password
 	function recoverPassword(){
-		// Inform global variables
 		global $recoverPasswordInputs, $pdo;
 		try{
-			// Creates pdo query , prepare its variables and execute it in order to find a user that matches the password
 			$recoverPassword = $pdo->prepare('SELECT hash FROM USER WHERE email = :email AND firstName = :firstName AND lastName = :lastName');
 			$recoverPassword->bindValue(':email', $recoverPasswordInputs['email']);
 			$recoverPassword->bindValue(':firstName', $recoverPasswordInputs['fname']);
@@ -21,23 +18,17 @@
 			$recoverPassword->execute();
 			$result = $recoverPassword -> fetch();
 
-			// If result is different than null then creates some session variables informing user ID and type
 			if ($result != null) {
 				sendEmail(updatePassword());
 		    	header('Location: ../signin.php#recoverPassword=success');
-
 			    exit();
-
-			} else {
-				// Redirects user to index page with an error message
+			}else {
 			    header('Location: ../recoverPassword.php#recoverPassword=warning');
 			    exit();
-			} 
-			
+			}
 		}
-		catch (PDOException $e){
-			echo $e->getMessage();
-		}
+		catch (PDOException $e)
+			{echo $e->getMessage();}
 	}
 
 	//this function updates user's password on the database
@@ -53,18 +44,17 @@
 		return $newPass;
 	}
 
-	//this fucntion generates a new password 
+	//this function generates a new password
 	function createNewPassword() {
 	    $genKey = "0123456789abcdefghijklmnopqrstuwxyzABCDEFGHIJKLMNOPQRSTUWXYZ!@#$%&*()_+";//set the random generator key from a-z and A-Z and 0-9
 	    $pass = array(); //declare $pass as the variable to store array
 	    $genKeyLength = strlen($genKey) - 1; //put the length -1 in cache
-	    for ($i = 0; $i < 8; $i++) {
+	    for ($i = 0; $i < 10; $i++) {
 	        $n = rand(0, $genKeyLength);//set $n to store the generated random key
 	        $pass[] = $genKey[$n]; //set $pass to store the array of generated key
 	    }
 	    return implode($pass); // used implode turn the array into a string
 	}
-
 
 	//this function sends email with new generated password to the user's email
 	function sendEmail($newPassword){
@@ -81,9 +71,8 @@
 	    $mail->Password = "helpyhelp2";//set the password to make a direct sign in
 	    $mail->SetFrom("here2helpdesk@gmail.com");
 	    $mail->Subject = "Recover Password - here2help";
-	    $mail->Body = "Hi ". $recoverPasswordInputs['fname']." ". $recoverPasswordInputs['lname']."<br> This is your password: <b>".$newPassword."</b> <br><br> To change your password, please access your manage account page.";
+	    $mail->Body = "Hi ". $recoverPasswordInputs['fname']." ". $recoverPasswordInputs['lname'].",<br><br> This is your temporary password: <b>".$newPassword."</b> <br><br> To change your password, please login to here2help.com and access your manage account page. <br><br>Cheers, <br><br> The here2help team <br><br>website: here2help.com <br> email: here2helpdesk@gmail.com <br> phone: 3333 3333";
 	    $mail->AddAddress( $recoverPasswordInputs['email']);
 	    $mail->Send();
 	}
-
 ?>
