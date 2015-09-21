@@ -11,3 +11,4 @@
         <!-- Custom Theme JavaScript -->
         <script src="js/freelancer.js"></script>
         <script src="js/validations.js"></script>
+		<script src="js/fieldValidation.js"></script>
