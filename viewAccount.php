@@ -96,7 +96,7 @@
                                 <button type="button" value="Delete" class="btn btn-danger btn-lg" id="delete">Delete Account</button>
                             </div>
                             <a href="editPassword.php">
-                                <button type="button" value="ChangePassword" class="btn btn-success btn-lg" id="delete">Change Password</button>
+                                <button type="button" value="ChangePassword" class="btn btn-success btn-lg" id="changePassword">Change Password</button>
                             </a>
                         </div>
                     </div>
