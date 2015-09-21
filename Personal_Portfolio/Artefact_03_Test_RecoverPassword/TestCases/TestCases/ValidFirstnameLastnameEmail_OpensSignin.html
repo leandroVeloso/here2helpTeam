@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://54.206.56.104/" />
+<title>ValidFirstnameLastnameEmail_OpensSignin</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">ValidFirstnameLastnameEmail_OpensSignin</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/recoverPassword.php</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=fname</td>
+	<td>ValidName</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=lname</td>
+	<td>ValidLastName</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=email</td>
+	<td>amandajarvinen@gmail.com</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=submit</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertElementPresent</td>
+	<td>css=#modalRecoverSuccess-content &gt; div.modal-dialog &gt; div.modal-content &gt; div.modal-header &gt; h4.modal-title</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=#modalRecoverSuccess-content &gt; div.modal-dialog &gt; div.modal-content &gt; div.modal-header &gt; h4.modal-title</td>
+	<td>Your password was successfully changed. <br />It was sent to your registered email.</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#modalRecoverSuccess-content &gt; div.modal-dialog &gt; div.modal-content &gt; div.modal-footer &gt; a.btn.btn-primary</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=h2</td>
+	<td>Sign in</td>
+</tr>
+</tbody></table>
+</body>
+</html>
