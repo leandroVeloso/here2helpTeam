@@ -1,5 +1,5 @@
-<?php   
-    // Includes pdo file 
+<?php
+    // Includes pdo file
     include_once('pdo.inc');
     include_once('PHP_Process_Files/processSelect.php');
     verifyIfUserIsSignedIn();
@@ -22,6 +22,8 @@
                         <hr class="star-primary">
                     </div>
                 </div>
+
+                <!-- Create Request Section -->
                 <div class="row">
                     <div class="col-lg-8 col-lg-offset-2">
                         <form action="PHP_Process_Files/processCreateRequest.php" method="POST">
@@ -34,6 +36,8 @@
                                     <p class="help-block text-danger"></p>
                                 </div>
                             </div>
+
+                            <!-- Creates dropdown with lists of service categories -->
                             <div class="row control-group">
                                 <div class="form-group col-xs-8 label-form-group controls">
                                     <label>Service Category</label>
@@ -46,6 +50,8 @@
                                     <p class="help-block text-danger"></p>
                                 </div>
                             </div>
+
+                              <!-- Creates dropdown with lists of priorities (High, Medium & Low) -->
                             <div class="row control-group">
                                 <div class="form-group col-xs-8 label-form-group controls">
                                     <label>Service Priority</label>
@@ -58,6 +64,8 @@
                                     <p class="help-block text-danger"></p>
                                 </div>
                             </div>
+
+                            <!-- Creates text area for request description -->
                             <div class="row control-group">
                                 <div class="form-group col-xs-12 label-form-group controls">
                                     <label>Description</label>
@@ -65,6 +73,8 @@
                                     <p class="help-block text-danger"></p>
                                 </div>
                             </div>
+
+                            <!-- Creates field for user to enter minimum amount they will pay for service -->
                             <div class="row control-group">
                                 <div class="form-group col-xs-4 label-form-group controls">
                                     <label>Minimum Quote Price</label>
@@ -72,6 +82,8 @@
                                     <p class="help-block text-danger"></p>
                                 </div>
                             </div>
+
+                            <!-- Creates field for user to enter maximum amount they will pay for service -->
                             <div class="row control-group">
                                 <div class="form-group col-xs-4 label-form-group controls">
                                     <label>Maximum Quote Price</label>
@@ -79,14 +91,17 @@
                                     <p class="help-block text-danger"></p>
                                 </div>
                             </div>
+
                             <h4 >WHEN</h4>
                             <hr>
+
+                            <!-- Creates field for user to enter range of dates they would like the service provider to perform the service.-->
                             <div class="row control-group">
                                 <div class="control col-xs-12">
                                     <label>Date</label>
                                     <br>
-                                    Define here the date period that the service can be executed
-                                </div> 
+                                    Specify the <b>days</b> you would like the service provider to handle the request.
+                                </div>
                                 <div class="control col-xs-4">
                                     <div class="input-group">
                                         <input id="startDate" type="text" placeholder="Start Date" required value="" name="startDate" class="date-picker form-control" />
@@ -94,6 +109,8 @@
                                             <span class="glyphicon glyphicon-calendar"></span>
                                         </label>
                                     </div>
+
+                                    <!-- Creates field for user to enter range of times they would like the service provider to perform the service.-->
                                     <div class="input-group">
                                         <input id="endDate" type="text" placeholder="End Date" required value="" name="endDate" class="date-picker form-control" />
                                         <label for="endDate" class="input-group-addon btn">
@@ -101,11 +118,12 @@
                                         </label>
                                     </div>
                                 </div>
+
                                 <div class="control col-xs-12">
                                     <label>Time</label>
                                     <br>
-                                    Define here the time period that the service can be executed
-                                </div> 
+                                    Specify the <b>times</b> you would like the service provider to handle the request.
+                                </div>
                                 <div class="control col-xs-4">
                                     <div class="input-group">
                                         <input type="time" step='1' min="00:00:00" max="24:00:00" value=""  name="startTime" id="startTime" class="form-control clockpicker" required placeholder="Start Time">
@@ -120,10 +138,13 @@
                                         </span>
                                     </div>
                                 </div>
-                            </div> 
+                            </div>
+
                             <br><br>
                             <h4 >WHERE</h4>
                             <hr>
+
+                            <!-- Creates checkbox. If ticked users address will be used for request else the user is required to enter request location.-->
                             <div class="checkbox">
                                 <label><input type="checkbox" value="yes" name="addressCheckBox" id="addressCheckBox">Use my account address</label>
                             </div>
@@ -135,6 +156,7 @@
                                         <p class="help-block text-danger"></p>
                                     </div>
                                 </div>
+
                                 <div class="row control-group">
                                     <div class="form-group col-xs-12 label-form-group controls">
                                         <label>Street</label>
@@ -142,6 +164,7 @@
                                         <p class="help-block text-danger"></p>
                                     </div>
                                 </div>
+
                                 <div class="row control-group">
                                     <div class="form-group col-xs-12 label-form-group controls">
                                         <label>Suburb</label>
@@ -149,6 +172,7 @@
                                         <p class="help-block text-danger"></p>
                                     </div>
                                 </div>
+
                                 <div class="row control-group">
                                     <div class="form-group col-xs-4 label-form-group controls">
                                         <label>State</label>
@@ -159,10 +183,13 @@
                                                 <option value="Tasmania">Tasmania</option>
                                                 <option value="Victoria">Victoria </option>
                                                 <option value="Western Australia">Western Australia</option>
+                                                <option value="Northern Territory">Northern Territory</option>
+                                                <option value="Australian Capital Territory">Australian Capital Territory</option>
                                           </select>
                                           <p class="help-block text-danger"></p>
                                     </div>
                                 </div>
+
                                 <div class="row control-group">
                                     <div class="form-group col-xs-4 label-form-group controls">
                                         <label>Postcode</label>
@@ -172,9 +199,11 @@
                                 </div>
                             </div>
                             <br><br>
+
+                            <!-- Create Help Request button and Cancel button. Cancel will return user to my requests page. -->
                             <div>
                                 <button type="submit" value="Create Help Request" class="btn btn-info btn-lg" id="createBtn">Create Help Request</button>
-                                <a href="requests.php">
+                                <a href="listRequests.php">
                                     <button type="button" value="cancel" class="btn btn-warning btn-lg" id="delete">Cancel</button>
                                 </a>
                             </div>
@@ -183,21 +212,23 @@
                 </div>
             </div>
         </section>
+
+
         <div id="modalFail-content" class="modal fade" tabindex="-1" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title">Something went wrong! Please, try again</h4>
+                        <h4 class="modal-title">Something went wrong! Please try again</h4>
                     </div>
-                    <div class="modal-footer"> 
+                    <div class="modal-footer">
                         <a href="#" class="btn btn-primary" data-dismiss="modal">Close</a>
                     </div>
                 </div>
             </div>
         </div>
-        
-        <?php 
+
+        <?php
                 // Includes logo and menu
                 include 'footer.inc';
                 // Includes Javascript files
