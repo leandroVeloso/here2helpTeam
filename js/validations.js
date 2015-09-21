@@ -334,7 +334,7 @@ function checkForUrlMessages(){
             document.getElementById('emaildiv').className = "form-group has-error col-xs-8 label-form-group controls";
             document.getElementById('fnamediv').className = "form-group has-error col-xs-8 label-form-group controls";
             document.getElementById('lnamediv').className = "form-group has-error col-xs-8 label-form-group controls";
-            document.getElementById("errorSpan").innerHTML = "Information don't match. Please try again.";
+            document.getElementById("errorSpan").innerHTML = "Invalid First name, Last name or Email. Please try again.";
 
             // set focus when modal is opened
             $('#modalRecoverWarning-content').on('shown.bs.modal', function () {
