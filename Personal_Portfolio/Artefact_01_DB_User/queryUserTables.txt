@@ -1,0 +1,37 @@
+// Snippets of code used in other files.
+
+/*------------------------------------------------------------------------------
+ Insert user details into database during signUp. This is implemented in processSignup.php
+--------------------------------------------------------------------------------*/
+$requestAddress = $pdo->prepare('INSERT INTO 'ADDRESS' ('unitNumber', 'street', 'suburb', 'state', 'postcode') VALUES (:unitNumber, :street, :suburb, :state, :postcode)');
+$requestAddress->bindValue(':unitNumber', $_POST['unumber']);
+$requestAddress->bindValue(':street', $_POST['street']);
+$requestAddress->bindValue(':suburb', $_POST['suburb']);
+$requestAddress->bindValue(':state', $_POST['state']);
+$requestAddress->bindValue(':postcode', $_POST['postcode']);
+
+$request = $pdo->prepare('INSERT INTO 'USER' ('email', 'hash', 'firstName', 'lastName', 'addressID', 'phoneNo', 'typeID') VALUES (:hash, :email, :firstName, :lastName, LAST_MODIFIED_ID, :phone, 1)');
+$request->bindValue(':hash',md5($_POST['password']));
+$request->bindValue(':email', $_POST['email']);
+$request->bindValue(':firstName', $_POST['fname']);
+$request->bindValue(':lastName', $_POST['lname']);
+$request->bindValue(':phone', $_POST['pnumber']);
+
+$resultAddress = $requestAddress->execute();
+$result = $requestUser->execute();
+
+/*------------------------------------------------------------------------------
+Retrieve user details from database. This is implemented in processViewAccount.php
+--------------------------------------------------------------------------------*/
+$accountInfo = $pdo->prepare(
+  'SELECT *
+  FROM ADDRESS A
+  INNER JOIN USER U
+    ON U.addressID = A.addressID
+  INNER JOIN USERTYPE T
+    ON U.typeID = T.typeID
+  WHERE U.userID = :userID');
+$accountInfo->bindValue(':userID', $_SESSION['userID']);
+
+$accountInfo->execute();
+$result = $accountInfo->fetch();
