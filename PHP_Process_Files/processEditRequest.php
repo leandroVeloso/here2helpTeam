@@ -64,7 +64,7 @@
 			$result = $request->execute();
 			
 			if ($result) {
-			    header('Location: ../editRequest.php?request='.$requestInputs['editID'].'#editRequest=success');
+			    header('Location: ../viewRequest.php?request='.$requestInputs['editID'].'#editRequest=success');
 			    exit();
 			} else {
 			   	header('Location: ../editRequest.php?request='.$requestInputs['editID'].'#editRequest=failed');
