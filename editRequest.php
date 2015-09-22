@@ -188,7 +188,7 @@
                             <br><br>
                             <div>
                                 <button type="submit" class="btn btn-info btn-lg" value="<?php echo $myRequest['requestID'];?>" id="editID" name="editID">Save</button>
-                                <a href='requests.php'
+                                <a href='listRequests.php'
                                     <button type="button" class="btn btn-warning btn-lg" id="cancelBtn">Cancel</button>
                                 </a>
                             </div>
@@ -197,12 +197,13 @@
                 </div>
             </div>
         </section>
-        <div id="modalEditRequestSuccess-content" class="modal fade" tabindex="-1" role="dialog">
+       
+        <div id="modalEditRequestFail-content" class="modal fade" tabindex="-1" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title">Request's details successfully updated!</h4>
+                        <h4 class="modal-title">Something went wrong! Please try again.</h4>
                     </div>
                     <div class="modal-footer">
                         <a href="#" class="btn btn-primary" data-dismiss="modal">Close</a>
@@ -210,12 +211,41 @@
                 </div>
             </div>
         </div>
-        <div id="modalEditRequestFail-content" class="modal fade" tabindex="-1" role="dialog">
+		
+	   <div id="dateError-content" class="modal fade" tabindex="-1" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title">Something went wrong! Please try again.</h4>
+                        <h4 class="modal-title">The starting date must occur before the end date.</h4>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="#" class="btn btn-primary" data-dismiss="modal">Close</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+		
+		   <div id="priceError-content" class="modal fade" tabindex="-1" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">The minimum price must be less than the maximum price.</h4>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="#" class="btn btn-primary" data-dismiss="modal">Close</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+		
+		   <div id="timeError-content" class="modal fade" tabindex="-1" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">The start time must be before the end time.</h4>
                     </div>
                     <div class="modal-footer">
                         <a href="#" class="btn btn-primary" data-dismiss="modal">Close</a>

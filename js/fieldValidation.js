@@ -10,8 +10,40 @@ function validateRequestDetails(){
 	fields[2] = checkTime();
 	
 	for (i = 0; i < fields.length; i++) { 
-		if (fields[i] != ""){
-			alert(fields[i]);
+		if (fields[1] != ""){
+			// set focus when modal is opened
+            $('#dateError-content').on('shown.bs.modal', function () {
+                $("#txtname").focus();
+            });
+
+            // show the modal onload
+            $('#dateError-content').modal({
+                show: true
+            });
+			return false;	
+		}
+			if (fields[0] != ""){
+			// set focus when modal is opened
+            $('#priceError-content').on('shown.bs.modal', function () {
+                $("#txtname").focus();
+            });
+
+            // show the modal onload
+            $('#priceError-content').modal({
+                show: true
+            });
+			return false;	
+		}
+			if (fields[2] != ""){
+			// set focus when modal is opened
+            $('#timeError-content').on('shown.bs.modal', function () {
+                $("#txtname").focus();
+            });
+
+            // show the modal onload
+            $('#timeError-content').modal({
+                show: true
+            });
 			return false;	
 		}
 	}
@@ -33,7 +65,7 @@ function checkDate(){
 	var startDate = new Date(jQuery('#startDate').datepicker('getDate'));
 	var endDate = new Date(jQuery('#endDate').datepicker('getDate'));
 	
-	if (startDate >= endDate){
+	if (startDate > endDate){
 		return "The starting date must occur before the end date.";
 	}
 	return "";
