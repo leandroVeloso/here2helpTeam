@@ -28,7 +28,7 @@
 			$_SESSION['userAccountInfo'] = $result2;
 		
 			if ($result && $result2 && $resultAddress) {
-				    header('Location: ../editAccount.php#updateAccount=success');
+				    header('Location: ../viewAccount.php#updateAccount=success');
 				    exit();
 				} else {
 				    header('Location: ../editAccount.php#updateAccount=failed');
