@@ -104,7 +104,7 @@
                                 </div>
                                 <div class="control col-xs-4">
                                     <div class="input-group">
-                                        <input id="startDate" type="text" placeholder="Start Date" required value="" name="startDate" class="date-picker form-control" />
+                                        <input id="startDate" type="text" placeholder="Start Date" required value="" style="background-color:White;" name="startDate" class="date-picker form-control" />
                                         <label for="startDate" class="input-group-addon btn">
                                             <span class="glyphicon glyphicon-calendar"></span>
                                         </label>
@@ -112,7 +112,7 @@
 
                                     <!-- Creates field for user to enter range of times they would like the service provider to perform the service.-->
                                     <div class="input-group">
-                                        <input id="endDate" type="text" placeholder="End Date" required value="" name="endDate" class="date-picker form-control" />
+                                        <input id="endDate" type="text" placeholder="End Date" required value="" style="background-color:White;" name="endDate" class="date-picker form-control" />
                                         <label for="endDate" class="input-group-addon btn">
                                             <span class="glyphicon glyphicon-calendar"></span>
                                         </label>
@@ -126,13 +126,13 @@
                                 </div>
                                 <div class="control col-xs-4">
                                     <div class="input-group">
-                                        <input type="time" step='1' min="00:00:00" max="24:00:00" value=""  name="startTime" id="startTime" class="form-control clockpicker" required placeholder="Start Time">
+                                        <input type="text" step='1' readonly min="00:00" max="24:00" value=""  name="startTime" id="startTime" class="form-control clockpicker" style="background-color:White;" required placeholder="Start Time">
                                         <span class="input-group-addon">
                                             <span class="glyphicon glyphicon-time"></span>
                                         </span>
                                     </div>
                                     <div class="input-group">
-                                        <input type="time" step='1' min="00:00:00" max="24:00:00" value=""  name="endTime" id="endTime" class="form-control clockpicker" required placeholder="End Time ">
+                                        <input type="text" step='1' readonly min="00:00" max="24:00" value=""  name="endTime" id="endTime" class="form-control clockpicker" style="background-color:White;" required placeholder="End Time ">
                                         <span class="input-group-addon">
                                             <span class="glyphicon glyphicon-time"></span>
                                         </span>
@@ -228,7 +228,7 @@
             </div>
         </div>
 		
-		   <div id="dateError-content" class="modal fade" tabindex="-1" role="dialog">
+		<div id="dateError-content" class="modal fade" tabindex="-1" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -242,7 +242,7 @@
             </div>
         </div>
 		
-		   <div id="priceError-content" class="modal fade" tabindex="-1" role="dialog">
+		<div id="priceError-content" class="modal fade" tabindex="-1" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -256,7 +256,7 @@
             </div>
         </div>
 		
-		   <div id="timeError-content" class="modal fade" tabindex="-1" role="dialog">
+		<div id="timeError-content" class="modal fade" tabindex="-1" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">

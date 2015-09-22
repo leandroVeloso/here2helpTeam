@@ -69,11 +69,6 @@ function checkForUrlMessages(){
             $('#modalEmail-content').modal({
                 show: true
             });
-
-
-            $('#modalEmail-content').modal({
-                show: true
-            });
         }
 
         if(hash == "signin=warning"){
@@ -95,11 +90,6 @@ function checkForUrlMessages(){
             $('#modal-content').modal({
                 show: true
             });
-
-
-            $('#modal-content').modal({
-                show: true
-            });
         }
 
         if(hash == "createRequest=failed"){
@@ -111,11 +101,6 @@ function checkForUrlMessages(){
             });
 
             // show the modal onload
-            $('#modalFail-content').modal({
-                show: true
-            });
-
-
             $('#modalFail-content').modal({
                 show: true
             });
@@ -133,11 +118,6 @@ function checkForUrlMessages(){
             $('#modalCreateRequestSuccess-content').modal({
                 show: true
             });
-
-
-            $('#modalCreateRequestSuccess-content').modal({
-                show: true
-            });
         }
 
         if(hash == "deleteRequest=success"){
@@ -149,11 +129,6 @@ function checkForUrlMessages(){
             });
 
             // show the modal onload
-            $('#modalDeleteRequestSuccess-content').modal({
-                show: true
-            });
-
-
             $('#modalDeleteRequestSuccess-content').modal({
                 show: true
             });
@@ -171,11 +146,6 @@ function checkForUrlMessages(){
             $('#modalDeleteRequestFail-content').modal({
                 show: true
             });
-
-
-            $('#modalDeleteRequestFail-content').modal({
-                show: true
-            });
         }
 
         if(hash == "editRequest=success"){
@@ -187,11 +157,6 @@ function checkForUrlMessages(){
             });
 
             // show the modal onload
-            $('#modalEditRequestSuccess-content').modal({
-                show: true
-            });
-
-
             $('#modalEditRequestSuccess-content').modal({
                 show: true
             });
@@ -209,11 +174,6 @@ function checkForUrlMessages(){
             $('#modalEditRequestFail-content').modal({
                 show: true
             });
-
-
-            $('#modalEditRequestFail-content').modal({
-                show: true
-            });
         }
 
         if(hash == "deleteAccount=success"){
@@ -226,11 +186,6 @@ function checkForUrlMessages(){
 
             // show the modal onload
             $('#modalDeleteAccount-content').modal({
-                show: true
-            });
-
-
-            $('#modal-content').modal({
                 show: true
             });
         }
@@ -247,11 +202,6 @@ function checkForUrlMessages(){
             $('#modalEditAccountFail-content').modal({
                 show: true
             });
-
-
-            $('#modalEditAccountFail-content').modal({
-                show: true
-            });
         }
         if(hash == "updateAccount=success"){
             history.pushState('', document.title, window.location.pathname);
@@ -265,11 +215,6 @@ function checkForUrlMessages(){
             $('#modalEditAccountSuccess-content').modal({
                 show: true
             });
-
-
-            $('#modalEditAccountSuccess-content').modal({
-                show: true
-            });
         }
 
         if(hash == "passChange=success"){
@@ -280,11 +225,6 @@ function checkForUrlMessages(){
             });
 
             // show the modal onload
-            $('#modalPassSuccess-content').modal({
-                show: true
-            });
-
-
             $('#modalPassSuccess-content').modal({
                 show: true
             });
@@ -302,11 +242,6 @@ function checkForUrlMessages(){
             $('#modalPassError-content').modal({
                 show: true
             });
-
-
-            $('#modalPassError-content').modal({
-                show: true
-            });
         }
 
 
@@ -319,11 +254,6 @@ function checkForUrlMessages(){
             });
 
             // show the modal onload
-            $('#modalRecoverSuccess-content').modal({
-                show: true
-            });
-
-
             $('#modalRecoverSuccess-content').modal({
                 show: true
             });
@@ -345,11 +275,6 @@ function checkForUrlMessages(){
             $('#modalRecoverWarning-content').modal({
                 show: true
             });
-
-
-            $('#modalRecoverWarning-content').modal({
-                show: true
-            });
         }
 
         if(hash == "signup=success"){
@@ -361,11 +286,6 @@ function checkForUrlMessages(){
             });
 
             // show the modal onload
-            $('#modalSignUp-content').modal({
-                show: true
-            });
-
-
             $('#modalSignUp-content').modal({
                 show: true
             });
@@ -383,11 +303,6 @@ function checkForUrlMessages(){
             $('#modalSignOut-content').modal({
                 show: true
             });
-
-
-            $('#modalSignOut-content').modal({
-                show: true
-            });
         }
 
         if(hash == "signin=failed"){
@@ -399,11 +314,6 @@ function checkForUrlMessages(){
             });
 
             // show the modal onload
-            $('#modalSignOut-content').modal({
-                show: true
-            });
-
-
             $('#modalSignOut-content').modal({
                 show: true
             });
