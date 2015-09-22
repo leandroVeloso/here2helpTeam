@@ -3,7 +3,7 @@
 	if(isset($_GET["request"]))
 		selectMyRequestMoreDetails();
 	else{
-		header('Location: ../requests.php');
+		header('Location: ../listRequests.php');
 		exit();
 	}
 

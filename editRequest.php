@@ -28,7 +28,7 @@
                 </div>
                 <div class="row">
                     <div class="col-lg-8 col-lg-offset-2">
-                        <form action="PHP_Process_Files/processEditRequest.php" method="POST">
+                        <form action="PHP_Process_Files/processEditRequest.php" onsubmit="return validateRequestDetails()" method="POST">
                             <h4>WHAT</h4>
                             <hr>
                             <div class="row control-group">
@@ -103,13 +103,13 @@
                                 </div>
                                 <div class="control col-xs-4">
                                     <div class="input-group">
-                                        <input id="startDate" type="text"   placeholder="Start Date" value="<?php echo date("d-m-Y", strtotime($myRequest['startDate']));?>" required  name="startDate" class="date-picker form-control" />
+                                        <input id="startDate" type="text" placeholder="Start Date" value="<?php echo date("d-m-Y", strtotime($myRequest['startDate']));?>" required style="background-color:White;" name="startDate" class="date-picker form-control" />
                                         <label  for="startDate" class="input-group-addon btn">
                                             <span id="dateError" class="glyphicon glyphicon-calendar"></span>
                                         </label>
                                     </div>
                                     <div class="input-group">
-                                        <input id="endDate" type="text"  placeholder="End Date" required value="<?php echo date("d-m-Y", strtotime($myRequest['endDate']));?>" name="endDate" class="date-picker form-control" />
+                                        <input id="endDate" type="text" placeholder="End Date" required value="<?php echo date("d-m-Y", strtotime($myRequest['endDate']));?>" name="endDate" style="background-color:White;" class="date-picker form-control" />
                                         <label for="endDate" class="input-group-addon btn">
                                             <span class="glyphicon glyphicon-calendar"></span>
                                         </label>
@@ -122,13 +122,13 @@
                                 </div>
                                 <div class="control col-xs-4">
                                     <div class="input-group">
-                                        <input type="time" step='1' min="00:00:00" max="24:00:00"  value="<?php echo $myRequest['startTime'];?>" name="startTime" id="startTime" class="form-control clockpicker" required placeholder="Start Time">
+                                        <input type="text" readonly step='1' min="00:00" max="24:00"  value="<?php echo $myRequest['startTime'];?>" name="startTime" id="startTime" style="background-color:White;" class="form-control clockpicker" required placeholder="Start Time">
                                         <span class="input-group-addon">
                                             <span id="timeError" class="glyphicon glyphicon-time"></span>
                                         </span>
                                     </div>
                                     <div class="input-group">
-                                        <input type="time" step='1' min="00:00:00" max="24:00:00"  value="<?php echo $myRequest['endTime'];?>" name="endTime" id="endTime" class="form-control clockpicker" required placeholder="End Time ">
+                                        <input type="text" readonly step='1' min="00:00" max="24:00"  value="<?php echo $myRequest['endTime'];?>" name="endTime" id="endTime" style="background-color:White;" class="form-control clockpicker" required placeholder="End Time ">
                                         <span class="input-group-addon">
                                             <span class="glyphicon glyphicon-time"></span>
                                         </span>

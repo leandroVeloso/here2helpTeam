@@ -1,9 +1,8 @@
 // Calls individual checking functions, prints error messages
 function validateRequestDetails(){
 			
-	var values = document.getElementById("requestBtn");
 	
-	isValid = checkPrice(values.form.minPrice.value, values.form.maxPrice.value);
+	isValid = checkPrice(document.getElementById("minPrice").value, document.getElementById("maxPrice").value);
 	
 	if (isValid == 1){
 		// set focus when modal is opened
@@ -54,7 +53,7 @@ function validateRequestDetails(){
 // Check if the minimum price is higher than the maximum price
 function checkPrice(minPrice, maxPrice){
 	
-	if (minPrice >= maxPrice){
+	if (minPrice > maxPrice){
 		return 1;
 	}
 	return 0;
@@ -75,14 +74,22 @@ function checkDate(){
 // Check the available hours
 function checkTime(){
 	
-	var st = $('#startTime').val();
-	var startTime = st.split(':');
+	var st = document.getElementById("startTime").value; //$('#startTime').val()
+	var et = document.getElementById("endTime").value; //$('#endTime').val()
+
+	var hourStartTime = st.substring(0, 2);
+	var minuteStartTime = st.substring(3, 5);
+
+	var hourEndTime = et.substring(0, 2);
+	var minuteEndTime = et.substring(3, 5);
 	
-	var et = $('#endTime').val();
-	var endTime = et.split(':');
-	
-	if (startTime[2] >= endTime[2]){
+	if (hourStartTime < hourEndTime)
 		return 1;
+	else{
+		if (minuteStartTime < minuteEndTime)
+			return 1;
 	}
+
+
 	return 0;
 }
