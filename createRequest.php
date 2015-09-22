@@ -26,7 +26,7 @@
                 <!-- Create Request Section -->
                 <div class="row">
                     <div class="col-lg-8 col-lg-offset-2">
-                        <form action="PHP_Process_Files/processCreateRequest.php" method="POST">
+                        <form action="PHP_Process_Files/processCreateRequest.php" onsubmit="return validateRequestDetails()" method="POST">
                             <h4>WHAT</h4>
                             <hr>
                             <div class="row control-group">

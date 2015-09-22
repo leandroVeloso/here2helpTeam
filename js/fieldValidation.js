@@ -1,7 +1,7 @@
 // Calls individual checking functions, prints error messages
 function validateRequestDetails(){
 			
-	var values = document.getElementById("editID");
+	var values = document.getElementById("createBtn");
 	
 	fields = new Array(3);
 	
