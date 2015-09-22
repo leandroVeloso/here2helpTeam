@@ -1,20 +1,53 @@
 // Calls individual checking functions, prints error messages
 function validateRequestDetails(){
 			
-	var values = document.getElementById("editID");
+	var values = document.getElementById("requestBtn");
 	
-	fields = new Array(3);
+	isValid = checkPrice(values.form.minPrice.value, values.form.maxPrice.value);
 	
-	fields[0] = checkPrice(values.form.minPrice.value, values.form.maxPrice.value);
-	fields[1] = checkDate();
-	fields[2] = checkTime();
-	
-	for (i = 0; i < fields.length; i++) { 
-		if (fields[i] != ""){
-			alert(fields[i]);
-			return false;	
-		}
+	if (isValid == 1){
+		// set focus when modal is opened
+		$('#priceError-content').on('shown.bs.modal', function () {
+			$("#txtname").focus();
+		});
+
+		// show the modal onload
+		$('#priceError-content').modal({
+			show: true
+		});
+		return false;	
 	}
+
+	isValid = checkDate();
+	
+	if (isValid == 1){
+		// set focus when modal is opened
+		$('#dateError-content').on('shown.bs.modal', function () {
+			$("#txtname").focus();
+		});
+
+		// show the modal onload
+		$('#dateError-content').modal({
+			show: true
+		});
+		return false;	
+	}
+		
+	isValid = checkTime();
+	
+	if (isValid == 1){
+		// set focus when modal is opened
+		$('#timeError-content').on('shown.bs.modal', function () {
+			$("#txtname").focus();
+		});
+
+		// show the modal onload
+		$('#timeError-content').modal({
+			show: true
+		});
+		return false;	
+	}
+
 	return true;
 }
 
@@ -22,9 +55,9 @@ function validateRequestDetails(){
 function checkPrice(minPrice, maxPrice){
 	
 	if (minPrice >= maxPrice){
-		return "The minimum price must be less than the maximum price.";
+		return 1;
 	}
-	return "";
+	return 0;
 }
 
 // Check if the end date is before the start date
@@ -33,10 +66,10 @@ function checkDate(){
 	var startDate = new Date(jQuery('#startDate').datepicker('getDate'));
 	var endDate = new Date(jQuery('#endDate').datepicker('getDate'));
 	
-	if (startDate >= endDate){
-		return "The starting date must occur before the end date.";
+	if (startDate > endDate){
+		return 1;
 	}
-	return "";
+	return 0;
 }
 
 // Check the available hours
@@ -49,7 +82,7 @@ function checkTime(){
 	var endTime = et.split(':');
 	
 	if (startTime[2] >= endTime[2]){
-		return "The start time must be before the end time.";
+		return 1;
 	}
-	return "";
+	return 0;
 }
