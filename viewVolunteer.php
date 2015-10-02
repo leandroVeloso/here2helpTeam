@@ -75,9 +75,22 @@
             </tr>
           </table>
 
+          <!-- If someone is requesting a volunteer account it will display approve/deny buttons, if they are a volunteer admin can change them to client -->
+          <?php if ($volunteer['typeID'] == 4): ?>
+            <div style="display:inline-block;">
+                  <button type="button" class="btn btn-success btn-lg" id="approveBtn">Approve</button>
+            </div>
+            <div style="display:inline-block;">
+                  <button type="button" class="btn btn-danger btn-lg" id="denyBtn">Deny</button>
+            </div>
+          <?php else: ?>
+            <div style="display:inline-block;">
+                  <button type="button" class="btn btn-danger btn-lg" id="deleteBtn">Delete</button>
+            </div>
+          <?php endif; ?>
 
-
-          <div>
+          <!-- Cancel button returns user to List of Volunteers-->
+          <div style="display:inline-block;">
             <a href='listVolunteers.php'
                 <button type="button" class="btn btn-warning btn-lg" id="cancelBtn">Cancel</button>
             </a>
