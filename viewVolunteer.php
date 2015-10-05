@@ -2,6 +2,9 @@
     include_once('pdo.inc');
     include_once('PHP_Process_Files/processViewVolunteer.php');
     include_once('PHP_Process_Files/processSelectVolunteers.php');
+    include_once('PHP_Process_Files/processApproveVolunteer.php');
+    include_once('PHP_Process_Files/processDenyVolunteer.php');
+    include_once('PHP_Process_Files/processDeleteVolunteer.php');
     verifyIfUserIsSignedIn();
 ?>
 <!DOCTYPE html>
@@ -78,14 +81,20 @@
           <!-- If someone is requesting a volunteer account it will display approve/deny buttons, if they are a volunteer admin can change them to client -->
           <?php if ($volunteer['typeID'] == 4): ?>
             <div style="display:inline-block;">
-                  <button type="button" class="btn btn-success btn-lg" id="approveBtn">Approve</button>
+            <a href='listVolunteers.php'>
+                  <button type="button" class="btn btn-success btn-lg" id="approveBtn" name="approveBtn">Approve</button>
+            </a>
             </div>
             <div style="display:inline-block;">
-                  <button type="button" class="btn btn-danger btn-lg" id="denyBtn">Deny</button>
+              <a href='listVolunteers.php'>
+                  <button type="button" class="btn btn-danger btn-lg" id="denyBtn" name="denyBtn">Deny</button>
+              </a>
             </div>
           <?php else: ?>
             <div style="display:inline-block;">
-                  <button type="button" class="btn btn-danger btn-lg" id="deleteBtn">Delete</button>
+                  <a href='listVolunteers.php'>
+                  <button type="button" class="btn btn-danger btn-lg" id="deleteBtn" name="deleteBtn">Delete</button>
+                  </a>
             </div>
           <?php endif; ?>
 
