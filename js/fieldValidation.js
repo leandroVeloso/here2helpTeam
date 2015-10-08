@@ -83,10 +83,17 @@ function checkTime(){
 	var hourEndTime = et.substring(0, 2);
 	var minuteEndTime = et.substring(3, 5);
 	
+<<<<<<< HEAD
 	if (hourStartTime < hourEndTime)
 		return 1;
 	else{
 		if (minuteStartTime < minuteEndTime)
+=======
+	if (hourStartTime > hourEndTime)
+		return 1;
+	else{
+		if (minuteStartTime > minuteEndTime)
+>>>>>>> origin/dev
 			return 1;
 	}
 
