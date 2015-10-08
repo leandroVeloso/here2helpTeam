@@ -10,12 +10,13 @@ $requestAddress->bindValue(':suburb', $_POST['suburb']);
 $requestAddress->bindValue(':state', $_POST['state']);
 $requestAddress->bindValue(':postcode', $_POST['postcode']);
 
-$request = $pdo->prepare('INSERT INTO 'USER' ('email', 'hash', 'firstName', 'lastName', 'addressID', 'phoneNo', 'typeID') VALUES (:hash, :email, :firstName, :lastName, LAST_MODIFIED_ID, :phone, 1)');
+$request = $pdo->prepare('INSERT INTO 'USER' ('email', 'hash', 'firstName', 'lastName', 'addressID', 'phoneNo', 'typeID') VALUES (:hash, :email, :firstName, :lastName, LAST_MODIFIED_ID, :phone, :typeID)');
 $request->bindValue(':hash',md5($_POST['password']));
 $request->bindValue(':email', $_POST['email']);
 $request->bindValue(':firstName', $_POST['fname']);
 $request->bindValue(':lastName', $_POST['lname']);
 $request->bindValue(':phone', $_POST['pnumber']);
+$request->bindValue(':typeID', $_POST['typeID']);
 
 $resultAddress = $requestAddress->execute();
 $result = $requestUser->execute();

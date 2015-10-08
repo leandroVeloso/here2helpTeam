@@ -18,7 +18,7 @@
                 </div>
                 <div class="row">
                     <div class="col-lg-8 col-lg-offset-2">
-                        <form action="PHP_Process_Files/processSignup.php" method="POST">
+                        <form action="PHP_Process_Files/processSignup.php" onsubmit="return volunteerSignupCheck()" method="POST" name="signup" id="signup">
                             <div class="row control-group">
                                 <div class="form-group col-xs-12 label-form-group controls">
                                     <label>First name</label>
@@ -103,8 +103,16 @@
                                     <p class="help-block text-danger" id= "passwordError"></p>
                                 </div>
                             </div>
+                            <div class="row control-group">
+                                <div class="form-group col-xs-8 label-form-group controls" id ="divconpass">
+                                     <label>Are you a volunteer?</label>
+                                     <input type="checkbox" name="volunteer" id="volunteer" value="checked">
+                                    <p class="help-block text-danger" id= "passwordError"></p>
+                                </div>
+                            </div>
+                            <input type="hidden" name="typeID" id="typeID" value="">
                             <br>
-                            <button type="submit" value=" Submit" class="btn btn-success btn-lg" id="submit"> Submit</button>
+                            <button type="submit" value=" submit" class="btn btn-success btn-lg" id="submit"> Submit</button>
                         </form>
                     </div>
                 </div>
