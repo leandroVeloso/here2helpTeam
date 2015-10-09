@@ -16,6 +16,7 @@ CREATE TABLE ADDRESS (
     street VARCHAR(50),
     suburb VARCHAR(50),
     state VARCHAR(20),
+    zone VARCHAR(10) NOT NULL UNIQUE,
     postcode INT(4),
     lastModified TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     PRIMARY KEY (addressID)
@@ -120,7 +121,9 @@ CREATE TABLE REQUEST(
 # Insert user types [1] Customer, [2] Volunteer and [3] Service Provider.
 INSERT INTO USERTYPE (type) VALUES ('Customer'),
     ('Volunteer'),
-    ('Service Provider');
+    ('Service Provider'),
+    ('Applicant'),
+    ('Admin');
 
 
 # Insert status of request [1] Open, [2] Closed, [3] Waiting approval from customer, [4] In progress and [5] Cancelled.
@@ -128,3 +131,6 @@ INSERT INTO STATUS (status) VALUES ('Open'), ('Closed'), ('Waiting Aproval'), ('
 
 # Insert priorities [1] High, [2] Medium and [3] Low.
 INSERT INTO PRIORITY (priority) VALUES ('High'), ('Medium'), ('Low');
+
+# Insert zones for resquests [1] North, [2] South, [3] East, [4] West
+INSERT INTO ADDRESS (zone) VALUES ('North'), ('South'), ('East'), ('West'), ('Inner');
