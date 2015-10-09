@@ -2,9 +2,6 @@
     include_once('pdo.inc');
     include_once('PHP_Process_Files/processViewVolunteer.php');
     include_once('PHP_Process_Files/processSelectVolunteers.php');
-    include_once('PHP_Process_Files/processApproveVolunteer.php');
-    include_once('PHP_Process_Files/processDenyVolunteer.php');
-    include_once('PHP_Process_Files/processDeleteVolunteer.php');
     verifyIfUserIsSignedIn();
 ?>
 <!DOCTYPE html>
@@ -78,29 +75,29 @@
             </tr>
           </table>
 
-          <!-- If someone is requesting a volunteer account it will display approve/deny buttons, if they are a volunteer admin can change them to client -->
+          <!-- If someone is requesting a volunteer account it will display approve/deny buttons, if they are a volunteer displays delete button-->
           <?php if ($volunteer['typeID'] == 4): ?>
             <div style="display:inline-block;">
-            <a href='listVolunteers.php'>
-                  <button type="button" class="btn btn-success btn-lg" id="approveBtn" name="approveBtn">Approve</button>
-            </a>
+              <form action = "PHP_Process_Files/processApproveVolunteer.php" method="GET">
+                  <button type="submit" class="btn btn-success btn-lg" id="approveBtn" name="userID" value="<?php echo $_GET['userID']; ?>">Approve</button>
+              </form>
             </div>
             <div style="display:inline-block;">
-              <a href='listVolunteers.php'>
-                  <button type="button" class="btn btn-danger btn-lg" id="denyBtn" name="denyBtn">Deny</button>
-              </a>
+              <form action = "PHP_Process_Files/processDenyVolunteer.php" method="GET">
+                  <button type="submit" class="btn btn-danger btn-lg" id="denyBtn" name="userID" value="<?php echo $_GET['userID']; ?>">Deny</button>
+              </form>
             </div>
           <?php else: ?>
             <div style="display:inline-block;">
-                  <a href='listVolunteers.php'>
-                  <button type="button" class="btn btn-danger btn-lg" id="deleteBtn" name="deleteBtn">Delete</button>
-                  </a>
+                  <form action = "PHP_Process_Files/processDeleteVolunteer.php" method="GET">
+                  <button type="submit" class="btn btn-danger btn-lg" id="deleteBtn" name="userID" value="<?php echo $_GET['userID']; ?>">Delete</button>
+                  </form>
             </div>
           <?php endif; ?>
 
           <!-- Cancel button returns user to List of Volunteers-->
           <div style="display:inline-block;">
-            <a href='listVolunteers.php'
+            <a href='listVolunteers.php'>
                 <button type="button" class="btn btn-warning btn-lg" id="cancelBtn">Cancel</button>
             </a>
           </div>
