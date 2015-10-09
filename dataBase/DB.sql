@@ -155,3 +155,22 @@ VALUES ('banana@mail.com', 'kkkkkkkk', 'Stevie', 'Kat', '2', '33239876', '1'),
 ('witch@mail.com', 'xdrdcjh', 'Peter', 'Puck', '3', '32111123', '4'),
 ('wizard@mail.com', 'buygvxs', 'John', 'Johnson', '2', '31111234', '4'),
 ('dragon@mail.com', 'zaswrfhy', 'Karl', 'Bart', '4', '39098987', '4');
+
+# Insert services
+INSERT INTO `helpdesk`.`service` (`service`)
+VALUES ('Painting'),
+('Plumbing'),
+('Sewing'),
+('Dry Cleaning'),
+('Mowing'),
+('Cleaning'),
+('Carpet Cleaning'),
+('Shopping'),
+('Building'),
+('Driving');
+
+# Insert request
+INSERT INTO `helpdesk`.`request` (`clientID`, `serviceID`, `requestName`, `startDate`, `endDate`, `startTime`, `endTime`, `minPrice`, `maxPrice`, `comment`, `priorityID`, `locationID`, `statusID`, `creationDate`, `lastModified`)
+VALUES ('1', '1', 'Paint Roof', '2015-10-18', '2015-10-20', '12:05', '13:10', '100', '200', 'Need someone to paint my roof blue.', '2', '2', '1', NOW(), NOW()),
+('2', '1', 'Fix toilet', '2015-10-18', '2015-10-25', '12:05', '17:10', '1500', '2000', 'My toilet is blocked.', '3', '4', '1', NOW(), NOW()),
+('3', '5', 'Mow Yard', '2015-10-30', '2015-11-25', '05:05', '17:10', '20', '780', 'Yard is overgrown. 1 acre. Need mowing.', '3', '4', '1', NOW(), NOW());
