@@ -21,12 +21,63 @@
                         <li>
                             <a href="viewAccount.php">My Account</a>
                         </li>
-                        <li>
-                            <a href="listRequests.php">My Requests</a>
-                        </li>
-                        <li>
-                            <a href="contact.php">Contact</a>
-                        </li>
+
+                        <?php
+                            if($_SESSION['typeID'] == 1){
+                        ?>
+                            
+                            <!-- Customer -->
+                            <li>
+                                <a href="listRequests.php">My Requests</a>
+                            </li>
+                            <li>
+                                <a href="contact.php">Contact</a>
+                            </li>
+                        <?php
+                            }
+                        ?>
+
+                         <?php
+                            if($_SESSION['typeID'] == 2){
+                        ?>
+                            <!-- Volunteer -->
+                            <li>
+                                <a href="listUnassignedRequests.php">Unassigned Requests</a>
+                            </li>
+                            <li>
+                                <a href="currentVolunteerJobs.php">My Jobs</a>
+                            </li>
+                        <?php
+                            }
+                        ?>
+
+                        <?php
+                            if($_SESSION['typeID'] == 4){
+                        ?>
+                            <!-- Applicant -->
+                            <li>
+                                <a href="applicationStatus.php">Application Status</a>
+                            </li>
+
+                        <?php
+                            }
+                        ?>
+
+                        <?php
+                            if($_SESSION['typeID'] == 5){
+                        ?>
+                            <!-- Admin -->
+                            <li>
+                                <a href="viewVolunteer.php">Current Volunteers</a>
+                            </li>
+                            <li>
+                                <a href="listVolunteers.php">Applications</a>
+                            </li>
+
+                        <?php
+                            }
+                        ?>
+
                         <li>
                             <a href="signout.php">Sign Out</a>
                         </li> 

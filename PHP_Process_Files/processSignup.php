@@ -30,13 +30,14 @@
 		        $resultAddress = $signUpAddress->execute();
 		        $addressID = $pdo->lastInsertId();
 
-		        $signUpUser = $pdo->prepare('INSERT INTO `USER` (`email`, `hash`, `firstName`, `lastName`, `addressID`, `phoneNo`, `typeID`) VALUES (:email, :hash, :firstName, :lastName, :addressID, :phone, 1)');
+		        $signUpUser = $pdo->prepare('INSERT INTO `USER` (`email`, `hash`, `firstName`, `lastName`, `addressID`, `phoneNo`, `typeID`) VALUES (:email, :hash, :firstName, :lastName, :addressID, :phone, :typeID)');
 		        $signUpUser->bindValue(':hash',md5($_POST['password']));
 		        $signUpUser->bindValue(':addressID', $addressID);
 		        $signUpUser->bindValue(':email', $_POST['email']);
 		        $signUpUser->bindValue(':firstName', $_POST['fname']);
 		        $signUpUser->bindValue(':lastName', $_POST['lname']);
 		        $signUpUser->bindValue(':phone', $_POST['pnumber']);
+		        $signUpUser->bindValue(':typeID', $_POST['typeID']);
 				$result = $signUpUser->execute();
 
 				if ($result && $resultAddress ) {
