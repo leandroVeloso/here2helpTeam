@@ -16,7 +16,6 @@ CREATE TABLE ADDRESS (
     street VARCHAR(50),
     suburb VARCHAR(50),
     state VARCHAR(20),
-    zone VARCHAR(10) NOT NULL UNIQUE,
     postcode INT(4),
     lastModified TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     PRIMARY KEY (addressID)
@@ -118,13 +117,11 @@ CREATE TABLE REQUEST(
       ON DELETE SET NULL
 );
 
-# Insert user types [1] Customer, [2] Volunteer and [3] Service Provider.
+# Insert user types [1] Customer, [2] Volunteer, [3] Service Provider and [4] Someone requesting a volunteer account.
 INSERT INTO USERTYPE (type) VALUES ('Customer'),
     ('Volunteer'),
-    ('Service Provider'),
-    ('Applicant'),
-    ('Admin');
-
+    ('Service Provider')
+    ('Requesting Volunteer Account');
 
 # Insert status of request [1] Open, [2] Closed, [3] Waiting approval from customer, [4] In progress and [5] Cancelled.
 INSERT INTO STATUS (status) VALUES ('Open'), ('Closed'), ('Waiting Aproval'), ('In Progress'), ('Cancelled');
@@ -132,5 +129,29 @@ INSERT INTO STATUS (status) VALUES ('Open'), ('Closed'), ('Waiting Aproval'), ('
 # Insert priorities [1] High, [2] Medium and [3] Low.
 INSERT INTO PRIORITY (priority) VALUES ('High'), ('Medium'), ('Low');
 
-# Insert zones for resquests [1] North, [2] South, [3] East, [4] West
-INSERT INTO ADDRESS (zone) VALUES ('North'), ('South'), ('East'), ('West'), ('Inner');
+# Insert addresses.
+INSERT INTO ADDRESS (unitNumber, street, suburb, state, postcode)
+VALUES (1, 'Picadilly St', 'Boronia Heights', 'Queensland', 4122),
+(10, 'Starins St', 'Boronia Heights', 'Queensland', 4122),
+(2, 'Body Ct', 'Redcliffe', 'Queensland', 4102),
+(3, 'Nick St', 'Sunnybank', 'Queensland', 4121),
+(4, 'Whiting St', 'Buranda', 'Queensland', 4029),
+(5, 'Alington St', 'Boronia Heights', 'Queensland', 4122),
+(6, 'Werei Rd', 'Woodridge', 'Queensland', 4120),
+(7, 'Maling St', 'Ferris', 'Queensland', 4304),
+(8, 'Plansa St', 'Everton Park', 'Queensland', 4208),
+(9, 'Mayfair Rd', 'New Market', 'Queensland', 4002);
+
+# Insert users.
+INSERT INTO `helpdesk`.`USER` (`email`, `hash`, `firstName`, `lastName`, `addressID`, `phoneNo`, `typeID`, `lastModified`)
+VALUES ('banana@mail.com', 'kkkkkkkk', 'Stevie', 'Kat', '2', '33239876', '1', NULL),
+('carrot@mail.com', 'llllooo', 'Melissa', 'Carr', '3', '049999998', '2', NULL),
+('apple@mail.com', 'jjjjjjjjj', 'Nick', 'Were', '12', '33339999', '1', NULL),
+('pear@mail.com', 'maoaoa', 'Sally', 'Malik', '4', '0456789876', '2', NULL),
+('larry@mail.com', 'oiuhoiu', 'Geoff', 'Var', '5', '0456765809', '2', NULL),
+('vamp@mail.com', 'lkjhoiu', 'Nick', 'Were', '6', '34562234', '2', NULL),
+('ghost@mail.com', 'niogbgy', 'Susannah', 'Graham', '7', '34232313', '4', NULL),
+('zombie@mail.com', 'mnbvuyt', 'Nora', 'Fooran', '7', '30988776', '4', NULL),
+('witch@mail.com', 'xdrdcjh', 'Peter', 'Puck', '3', '32111123', '4', NULL),
+('wizard@mail.com', 'buygvxs', 'John', 'Johnson', '2', '31111234', '4', NULL),
+('dragon@mail.com', 'zaswrfhy', 'Karl', 'Bart', '4', '39098987', '4', NULL);
