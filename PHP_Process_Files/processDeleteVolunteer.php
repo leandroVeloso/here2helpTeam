@@ -1,33 +1,31 @@
 <?php
-  $volunteer;
-  if (isset($_POST['deleteBtn'])) {
+  include_once('../pdo.inc');
+  if($_SERVER['REQUEST_METHOD'] == 'GET'){
     deleteVolunteer();
   }
 
-// Change volunteer to a client (general) account when deleted (typeID = 1)
+// Delete volunteer from DB
   function deleteVolunteer(){
-    global $pdo, $volunteer;
+    global $pdo;
 
       try{
-        $volunteerDetails = $pdo -> prepare('UPDATE USER
-                                          SET typeID = 1
-                                          WHERE userID = :userID');
-        $volunteerDetails -> bindValue(':userID', $volunteer['userID']);
+        $volunteerDetails = $pdo -> prepare('DELETE FROM USER
+                                             WHERE userID = :userID');
+        $volunteerDetails -> bindValue(':userID', $_GET['userID']);
         $result = $volunteerDetails -> execute();
 
+        // Return to list of volunteers and show success/failure pop up
         if ($result) {
-  			    //header('Location: ../viewVolunteer.php#deleted=success');
+  			    header('Location: ../listVolunteers.php#deleteVolunteer=success');
   			    exit();
   			}else {
-  			    //header('Location: ../viewVolunteer.php#deleted=failed');
+  			    header('Location: ../listVolunteers.php#deleteVolunteer=failure');
   			    exit();
   			}
-
-
-
       }
-      catch (PDOException $e)
-        {echo $e -> getMessage();}
+      catch (PDOException $e){
+          echo $e -> getMessage();
+        }
   }
 
  ?>

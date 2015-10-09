@@ -319,6 +319,89 @@ function checkForUrlMessages(){
             });
         }
 
+        if(hash == "approveVolunteer=success"){
+            history.pushState('', document.title, window.location.pathname);
+
+            // set focus when modal is opened
+            $('#modalApproveVolunteerSuccess-content').on('shown.bs.modal', function () {
+                $("#txtname").focus();
+            });
+
+            // show the modal onload
+            $('#modalApproveVolunteerSuccess-content').modal({
+                show: true
+            });
+        }
+
+        if(hash == "approveVolunteer=failure"){
+            history.pushState('', document.title, window.location.pathname);
+
+            // set focus when modal is opened
+            $('#modalError-content').on('shown.bs.modal', function () {
+                $("#txtname").focus();
+            });
+
+            // show the modal onload
+            $('#modalError-content').modal({
+                show: true
+            });
+        }
+
+        if(hash == "denyVolunteer=success"){
+            history.pushState('', document.title, window.location.pathname);
+
+            // set focus when modal is opened
+            $('#modalDenyVolunteerSuccess-content').on('shown.bs.modal', function () {
+                $("#txtname").focus();
+            });
+
+            // show the modal onload
+            $('#modalDenyVolunteerSuccess-content').modal({
+                show: true
+            });
+        }
+
+        if(hash == "denyVolunteer=failure"){
+            history.pushState('', document.title, window.location.pathname);
+
+            // set focus when modal is opened
+            $('#modalError-content').on('shown.bs.modal', function () {
+                $("#txtname").focus();
+            });
+
+            // show the modal onload
+            $('#modalError-content').modal({
+                show: true
+            });
+        }
+
+        if(hash == "deleteVolunteer=success"){
+            history.pushState('', document.title, window.location.pathname);
+
+            // set focus when modal is opened
+            $('#modalDeleteVolunteerSuccess-content').on('shown.bs.modal', function () {
+                $("#txtname").focus();
+            });
+
+            // show the modal onload
+            $('#modalDeleteVolunteerSuccess-content').modal({
+                show: true
+            });
+        }
+
+        if(hash == "deleteVolunteer=failure"){
+            history.pushState('', document.title, window.location.pathname);
+
+            // set focus when modal is opened
+            $('#modalError-content').on('shown.bs.modal', function () {
+                $("#txtname").focus();
+            });
+
+            // show the modal onload
+            $('#modalError-content').modal({
+                show: true
+            });
+        }
    }
 }
 
