@@ -45,7 +45,7 @@
                                             <tbody>
                                                 <?php
                                                     foreach($availableRequests as $request){
-                                                       echo '<tr class="odd gradeX"><td>'.$request['requestID'].'</td><td><a href="viewRequest.php?request='.$request['requestID'].'">'.$request['requestName'].'</td><td>'.$request['priority'].'</td><td>'.date("d/m/Y", strtotime($request['creationDate'])).'</td></tr>';
+                                                       echo '<tr class="odd gradeX"><td>'.$request['requestID'].'</td><td><a href="startRequest.php?request='.$request['requestID'].'">'.$request['requestName'].'</td><td>'.$request['priority'].'</td><td>'.date("d/m/Y", strtotime($request['creationDate'])).'</td></tr>';
                                                     }
                                                 ?>
                                             </tbody>
