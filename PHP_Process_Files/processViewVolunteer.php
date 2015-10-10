@@ -1,6 +1,8 @@
 <?php
+  $volunteer;
   viewVolunteerDetails();
 
+  // Gets volunteers details from DB.
   function viewVolunteerDetails(){
     global $pdo, $volunteer;
 

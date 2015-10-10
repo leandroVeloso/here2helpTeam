@@ -402,6 +402,34 @@ function checkForUrlMessages(){
                 show: true
             });
         }
+
+        if(hash == "startRequest=success"){
+            history.pushState('', document.title, window.location.pathname);
+
+            // set focus when modal is opened
+            $('#modalStartRequestSuccess-content').on('shown.bs.modal', function () {
+                $("#txtname").focus();
+            });
+
+            // show the modal onload
+            $('#modalStartRequestSuccess-content').modal({
+                show: true
+            });
+        }
+
+        if(hash == "startRequest=failure"){
+            history.pushState('', document.title, window.location.pathname);
+
+            // set focus when modal is opened
+            $('#modalError-content').on('shown.bs.modal', function () {
+                $("#txtname").focus();
+            });
+
+            // show the modal onload
+            $('#modalError-content').modal({
+                show: true
+            });
+        }
    }
 }
 
