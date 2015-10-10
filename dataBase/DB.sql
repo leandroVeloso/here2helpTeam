@@ -85,6 +85,7 @@ CREATE TABLE STATUS(
 CREATE TABLE REQUEST(
     requestID INT(4) AUTO_INCREMENT,
     clientID INT(4) NOT NULL,
+    volunteerID INT(4),
     serviceID INT(4),
     requestName VARCHAR(50) NOT NULL,
     startDate DATE NOT NULL,
@@ -106,6 +107,9 @@ CREATE TABLE REQUEST(
     FOREIGN KEY (clientID) REFERENCES USER(userID)
       ON UPDATE CASCADE
       ON DELETE CASCADE,
+      FOREIGN KEY (volunteerID) REFERENCES USER(userID)
+        ON UPDATE CASCADE
+        ON DELETE SET NULL,
     FOREIGN KEY (serviceID) REFERENCES SERVICE(serviceID)
       ON UPDATE CASCADE
       ON DELETE SET NULL,
@@ -154,7 +158,8 @@ VALUES ('banana@mail.com', 'kkkkkkkk', 'Stevie', 'Kat', '2', '33239876', '1'),
 ('zombie@mail.com', 'mnbvuyt', 'Nora', 'Fooran', '7', '30988776', '4'),
 ('witch@mail.com', 'xdrdcjh', 'Peter', 'Puck', '3', '32111123', '4'),
 ('wizard@mail.com', 'buygvxs', 'John', 'Johnson', '2', '31111234', '4'),
-('dragon@mail.com', 'zaswrfhy', 'Karl', 'Bart', '4', '39098987', '4');
+('dragon@mail.com', 'zaswrfhy', 'Karl', 'Bart', '4', '39098987', '4'),
+('testVolunteer@email.com', 'ae2b1fca515949e5d54fb22b8ed95575', 'Test', 'Volunteer', '3', '39111111', '2');
 
 # Insert services
 INSERT INTO `helpdesk`.`service` (`service`)
