@@ -104,25 +104,12 @@
         </div>
       </div>
     </section>
+
     <?php
             // Includes logo and menu
             include 'footer.inc';
             // Includes Javascript files
             include 'javascripts.inc';
     ?>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   </body>
 </html>
