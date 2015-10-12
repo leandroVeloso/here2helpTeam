@@ -1,8 +1,8 @@
 <?php  // Includes pdo file
     include_once('pdo.inc');
+    redirectUser(verifyUserType(VOLUNTEER),"index.php");
     include_once('PHP_Process_Files/processRequestDetails.php');
     include_once('PHP_Process_Files/processSelectAvailableRequests.php');
-    verifyIfUserIsSignedIn();
 ?>
 
 <!DOCTYPE html>

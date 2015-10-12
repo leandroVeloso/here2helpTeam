@@ -42,7 +42,7 @@
 
 				// Admin
 				if ($result['typeID'] == 5){
-				    header('Location: ../viewVolunteer.php#signin=success');
+				    header('Location: ../listVolunteers.php#signin=success');
 				    exit();
 				}
 

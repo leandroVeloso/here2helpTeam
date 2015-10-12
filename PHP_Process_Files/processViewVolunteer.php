@@ -1,6 +1,11 @@
 <?php
   $volunteer;
-  viewVolunteerDetails();
+  if($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['userID'])){
+    viewVolunteerDetails();
+  }else{
+    header('Location: ../index.php');
+    exit();
+  }
 
   // Gets volunteers details from DB.
   function viewVolunteerDetails(){

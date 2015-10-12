@@ -1,7 +1,7 @@
 <?php
     // Includes pdo file
     include_once('pdo.inc');
-    verifyIfUserIsSignedIn();
+    redirectUser((verifyUserType(VOLUNTEER) || verifyUserType(APPLICANT) || verifyUserType(CUSTOMER)),"index.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">

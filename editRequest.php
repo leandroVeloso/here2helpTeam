@@ -1,10 +1,10 @@
 <?php
     // Includes pdo file
     include_once('pdo.inc');
+    redirectUser(verifyUserType(CUSTOMER),"index.php");
     include_once('PHP_Process_Files/processViewRequest.php');
     include_once('PHP_Process_Files/processSelect.php');
     include_once('PHP_Process_Files/processViewAccount.php');
-    verifyIfUserIsSignedIn();
 ?>
 <!DOCTYPE html>
 <html lang="en">

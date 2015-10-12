@@ -1,4 +1,6 @@
-<?php   include_once('pdo.inc'); // Includes pdo file ?>
+<?php   include_once('pdo.inc'); // Includes pdo file 
+    redirectUser(verifyUserType(APPLICANT),"index.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
