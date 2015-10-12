@@ -98,8 +98,8 @@ CREATE TABLE REQUEST(
     priorityID INT,
     locationID INT,
     statusID INT DEFAULT 1,
-    creationDate TIMESTAMP NOT NULL,
-    lastModified TIMESTAMP NOT NULL ON UPDATE CURRENT_TIMESTAMP,
+    creationDate TIMESTAMP,
+    lastModified TIMESTAMP,
     PRIMARY KEY (requestID),
     FOREIGN KEY (locationID) REFERENCES ADDRESS(addressID)
       ON UPDATE CASCADE
@@ -156,8 +156,8 @@ CREATE TABLE QUOTE(
     maxPrice DECIMAL (8,2),
     volunteerComment VARCHAR(500),
     clientComment VARCHAR(500),
-    creationDate TIMESTAMP NOT NULL,
-    lastModified TIMESTAMP NOT NULL ON UPDATE CURRENT_TIMESTAMP,
+    creationDate TIMESTAMP,
+    lastModified TIMESTAMP,
     PRIMARY KEY(quoteID),
     FOREIGN KEY (requestID) REFERENCES REQUEST(requestID)
       ON UPDATE CASCADE
@@ -219,7 +219,7 @@ VALUES (1, 'Picadilly St', 'Boronia Heights', 'Queensland', 4122),
 (9, 'Mayfair Rd', 'New Market', 'Queensland', 4002);
 
 # Insert users.
-INSERT INTO `helpdesk`.`USER` (`email`, `hash`, `firstName`, `lastName`, `addressID`, `phoneNo`, `typeID`)
+INSERT INTO `Helpdesk`.`USER` (`email`, `hash`, `firstName`, `lastName`, `addressID`, `phoneNo`, `typeID`)
 VALUES ('banana@mail.com', '72b302bf297a228a75730123efef7c41', 'Stevie', 'Kat', '2', '33239876', '1'),
 ('carrot@mail.com', '005d05de29487ec44cd07bd9d757d4e1', 'Melissa', 'Carr', '3', '049999998', '2'),
 ('apple@mail.com', '1f3870be274f6c49b3e31a0c6728957f', 'Nick', 'Were', '10', '33339999', '1'),
@@ -235,7 +235,7 @@ VALUES ('banana@mail.com', '72b302bf297a228a75730123efef7c41', 'Stevie', 'Kat', 
 ('testVolunteer@email.com', 'ae2b1fca515949e5d54fb22b8ed95575', 'Test', 'Volunteer', '3', '39111111', '2');
 
 # Insert services
-INSERT INTO `helpdesk`.`service` (`service`)
+INSERT INTO `Helpdesk`.`SERVICE` (`service`)
 VALUES ('Painting'),
 ('Plumbing'),
 ('Sewing'),
@@ -248,7 +248,7 @@ VALUES ('Painting'),
 ('Driving');
 
 # Insert requests
-INSERT INTO `helpdesk`.`request` (`clientID`, `serviceID`, `requestName`, `startDate`, `endDate`, `startTime`, `endTime`, `minPrice`, `maxPrice`, `comment`, `priorityID`, `locationID`, `statusID`, `creationDate`, `lastModified`)
+INSERT INTO `Helpdesk`.`REQUEST` (`clientID`, `serviceID`, `requestName`, `startDate`, `endDate`, `startTime`, `endTime`, `minPrice`, `maxPrice`, `comment`, `priorityID`, `locationID`, `statusID`, `creationDate`, `lastModified`)
 VALUES ('1', '1', 'Paint Roof', '2015-10-18', '2015-10-20', '12:05', '13:10', '100', '200', 'Need someone to paint my roof blue.', '2', '2', '1', NOW(), NOW()),
 ('2', '1', 'Fix toilet', '2015-10-18', '2015-10-25', '12:05', '17:10', '1500', '2000', 'My toilet is blocked.', '3', '4', '1', NOW(), NOW()),
 ('3', '5', 'Mow Yard', '2015-10-30', '2015-11-25', '05:05', '17:10', '20', '780', 'Yard is overgrown. 1 acre. Need mowing.', '3', '4', '1', NOW(), NOW());

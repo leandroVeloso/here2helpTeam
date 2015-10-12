@@ -202,7 +202,7 @@
                               <?php } 
                               // Print quotes information
                                 foreach ($quotes as $aQuote) {
-                                    if(($myRequest['statusID'] == WAITING_BOOKING && $aQuote['approved'] == 1) || ($myRequest['statusID'] == CLOSED && $aQuote['approved'] == 1)){
+                                    if(($myRequest['statusID'] == WAITING_BOOKING && $aQuote['approved'] == 1) || ($myRequest['statusID'] == WAITING_APROVAL) ||($myRequest['statusID'] == CLOSED && $aQuote['approved'] == 1)){
                                 ?>
                                   <div class="row">
                                   <div class="col-lg-6 col-lg-offset-3">
@@ -267,7 +267,7 @@
                                   <div class="col-lg-6 col-lg-offset-3">
                             <td colspan="2">
                                 <label><input type="radio" name="approvedQuote" required value="nonce">None. (Ask for new quotes)</label>
-                              </td>
+                              </td><br>
                                       <label>Quote Comment</label>
                                             <textarea class="form-control" id="comment" rows="4" placeholder="Write a comment for the selected quote" name="comment"></textarea>
                                       <p class="help-block text-danger"></p>

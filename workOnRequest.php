@@ -149,12 +149,12 @@
               <?php 
               // Print quotes information
                 foreach ($quotes as $aQuote) {
-                  if(($request['statusID'] == WAITING_BOOKING && $aQuote['approved'] == 1) || $request['statusID'] == WAITING_APROVAL || ($request['statusID'] == CLOSED && $aQuote['approved'] == 1)){
+                  if(($request['statusID'] == WAITING_BOOKING && $aQuote['approved'] == 1) || $request['statusID'] == WAITING_APROVAL || ($request['statusID'] == IN_PROGRESS && $aQuote != null) || ($request['statusID'] == CLOSED && $aQuote['approved'] == 1)){
                 ?>
                   <div class="row">
                   <div class="col-lg-6 col-lg-offset-3">
                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
-                  <?php if($aQuote['approved'] == 1){ ?>
+                  <?php if($aQuote['approved'] == 1){ $approvedID = $aQuote['quoteID'];?>
                       <tr><td colspan="2">APPROVED QUOTE</button></td></tr>
                       <?php } ?>
                   <tr>
@@ -327,7 +327,7 @@
                           <label>Booking Information</label>
                           <input type="hidden" name="action" id="action" value="FinishBooking">
                           <input type="hidden" name="requestID" id="requestID" value="<?php echo $_GET['request']; ?>">
-                          <textarea class="form-control" id="comment" <?php if($request['status'] == "Closed") echo "readonly"; ?> rows="4" placeholder="Describe details of the final booking information" name="requestDescription" required></textarea>
+                          <textarea class="form-control" id="comment" name="comment" <?php if($request['status'] == "Closed") echo "readonly"; ?> rows="4" placeholder="Describe details of the final booking information" name="requestDescription" required></textarea>
                           <p class="help-block text-danger"></p>
                       </div>
                     </div>
@@ -337,7 +337,7 @@
         <div class="row">
           <div class="col-lg-12 col-lg-offset-3">
             <div style="display:inline-block;">
-                  <button type="submit" class="btn btn-success btn-lg" id="startBtn" name="requestID" value="<?php echo $_GET['request']; ?>">Send Final Booking Information</button>
+                  <button type="submit" class="btn btn-success btn-lg" id="startBtn" name="quoteID" value="<?php echo $approvedID; ?>">Send Final Booking Information</button>
               </form>
             </div>
           </div>

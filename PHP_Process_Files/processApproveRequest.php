@@ -16,7 +16,7 @@
       $result = $updateRequest -> execute();
 
       $updateQuote = $pdo->prepare('UPDATE QUOTE
-                                        SET `approved` = 1, `volunteerComment` = :comment
+                                        SET `approved` = 1, `clientComment` = :comment
                                         WHERE `quoteID` = :quoteID');
       $updateQuote -> bindValue(':quoteID', $_POST['approvedQuote']);
       $updateQuote -> bindValue(':comment', $_POST['comment']);

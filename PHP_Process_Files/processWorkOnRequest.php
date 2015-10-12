@@ -93,10 +93,16 @@
                                         SET `statusID` = 2
                                         WHERE `requestID` = :requestID');
       $request->bindValue(':requestID', $_POST['requestID']);
+      $quote = $pdo->prepare('UPDATE QUOTE
+                                        SET  volunteerComment = :comment
+                                        WHERE `quoteID` = :quoteID');
+      $quote->bindValue(':comment', $_POST['comment']);
+      $quote->bindValue(':quoteID', $_POST['quoteID']);
 
       $result = $request->execute();
+      $result2 = $quote->execute();
 
-      if ($result) {
+      if ($result && $result2) {
         sendEmailFinishBooking();
           header('Location: ../workOnRequest.php?request='.$_POST['requestID'].'#bookingFinished=success');
           exit();
