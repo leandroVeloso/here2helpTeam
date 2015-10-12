@@ -23,7 +23,7 @@
                         </li>
 
                         <?php
-                            if($_SESSION['typeID'] == 1){
+                            if($_SESSION['typeID'] == CUSTOMER){
                         ?>
                             
                             <!-- Customer -->
@@ -38,7 +38,7 @@
                         ?>
 
                          <?php
-                            if($_SESSION['typeID'] == 2){
+                            if($_SESSION['typeID'] == VOLUNTEER){
                         ?>
                             <!-- Volunteer -->
                             <li>
@@ -52,7 +52,7 @@
                         ?>
 
                         <?php
-                            if($_SESSION['typeID'] == 4){
+                            if($_SESSION['typeID'] == APPLICANT){
                         ?>
                             <!-- Applicant -->
                             <li>
@@ -64,12 +64,12 @@
                         ?>
 
                         <?php
-                            if($_SESSION['typeID'] == 5){
+                            if($_SESSION['typeID'] == ADMIN){
                         ?>
-                            <!-- Admin -->
+                            <!-- Admin 
                             <li>
                                 <a href="viewVolunteer.php">Current Volunteers</a>
-                            </li>
+                            </li>-->
                             <li>
                                 <a href="listVolunteers.php">Applications</a>
                             </li>

@@ -193,7 +193,7 @@ CREATE TABLE BOOKING(
 INSERT INTO USERTYPE (type) VALUES ('Customer'),
     ('Volunteer'),
     ('Service Provider'),
-    ('Requesting Volunteer Account');
+    ('Requesting Volunteer Account'), ('Admin');
 
 # Insert status of request [1] Open, [2] Closed, [3] Waiting approval from customer, [4] In progress and [5] Cancelled.
 INSERT INTO STATUS (status) VALUES ('Open'), ('Closed'), ('Waiting Aproval'), ('In Progress'), ('Cancelled');
@@ -216,17 +216,18 @@ VALUES (1, 'Picadilly St', 'Boronia Heights', 'Queensland', 4122),
 
 # Insert users.
 INSERT INTO `helpdesk`.`USER` (`email`, `hash`, `firstName`, `lastName`, `addressID`, `phoneNo`, `typeID`)
-VALUES ('banana@mail.com', 'kkkkkkkk', 'Stevie', 'Kat', '2', '33239876', '1'),
-('carrot@mail.com', 'llllooo', 'Melissa', 'Carr', '3', '049999998', '2'),
-('apple@mail.com', 'jjjjjjjjj', 'Nick', 'Were', '10', '33339999', '1'),
-('pear@mail.com', 'maoaoa', 'Sally', 'Malik', '4', '0456789876', '2'),
-('larry@mail.com', 'oiuhoiu', 'Geoff', 'Var', '5', '0456765809', '2'),
-('vamp@mail.com', 'lkjhoiu', 'Nick', 'Were', '6', '34562234', '2'),
-('ghost@mail.com', 'niogbgy', 'Susannah', 'Graham', '7', '34232313', '4'),
-('zombie@mail.com', 'mnbvuyt', 'Nora', 'Fooran', '7', '30988776', '4'),
-('witch@mail.com', 'xdrdcjh', 'Peter', 'Puck', '3', '32111123', '4'),
-('wizard@mail.com', 'buygvxs', 'John', 'Johnson', '2', '31111234', '4'),
-('dragon@mail.com', 'zaswrfhy', 'Karl', 'Bart', '4', '39098987', '4'),
+VALUES ('banana@mail.com', '72b302bf297a228a75730123efef7c41', 'Stevie', 'Kat', '2', '33239876', '1'),
+('carrot@mail.com', '005d05de29487ec44cd07bd9d757d4e1', 'Melissa', 'Carr', '3', '049999998', '2'),
+('apple@mail.com', '1f3870be274f6c49b3e31a0c6728957f', 'Nick', 'Were', '10', '33339999', '1'),
+('pear@mail.com', '8893dc16b1b2534bab7b03727145a2bb', 'Sally', 'Malik', '4', '0456789876', '2'),
+('larry@mail.com', '66f4b449b3a98abf87f2521e35513542', 'Geoff', 'Var', '5', '0456765809', '2'),
+('vamp@mail.com', '7d5b84f1f2a17e718a3aba8ea4b73773', 'Nick', 'Were', '6', '34562234', '2'),
+('ghost@mail.com', '71144850f4fb4cc55fc0ee6935badddf', 'Susannah', 'Graham', '7', '34232313', '4'),
+('zombie@mail.com', '0eda241fc65ccf35d9743309ac395215', 'Nora', 'Fooran', '7', '30988776', '4'),
+('witch@mail.com', '4bf5348e602347ad7311a5da50af5bee', 'Peter', 'Puck', '3', '32111123', '4'),
+('wizard@mail.com', 'd8d3a01ba7e5d44394b6f0a8533f4647', 'John', 'Johnson', '2', '31111234', '4'),
+('dragon@mail.com', '8621ffdbc5698829397d97767ac13db3', 'Karl', 'Bart', '4', '39098987', '4'),
+('admin@mail.com', '21232f297a57a5a743894a0e4a801fc3', 'Admin', '21232f297a57a5a743894a0e4a801fc3', '4', '39098987', '5'),
 ('testVolunteer@email.com', 'ae2b1fca515949e5d54fb22b8ed95575', 'Test', 'Volunteer', '3', '39111111', '2');
 
 # Insert services
