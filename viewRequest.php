@@ -2,6 +2,7 @@
     // Includes pdo file
     include_once('pdo.inc');
     redirectUser((verifyUserType(VOLUNTEER) || verifyUserType(CUSTOMER) || verifyUserType(ADMIN)),"index.php");
+    include_once('PHP_Process_Files/processViewQuotes.php');
     include_once('PHP_Process_Files/processViewRequest.php');
 ?>
 <!DOCTYPE html>
@@ -184,6 +185,98 @@
                             </form>
                         </div>
                         <?php } ?>
+                    </div></div>
+                        <?php
+                          if(isset($quotes) && $quotes != null && $myRequest['statusID'] != OPEN && $myRequest['statusID'] != IN_PROGRESS){ 
+                        ?>
+                        <div class="container">
+                          <div class="row">
+                            <div class="col-lg-12 text-center">
+                              <hr>
+                              <h3>QUOTES</h3>
+
+                              <hr>
+                              <?php if($myRequest['statusID'] == WAITING_APROVAL){ ?>
+                            <form action="PHP_Process_Files/processApproveRequest.php" method="POST">
+
+                              <?php } 
+                              // Print quotes information
+                                foreach ($quotes as $aQuote) {
+                                    if(($myRequest['statusID'] == WAITING_BOOKING && $aQuote['approved'] == 1) || ($myRequest['statusID'] == CLOSED && $aQuote['approved'] == 1)){
+                                ?>
+                                  <div class="row">
+                                  <div class="col-lg-6 col-lg-offset-3">
+                                <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                    <?php if($aQuote['approved'] == 1){ ?>
+                                  <tr><td colspan="2">APPROVED QUOTE</button></td></tr>
+                                  <?php } ?>
+                                  <tr>
+                                    <th class="col-md-3">ID</th>
+                                    <td class="col-md-8"><?php echo $aQuote['quoteID']; ?></td>
+                                  </tr>
+                                  <tr>
+                                    <th>Date Range</th>
+                                    <td><?php echo date('d  M  Y', strtotime($aQuote['startDateTime'])); ?> - <?php echo date('d  M  Y', strtotime($aQuote['endDateTime']));?></td>
+                                  </tr>
+                                  <tr>
+                                    <th>Time Range</th>
+                                    <td><?php echo date('g:i a', strtotime($aQuote['startTime'])); ?> - <?php echo date('g:i a', strtotime($aQuote['endTime'])); ?></td>
+                                  </tr>
+                                  <tr>
+                                    <th>Price Range</th>
+                                    <td>$<?php echo $aQuote['minPrice']; ?> - $<?php echo $aQuote['maxPrice']; ?></td>
+                                  </tr>
+                                  <tr>
+                                    <th class="col-md-3">Description</th>
+                                    <td class="col-md-8"><?php echo $aQuote['description']; ?></td>
+                                  </tr>
+                                  <tr>
+                                    <th>Creation Date</th>
+                                    <td><?php echo date('d-M-Y H:i:s', strtotime($aQuote['creationDate'])); ?></td>
+                                  </tr>
+                                  <tr>
+                                    <th>Last Modified</th>
+                                    <td><?php echo date('d-M-Y H:i:s', strtotime($aQuote['lastModified'])); ?></td>
+                                  </tr>
+                                  
+                                    <?php if($myRequest['statusID'] == WAITING_APROVAL){ ?>
+                                    <tr>
+                                      <td colspan="2">
+                                        <label><input type="radio" name="approvedQuote" required value="<?php echo $aQuote['quoteID']; ?>"> Approve this quote</label>
+                                      </td>
+                                  </tr>
+                                    <?php } ?>
+
+                                    <?php if($aQuote['approved'] == 1){ ?>
+                                      <tr><th>User Booking Comment:</th>
+                                    <td><?php echo $aQuote['clientComment']; ?></td></tr>
+                                      <?php } 
+
+                                       if($aQuote['approved'] == 1 && $myRequest['statusID'] == CLOSED){ ?>
+                                      <tr><th>Volunteer Booking Comment:</th>
+                                    <td><?php echo $aQuote['volunteerComment']; ?></td></tr>
+                                      <?php } ?>
+
+
+                                </table>
+                              </div>
+                            </div>
+                            <hr>
+                         <?php }} if($myRequest['statusID'] == WAITING_APROVAL){  ?>
+                         <div class="row">
+                                  <div class="col-lg-6 col-lg-offset-3">
+                            <td colspan="2">
+                                <label><input type="radio" name="approvedQuote" required value="nonce">None. (Ask for new quotes)</label>
+                              </td>
+                                      <label>Quote Comment</label>
+                                            <textarea class="form-control" id="comment" rows="4" placeholder="Write a comment for the selected quote" name="comment"></textarea>
+                                      <p class="help-block text-danger"></p>
+                              <input type="hidden" name="requestID" id="requestID" value="<?php echo $myRequest['requestID']; ?>">
+                              <button type="submit" class="btn btn-success btn-lg" id="approveBtn" name="approveBtn" >Send Quote Approval</button>
+                            </div>
+                        </div>
+                         <?php } }?>
+
                     </div>
                 </div>
             </div>

@@ -145,9 +145,12 @@ CREATE TABLE SERVICEPROVIDER(
 CREATE TABLE QUOTE(
     quoteID INT AUTO_INCREMENT,
     requestID INT NOT NULL,
-    serviceProviderID INT NOT NULL,
+    serviceProviderID INT,
     startDateTime DATETIME NOT NULL,
     endDateTime DATETIME,
+    startTime TIME,
+    endTime TIME,
+    approved TINYINT(1),
     description VARCHAR(500),
     minPrice DECIMAL(8,2) NOT NULL,
     maxPrice DECIMAL (8,2),
@@ -164,6 +167,7 @@ CREATE TABLE QUOTE(
       ON DELETE CASCADE
 );
 
+/*
 # Create table to store bookings.
 CREATE TABLE BOOKING(
     bookingID INT AUTO_INCREMENT,
@@ -188,7 +192,7 @@ CREATE TABLE BOOKING(
       ON UPDATE CASCADE
       ON DELETE CASCADE
 );
-
+*/
 # Insert user types [1] Customer, [2] Volunteer, [3] Service Provider and [4] Someone requesting a volunteer account.
 INSERT INTO USERTYPE (type) VALUES ('Customer'),
     ('Volunteer'),
@@ -196,7 +200,7 @@ INSERT INTO USERTYPE (type) VALUES ('Customer'),
     ('Requesting Volunteer Account'), ('Admin');
 
 # Insert status of request [1] Open, [2] Closed, [3] Waiting approval from customer, [4] In progress and [5] Cancelled.
-INSERT INTO STATUS (status) VALUES ('Open'), ('Closed'), ('Waiting Aproval'), ('In Progress'), ('Cancelled'), ('Waiting Booking');
+INSERT INTO STATUS (status) VALUES ('Open'), ('Finished'), ('Waiting Aproval'), ('In Progress'), ('Cancelled'), ('Waiting Booking');
 
 # Insert priorities [1] High, [2] Medium and [3] Low.
 INSERT INTO PRIORITY (priority) VALUES ('High'), ('Medium'), ('Low');
@@ -256,7 +260,7 @@ VALUES ('Bell Plumbing Maintenance', 2, 'Provide gas fitting, hot water repair a
 ('PaintPaintersPainting', 1, 'Indoor painting of houses only. Available Monday to friday, 9 to 5.', 8, '1800 999 987', 'www.paintingpaint.com.au'),
 ('Cha clean', 4, 'Dry cleaning only. Open Tuesday to Saturdays 9am to 5pm.', 6, '1300 000 260', 'www.chaclean.com.au'),
 ('Yellow Cabs', 10, 'Taxi service servicing South East Queensland. State preferred taxi type (standard or maxi).', NULL, '1800555432', 'www.yellowcabs.com');
-
+/*
 # Insert quotes.
 INSERT INTO QUOTE (requestID, serviceProviderID, startDateTime, endDateTime, description, minPrice, maxPrice, volunteerComment, clientComment)
 VALUES (1, 1, '2015-10-23 12:00:00', '2015-10-23 14:00:00', '1 Bedroom only', '200', '300', 'Willing to do 2 rooms for cheaper.', NULL),
@@ -265,7 +269,9 @@ VALUES (1, 1, '2015-10-23 12:00:00', '2015-10-23 14:00:00', '1 Bedroom only', '2
 (1, 2, '2015-10-28 14:00:00', '2015-10-30 17:30:00', 'Toilet issue', '20', '1000', 'Price will vary. Initial consult is $20 but additional work will cost more.', NULL);
 
 
+/*
 # Insert bookings.
 INSERT INTO BOOKING (quoteID, requestID, serviceProviderID, startDateTime, endDateTime, description, price, comment)
 VALUES (1, 1, 1, '2015-10-23 12:00:00', '2015-10-23 13:00:00', 'PaintPaintings 1 Bedroom only', '200', 'Booked for the loungeroom. They will bring all materials'),
 (4, 2, 2, '2015-10-30 14:00:00', '2015-10-30 17:30:00', 'Consultation', '20', 'Booked to identify issue. Will fix on date if job isn\'t too large and provide you with a new quote');
+*/

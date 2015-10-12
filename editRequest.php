@@ -5,6 +5,10 @@
     include_once('PHP_Process_Files/processViewRequest.php');
     include_once('PHP_Process_Files/processSelect.php');
     include_once('PHP_Process_Files/processViewAccount.php');
+    if($myRequest['statusID'] != OPEN){
+        header('Location: ../viewRequest.php?request='.$myRequest['requestID']);
+        exit();
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
