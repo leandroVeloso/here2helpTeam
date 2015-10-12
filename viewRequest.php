@@ -22,6 +22,20 @@
                 </div>
                 <div class="row">
                     <div class="col-lg-8 col-lg-offset-2">
+                        <?php
+                            if($myRequest['statusID'] == OPEN)
+                                echo "<img class='img-responsive' src='img/status_img/waiting_volunteer_open.png' alt='' style='width: 100%; height: 100%'>";
+                            if($myRequest['statusID'] == CLOSED)
+                                echo "<img class='img-responsive' src='img/status_img/booked_closed.png' alt='' style='width: 100%; height: 100%'>";
+                            if($myRequest['statusID'] == WAITING_APROVAL)
+                                echo "<img class='img-responsive' src='img/status_img/waiting_approval.png' alt='' style='width: 100%; height: 100%'>";
+                            if($myRequest['statusID'] == IN_PROGRESS)
+                                echo "<img class='img-responsive' src='img/status_img/waiting_quotes_inprogress.png' alt='' style='width: 100%; height: 100%'>";
+                            if($myRequest['statusID'] == CANCELLED)
+                                echo "<img class='img-responsive' src='img/status_img/cancelled.png' alt='' style='width: 100%; height: 100%'>";
+                            if($myRequest['statusID'] == WAITING_BOOKING)
+                                echo "<img class='img-responsive' src='img/status_img/waiting_booking_conf.png' alt='' style='width: 100%; height: 100%'>";
+                        ?>
                         <h4>WHAT</h4>
                         <hr>
                         <div class="row control-group">
@@ -160,12 +174,16 @@
                             </div>
                         </div>
                         <br><br>
+                        <?php
+                            if($myRequest['statusID'] == OPEN){
+                        ?>
                         <div>
                             <form action="editRequest.php" method="GET">
                                 <button type="submit" value="<?php echo $myRequest['requestID'];?>" name="request" id="request" class="btn btn-info btn-lg" id="createBtn">Edit </button>
                                 <button type="button" value="Create Help Request" class="btn btn-danger btn-lg" id="createBtn" data-toggle="modal" data-target="#confirmDeleteModal">Delete</button>
                             </form>
                         </div>
+                        <?php } ?>
                     </div>
                 </div>
             </div>

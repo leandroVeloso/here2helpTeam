@@ -5,6 +5,13 @@
 	define("APPLICANT", "4");
 	define("ADMIN", "5");
 
+	define("OPEN", "1");
+	define("CLOSED", "2");
+	define("WAITING_APROVAL", "3");
+	define("IN_PROGRESS", "4");
+	define("CANCELLED", "5");
+	define("WAITING_BOOKING", "6");
+
 	// Creates a new global pdo variable
 	$pdo = new PDO('mysql:host=localhost;dbname=helpdesk', 'root', '');
 	//$pdo = new PDO('mysql:host=localhost;dbname=Helpdesk', 'root', 'root');

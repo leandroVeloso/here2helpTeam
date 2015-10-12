@@ -196,7 +196,7 @@ INSERT INTO USERTYPE (type) VALUES ('Customer'),
     ('Requesting Volunteer Account'), ('Admin');
 
 # Insert status of request [1] Open, [2] Closed, [3] Waiting approval from customer, [4] In progress and [5] Cancelled.
-INSERT INTO STATUS (status) VALUES ('Open'), ('Closed'), ('Waiting Aproval'), ('In Progress'), ('Cancelled');
+INSERT INTO STATUS (status) VALUES ('Open'), ('Closed'), ('Waiting Aproval'), ('In Progress'), ('Cancelled'), ('Waiting Booking');
 
 # Insert priorities [1] High, [2] Medium and [3] Low.
 INSERT INTO PRIORITY (priority) VALUES ('High'), ('Medium'), ('Low');

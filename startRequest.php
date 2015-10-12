@@ -24,8 +24,25 @@
             <hr class="star-primary">
           </div>
         </div>
-      </div>
 
+      <div class="row">
+        <div class="col-lg-8 col-lg-offset-2">
+            <?php
+                if($request['statusID'] == OPEN)
+                    echo "<img class='img-responsive' src='img/status_img/waiting_volunteer_open.png' alt='' style='width: 100%; height: 100%'>";
+                if($request['statusID'] == CLOSED)
+                    echo "<img class='img-responsive' src='img/status_img/booked_closed.png' alt='' style='width: 100%; height: 100%'>";
+                if($request['statusID'] == WAITING_APROVAL)
+                    echo "<img class='img-responsive' src='img/status_img/waiting_approval.png' alt='' style='width: 100%; height: 100%'>";
+                if($request['statusID'] == IN_PROGRESS)
+                    echo "<img class='img-responsive' src='img/status_img/waiting_quotes_inprogress.png' alt='' style='width: 100%; height: 100%'>";
+                if($request['statusID'] == CANCELLED)
+                    echo "<img class='img-responsive' src='img/status_img/cancelled.png' alt='' style='width: 100%; height: 100%'>";
+                if($request['statusID'] == WAITING_BOOKING)
+                    echo "<img class='img-responsive' src='img/status_img/waiting_booking_conf.png' alt='' style='width: 100%; height: 100%'>";
+            ?>
+          </div>
+     </div>
       <div class="container">
         <div class="row">
           <div class="col-lg-4 text-center">
@@ -127,6 +144,7 @@
             </div>
           </div>
         </div>
+      </div>
       </section>
 
       <?php
