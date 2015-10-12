@@ -1,5 +1,6 @@
 <?php  // Includes pdo file
     include_once('pdo.inc');
+    include_once('PHP_Process_Files/processVolunteerJobRequests.php');
     verifyIfUserIsSignedIn();
 ?>
 
@@ -11,7 +12,50 @@
 
   <body id="page-top" class="index">
     <?php include 'navigation.inc' ; // Includes logo and menu ?>
-
+     <section id="myJobRequests">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        </br></br>
+                        <h2>My Jobs</h2>
+                        <hr class="star-primary">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <br>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                Job Requests In Progress
+                            </div>
+                                <!-- /.panel-heading -->
+                                <div class="panel-body">
+                                    <div class="dataTable_wrapper">
+                                        <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                            <thead>
+                                                <tr>
+                                                    <th class="col-md-1">ID</th>
+                                                    <th class="col-md-4">Subject</th>
+                                                    <th class="col-md-2">Priority</th>
+                                                    <th class="col-md-2">Date Created</th>
+                                                    <th class="col-md-2">Status</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php
+                                                    foreach($availableRequests as $request){
+                                                       echo '<tr class="odd gradeX"><td>'.$request['requestID'].'</td><td><a href="workOnRequest.php?request='.$request['requestID'].'">'.$request['requestName'].'</td><td>'.$request['priority'].'</td><td>'.date("d/m/Y", strtotime($request['creationDate'])).'</td><td>'.$request['status'].'</td></tr>';
+                                                    }
+                                                ?>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </section>
 
 
 

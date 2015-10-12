@@ -9,11 +9,9 @@
     global $pdo;
     try{
       $updateRequest = $pdo->prepare('UPDATE REQUEST
-                                        SET `volunteerID` = :volunteerID, `statusID` = 4
+                                        SET `statusID` = 2
                                         WHERE `requestID` = :requestID');
       $updateRequest -> bindValue(':requestID', $_GET['requestID']);
-      echo $_SESSION['userID'];
-      $updateRequest->bindValue(':volunteerID', $_SESSION['userID']);
       $result = $updateRequest -> execute();
 
       // Indicate start request succeeded/failed.
