@@ -72,7 +72,7 @@ function checkForUrlMessages(){
         }
 
         if(hash == "signin=warning"){
-            document.getElementById("errorSpan").innerHTML = "Email or password wrong";
+            document.getElementById("errorSpan").innerHTML = "Email or password is wrong.";
             document.getElementById('emaildiv').className = "form-group has-error col-xs-8 label-form-group controls";
             document.getElementById('passworddiv').className = "form-group has-error col-xs-8 label-form-group controls";
             history.pushState('', document.title, window.location.pathname);

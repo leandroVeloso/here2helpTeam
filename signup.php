@@ -1,4 +1,4 @@
-<?php 
+<?php
     include_once('pdo.inc'); // Includes pdo file
     redirectUser(!(verifyUserType(VOLUNTEER) || verifyUserType(APPLICANT) || verifyUserType(CUSTOMER) || verifyUserType(ADMIN)),"index.php");
 ?>
@@ -127,9 +127,9 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title">Email is already in use, please choose another!</h4>
+                        <h4 class="modal-title">Email is already in use. Please choose another.</h4>
                     </div>
-                    <div class="modal-footer"> 
+                    <div class="modal-footer">
                         <a href="#" class="btn btn-primary" data-dismiss="modal">Close</a>
                     </div>
                 </div>
@@ -140,15 +140,15 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title">Something went wrong! Please, try again!</h4>
+                        <h4 class="modal-title">Something went wrong. Please try again.</h4>
                     </div>
-                    <div class="modal-footer"> 
+                    <div class="modal-footer">
                         <a href="#" class="btn btn-primary" data-dismiss="modal">Close</a>
                     </div>
                 </div>
             </div>
         </div>
-        <?php 
+        <?php
             // Includes logo and menu
             include 'footer.inc';
             // Includes Javascript files

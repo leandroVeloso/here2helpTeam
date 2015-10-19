@@ -1,4 +1,4 @@
-<?php 
+<?php
     include_once('pdo.inc'); // Includes pdo file
     redirectUser(!(verifyUserType(VOLUNTEER) || verifyUserType(APPLICANT) || verifyUserType(CUSTOMER) || verifyUserType(ADMIN)),"index.php");
 ?>
@@ -56,7 +56,7 @@
                 <div class="modal-content">
                      <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title">Your account was successfully created!<br> Please sign in to acccess it.</h4>
+                        <h4 class="modal-title">Your account was successfully created!<br> Please sign in to access it.</h4>
                       </div>
                     <div class="modal-footer">
                         <a href="#" class="btn btn-primary" data-dismiss="modal">Close</a>
