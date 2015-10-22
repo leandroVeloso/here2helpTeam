@@ -71,6 +71,10 @@
               <td><?php echo $volunteer['postcode']; ?></td>
             </tr>
             <tr>
+              <th>Average Rating</th>
+              <td><?php echo $volunteer['avgRating']; echo str_repeat('&nbsp;', 4); echo "<a href='listVolunteers.php'>(view feedback)</a>"; ?></td>
+            </tr>
+            <tr>
               <th>Last Modified</th>
               <td><?php echo $volunteer['lastModified']; ?></td>
             </tr>
