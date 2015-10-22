@@ -8,9 +8,12 @@
 	function selectAllVolunteers(){
 		global $volunteers, $pdo;
 		try{
-			$volunteersSelect = $pdo->prepare('SELECT U.userID, U.email, U.firstName, U.lastName, A.suburb, U.phoneNo, U.lastModified
-                                      FROM USER U INNER JOIN ADDRESS A
-                                      ON U.addressID = A.addressID
+			$volunteersSelect = $pdo->prepare('SELECT U.userID, U.email, U.firstName, U.lastName, A.suburb, U.phoneNo, ROUND(AVG(F.rating),1) AS rating, U.lastModified
+                                      FROM USER U
+																			INNER JOIN ADDRESS A
+                                      	ON U.addressID = A.addressID
+																			INNER JOIN VOLUNTEERFEEDBACK F
+																				ON F.volunteerID = U.userID
                                       WHERE U.typeID = 2');
 			$volunteersSelect->execute();
 			$volunteers = $volunteersSelect->fetchAll();
@@ -33,19 +36,5 @@
 		catch (PDOException $e)
 			{echo $e->getMessage();}
 	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ?>

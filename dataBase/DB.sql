@@ -6,9 +6,6 @@ CREATE DATABASE Helpdesk;
 
 USE Helpdesk;
 
-# Delete previous versions of Address table
-DROP TABLE IF EXISTS ADDRESS;
-
 # Create table to store users address and location of help request.
 CREATE TABLE ADDRESS (
     addressID INT AUTO_INCREMENT,
@@ -21,9 +18,6 @@ CREATE TABLE ADDRESS (
     PRIMARY KEY (addressID)
 );
 
-# Delete previous versions of Usertype table
-DROP TABLE IF EXISTS USERTYPE;
-
 # Create table to store user types. User may be a [1] Customer, [2] Volunteer or [3] ServiceProvider
 CREATE TABLE USERTYPE (
     typeID INT AUTO_INCREMENT,
@@ -31,9 +25,6 @@ CREATE TABLE USERTYPE (
     lastModified TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     PRIMARY KEY (typeID)
 );
-
-# Delete previous versions of User table
-DROP TABLE IF EXISTS USER;
 
 # Create table to store user details
 CREATE TABLE USER (
@@ -55,9 +46,6 @@ CREATE TABLE USER (
       ON DELETE SET NULL
 );
 
-# Delete previous versions of service table
-DROP TABLE IF EXISTS SERVICE;
-
 # Create table to store service types.
 CREATE TABLE SERVICE(
     serviceID INT AUTO_INCREMENT,
@@ -65,9 +53,6 @@ CREATE TABLE SERVICE(
     lastModified TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     PRIMARY KEY(serviceID)
 );
-
-# Delete previous versions of priority table
-DROP TABLE IF EXISTS PRIORITY;
 
 # Create table to store priority level of help request.
 CREATE TABLE PRIORITY(
@@ -77,9 +62,6 @@ CREATE TABLE PRIORITY(
     PRIMARY KEY(priorityID)
 );
 
-# Delete previous versions of status table
-DROP TABLE IF EXISTS STATUS;
-
 # Create table to store status of help request.
 CREATE TABLE STATUS(
     statusID INT AUTO_INCREMENT,
@@ -87,9 +69,6 @@ CREATE TABLE STATUS(
     lastModified TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     PRIMARY KEY(statusID)
 );
-
-# Delete previous versions of request table
-DROP TABLE IF EXISTS REQUEST;
 
 # Create table to store help request
 CREATE TABLE REQUEST(
@@ -131,9 +110,6 @@ CREATE TABLE REQUEST(
       ON DELETE SET NULL
 );
 
-# Delete previous versions of serviceprovider table
-DROP TABLE IF EXISTS SERVICEPROVIDER;
-
 # Create table to store status of service provider details.
 CREATE TABLE SERVICEPROVIDER(
     serviceProviderID INT AUTO_INCREMENT,
@@ -153,46 +129,39 @@ CREATE TABLE SERVICEPROVIDER(
       ON DELETE SET NULL
 );
 
-# Delete previous versions of servicefeedback table
-DROP TABLE IF EXISTS SERVICEFEEDBACK;
-
 # Create table to store feedback on service providers
 CREATE TABLE SERVICEFEEDBACK(
+    feedbackID INT AUTO_INCREMENT,
     requestID INT,
-    serviceProviderID INT,
-    rating INT NOT NULL,
+    serviceProviderID INT NOT NULL,
+    rating INT(1) NOT NULL,
     comment VARCHAR(500),
     lastModified TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    PRIMARY KEY(requestID, serviceProviderID),
+    PRIMARY KEY(feedbackID),
     FOREIGN KEY (requestID) REFERENCES REQUEST(requestID)
       ON UPDATE CASCADE
       ON DELETE SET NULL,
-    FOREIGN KEY (serviceID) REFERENCES SERVICE(serviceID)
+    FOREIGN KEY (serviceProviderID) REFERENCES SERVICEPROVIDER(serviceProviderID)
       ON UPDATE CASCADE
       ON DELETE CASCADE
 );
 
-# Delete previous versions of volunteerfeedback table
-DROP TABLE IF EXISTS VOLUNTEERFEEDBACK;
-
-# Create table to store service provider feedback.
+# Create table to store volunteer feedback.
 CREATE TABLE VOLUNTEERFEEDBACK(
+    feedbackID INT AUTO_INCREMENT,
     requestID INT,
-    volunteerID INT,
-    rating INT NOT NULL,
+    volunteerID INT NOT NULL,
+    rating INT(1) NOT NULL,
     comment VARCHAR(500),
     lastModified TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    PRIMARY KEY(requestID, volunteerID),
+    PRIMARY KEY(feedbackID),
     FOREIGN KEY (requestID) REFERENCES REQUEST(requestID)
       ON UPDATE CASCADE
       ON DELETE SET NULL,
-    FOREIGN KEY (volunteerID) REFERENCES USER(volunteerID)
+    FOREIGN KEY (volunteerID) REFERENCES USER(userID)
       ON UPDATE CASCADE
       ON DELETE CASCADE
 );
-
-# Delete previous versions of quote table
-DROP TABLE IF EXISTS QUOTE;
 
 # Create table to store quotes.
 CREATE TABLE QUOTE(
@@ -292,7 +261,9 @@ VALUES  ('banana@mail.com', '72b302bf297a228a75730123efef7c41', 'Stevie', 'Kat',
         ('wizard@mail.com', 'd8d3a01ba7e5d44394b6f0a8533f4647', 'John', 'Johnson', '2', '31111234', '4'),
         ('dragon@mail.com', '8621ffdbc5698829397d97767ac13db3', 'Karl', 'Bart', '4', '39098987', '4'),
         ('admin@mail.com', '21232f297a57a5a743894a0e4a801fc3', 'Admin', '21232f297a57a5a743894a0e4a801fc3', '4', '39098987', '5'),
-        ('testVolunteer@email.com', 'ae2b1fca515949e5d54fb22b8ed95575', 'Test', 'Volunteer', '3', '39111111', '2');
+        ('testVolunteer@email.com', 'ae2b1fca515949e5d54fb22b8ed95575', 'Test', 'Volunteer', '3', '39111111', '2'),
+        ('testClient@email.com', 'ae2b1fca515949e5d54fb22b8ed95575', 'Test', 'Client', '5', '3911100', '1'),
+        ('testAdmin@email.com', 'ae2b1fca515949e5d54fb22b8ed95575', 'Test', 'Admin', '6', '39111000', '5');
 
 # Insert services
 INSERT INTO `Helpdesk`.`SERVICE` (`service`)
@@ -337,3 +308,8 @@ INSERT INTO BOOKING (quoteID, requestID, serviceProviderID, startDateTime, endDa
 VALUES (1, 1, 1, '2015-10-23 12:00:00', '2015-10-23 13:00:00', 'PaintPaintings 1 Bedroom only', '200', 'Booked for the loungeroom. They will bring all materials'),
 (4, 2, 2, '2015-10-30 14:00:00', '2015-10-30 17:30:00', 'Consultation', '20', 'Booked to identify issue. Will fix on date if job isn\'t too large and provide you with a new quote');
 */
+
+INSERT INTO VOLUNTEERFEEDBACK (requestID, volunteerID, rating, comment)
+VALUES  (1, 3, 4,'Friendly and helpful.'),
+        (2, 3, 5, 'Efficient.'),
+        (3, 5, 3, NULL);
