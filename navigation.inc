@@ -1,6 +1,7 @@
 <?php
     if(isset($_SESSION['signin']) && $_SESSION['signin']){
 ?>
+<?php include 'PHP_Process_Files/navigationNotifications.inc'; ?>
         <!-- Navigation -->
         <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container">
@@ -23,7 +24,7 @@
                         </li>
 
                         <?php
-                            if($_SESSION['typeID'] == CUSTOMER){
+                            if($_SESSION['typeID'] == 1){
                         ?>
                             
                             <!-- Customer -->
@@ -38,21 +39,21 @@
                         ?>
 
                          <?php
-                            if($_SESSION['typeID'] == VOLUNTEER){
+                            if($_SESSION['typeID'] == 2){
                         ?>
                             <!-- Volunteer -->
                             <li>
-                                <a href="listUnassignedRequests.php">Unassigned Requests</a>
+                                <a href="listUnassignedRequests.php"> New Requests (<?php echo $numRequests[0]; ?>) </a>
                             </li>
                             <li>
-                                <a href="currentVolunteerJobs.php">My Jobs</a>
+                                <a href="currentVolunteerJobs.php">My Jobs (<?php echo $numJobs[0]; ?>) </a>
                             </li>
                         <?php
                             }
                         ?>
 
                         <?php
-                            if($_SESSION['typeID'] == APPLICANT){
+                            if($_SESSION['typeID'] == 4){
                         ?>
                             <!-- Applicant -->
                             <li>
@@ -64,12 +65,12 @@
                         ?>
 
                         <?php
-                            if($_SESSION['typeID'] == ADMIN){
+                            if($_SESSION['typeID'] == 5){
                         ?>
-                            <!-- Admin 
+                            <!-- Admin -->
                             <li>
                                 <a href="viewVolunteer.php">Current Volunteers</a>
-                            </li>-->
+                            </li>
                             <li>
                                 <a href="listVolunteers.php">Applications</a>
                             </li>
