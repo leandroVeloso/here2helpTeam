@@ -1,8 +1,8 @@
 <?php  // Includes pdo file
     include_once('pdo.inc');
-    redirectUser(verifyUserType(ADMIN),"index.php");
-    include_once('PHP_Process_Files/processViewVolunteer.php');
+    redirectUser(verifyUserType(VOLUNTEER),"index.php");
     include_once('PHP_Process_Files/processSelectVolunteers.php');
+
 
 ?>
 <!DOCTYPE html>
@@ -70,47 +70,15 @@
               <th>Postcode</th>
               <td><?php echo $volunteer['postcode']; ?></td>
             </tr>
-            <?php if ($volunteer['typeID'] == 2): ?>
             <tr>
               <th>Average Rating</th>
               <td><?php echo $volunteer['avgRating']; echo str_repeat('&nbsp;', 4); echo "<a href='listVolunteers.php'>(view feedback)</a>"; ?></td>
             </tr>
-            <?php endif; ?>
             <tr>
               <th>Last Modified</th>
               <td><?php echo $volunteer['lastModified']; ?></td>
             </tr>
           </table>
-
-          <!-- If someone is requesting a volunteer account it will display approve/deny buttons, if they are a volunteer displays delete button-->
-          <?php if ($volunteer['typeID'] == 4): ?>
-            <div style="display:inline-block;">
-              <form action = "PHP_Process_Files/processApproveVolunteer.php" method="GET">
-                  <button type="submit" class="btn btn-success btn-lg" id="approveBtn" name="userID" value="<?php echo $_GET['userID']; ?>">Approve</button>
-              </form>
-            </div>
-            <div style="display:inline-block;">
-              <form action = "PHP_Process_Files/processDenyVolunteer.php" method="GET">
-                  <button type="submit" class="btn btn-danger btn-lg" id="denyBtn" name="userID" value="<?php echo $_GET['userID']; ?>">Deny</button>
-              </form>
-            </div>
-          <?php else: ?>
-            <div style="display:inline-block;">
-                  <form action = "PHP_Process_Files/processDeleteVolunteer.php" method="GET">
-                  <button type="submit" class="btn btn-danger btn-lg" id="deleteBtn" name="userID" value="<?php echo $_GET['userID']; ?>">Delete</button>
-                  </form>
-            </div>
-          <?php endif; ?>
-
-          <!-- Cancel button returns user to List of Volunteers-->
-          <div style="display:inline-block;">
-            <a href='listVolunteers.php'>
-                <button type="button" class="btn btn-warning btn-lg" id="cancelBtn">Cancel</button>
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
 
     <?php
             // Includes logo and menu
