@@ -4,6 +4,7 @@
     redirectUser((verifyUserType(VOLUNTEER) || verifyUserType(CUSTOMER) || verifyUserType(ADMIN)),"index.php");
     include_once('PHP_Process_Files/processViewQuotes.php');
     include_once('PHP_Process_Files/processViewRequest.php');
+    include_once('PHP_Process_Files/processCheckForFeedback.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -256,11 +257,10 @@
                                       <tr><th>Volunteer Booking Comment:</th>
                                     <td><?php echo $aQuote['volunteerComment']; ?></td></tr>
                                       <?php } ?>
-
-
                                 </table>
                               </div>
                             </div>
+
                             <hr>
                          <?php }} if($myRequest['statusID'] == WAITING_APROVAL){  ?>
                          <div class="row">
@@ -276,6 +276,28 @@
                             </div>
                         </div>
                          <?php } }?>
+
+                         <?php if($myRequest['statusID'] == CLOSED && $feedback == NULL){ ?>
+                            <span class="rating">
+                                 <h3>Rate Your Service Provider</h3>
+                            </span>
+                            <hr>
+                            <div class = "serviceRating">
+                                <form action="PHP_Process_Files/processRating.php" method="POST" name="rate" id="rate">
+                                    <input type="radio" id="rating" name="rating" value="1"/>  
+                                    <input type="radio" id="rating" name="rating" value="2"/> 
+                                    <input type="radio" id="rating" name="rating" value="3"/> 
+                                    <input type="radio" id="rating" name="rating" value="4"/> 
+                                    <input type="radio" id="rating" name="rating" value="5"/><br/>
+                                    <input type="hidden" id="requestID" name="requestID" value = "<?php echo $myRequest['requestID']; ?>" />
+                                    1||2||3||4||5
+                                    <p><br /></p>
+                                    <button type="submit" value="submit" class="btn btn-success btn-lg" id="rateBtn" name="rateBtn" >Submit Rating</button>
+
+                                </form>
+                            </div>
+                             <hr>
+                        <?php } ?>
 
                     </div>
                 </div>
