@@ -50,7 +50,7 @@
                                             <tbody>
                                                 <?php
                                                     foreach($serviceList as $service){
-                                                       echo '<tr class="odd gradeX"><td>'.$service['serviceProviderID'].'</td><td>'.$service['name'].'</td><td>'.$service['serviceID'].'</td><td>'.$service['addressID'].'</td><td>'.$service['website'].'</td><td>'.$service['phoneNo'].'</td><td>'.$service['avgRating'].'</td></tr>';
+                                                       echo '<tr class="odd gradeX"><td>'.$service['serviceProviderID'].'</td><td>'.$service['name'].'</td><td>'.$service['serviceID'].'</td><td>'.$service['addressID'].'</td><td>'.$service['website'].'</td><td>'.$service['phoneNo'].'</td><td>'.($service['avgRating'] == NULL ? 'N/A' : $service['avgRating']).'</td></tr>';
                                                     }
                                                 ?>
                                             </tbody>
