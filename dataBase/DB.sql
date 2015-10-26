@@ -6,6 +6,14 @@ CREATE DATABASE Helpdesk;
 
 USE Helpdesk;
 
+# Create table to store zones. Zones are [1] CBD, [2] North, [3] South, [4] Ipswich, [5] Southeast and [6] Inner.
+CREATE TABLE ZONE (
+    zoneID INT AUTO_INCREMENT,
+    zone VARCHAR(50) NOT NULL UNIQUE,
+    lastModified TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    PRIMARY KEY (zoneID)
+);
+
 # Create table to store users address and location of help request.
 CREATE TABLE ADDRESS (
     addressID INT AUTO_INCREMENT,
@@ -16,18 +24,10 @@ CREATE TABLE ADDRESS (
     postcode INT(4),
     zoneID INT(1),
     lastModified TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    PRIMARY KEY (addressID)
+    PRIMARY KEY (addressID),
     FOREIGN KEY(zoneID) REFERENCES ZONE(zoneID)
       ON UPDATE CASCADE
       ON DELETE SET NULL
-);
-
-# Create table to store zones. Zones are [1] CBD, [2] North, [3] South, [4] Ipswich, [5] Southeast and [6] Inner.
-CREATE TABLE ZONE (
-    zoneID INT AUTO_INCREMENT,
-    zone VARCHAR(50) NOT NULL UNIQUE,
-    lastModified TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    PRIMARY KEY (zoneID)
 );
 
 # Create table to store user types. User may be a [1] Customer, [2] Volunteer or [3] ServiceProvider
@@ -225,7 +225,7 @@ VALUES ('High'),
        ('Low');
 
 # Insert zones
-INSERT INTO ZONES (zone)
+INSERT INTO ZONE (zone)
 VALUES  ('CBD'),
         ('North'),
         ('South'),
@@ -306,7 +306,7 @@ VALUES  (1, 3, 4,'Friendly and helpful.'),
         (2, 3, 5, 'Efficient.'),
         (3, 5, 3, NULL);
 
-INSERT INTO SERVICEPROVIDERFEEDBACK (requestID, serviceProviderID, rating, comment)
+INSERT INTO SERVICEFEEDBACK (requestID, serviceProviderID, rating, comment)
 VALUES  (1, 3, 4,'Did an okay job.'),
         (2, 3, 2, 'Late and not very friendly. Would not use again.'),
         (3, 5, 3, NULL);
