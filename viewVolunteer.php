@@ -70,10 +70,12 @@
               <th>Postcode</th>
               <td><?php echo $volunteer['postcode']; ?></td>
             </tr>
+            <?php if ($volunteer['typeID'] == 2): ?>
             <tr>
               <th>Average Rating</th>
               <td><?php echo $volunteer['avgRating']; echo str_repeat('&nbsp;', 4); echo "<a href='listVolunteers.php'>(view feedback)</a>"; ?></td>
             </tr>
+            <?php endif; ?>
             <tr>
               <th>Last Modified</th>
               <td><?php echo $volunteer['lastModified']; ?></td>
