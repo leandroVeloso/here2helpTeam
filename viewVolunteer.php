@@ -73,7 +73,7 @@
             <?php if ($volunteer['typeID'] == 2): ?>
             <tr>
               <th>Average Rating</th>
-              <td><?php echo $volunteer['avgRating']; echo str_repeat('&nbsp;', 4); echo "<a href='listVolunteers.php'>(view feedback)</a>"; ?></td>
+              <td><?php echo $volunteer['avgRating']; ?></td>
             </tr>
             <?php endif; ?>
             <tr>

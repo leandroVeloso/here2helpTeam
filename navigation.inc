@@ -72,10 +72,7 @@
                         ?>
                             <!-- Admin -->
                             <li>
-                                <a href="viewVolunteer.php">Current Volunteers</a>
-                            </li>
-                            <li>
-                                <a href="listVolunteers.php">Applications</a>
+                                <a href="listVolunteers.php">Volunteers</a>
                             </li>
                             <li>
                                 <a href="listServiceProviders.php">Services Providers</a>

@@ -234,17 +234,17 @@ VALUES  ('CBD'),
         ('Inner');
 
 # Insert addresses.
-INSERT INTO ADDRESS (unitNumber, street, suburb, state, postcode, zoneID)
-VALUES  (1, 'Picadilly St', 'Boronia Heights', 'Queensland', 4122,1),
-        (10, 'Starins St', 'Boronia Heights', 'Queensland', 4122,2),
-        (2, 'Body Ct', 'Redcliffe', 'Queensland', 4102,1),
-        (3, 'Nick St', 'Sunnybank', 'Queensland', 4121,1),
-        (4, 'Whiting St', 'Buranda', 'Queensland', 4029,1),
-        (5, 'Alington St', 'Boronia Heights', 'Queensland', 4122,1),
-        (6, 'Werei Rd', 'Woodridge', 'Queensland', 4120,2),
-        (7, 'Maling St', 'Ferris', 'Queensland', 4304,3),
-        (8, 'Plansa St', 'Everton Park', 'Queensland', 4208,4),
-        (9, 'Mayfair Rd', 'New Market', 'Queensland', 4002,2);
+INSERT INTO ADDRESS (unitNumber, street, suburb, state, postcode)
+VALUES  (1, 'Picadilly St', 'Boronia Heights', 'Queensland', 4122),
+        (10, 'Starins St', 'Boronia Heights', 'Queensland', 4122),
+        (2, 'Body Ct', 'Redcliffe', 'Queensland', 4102),
+        (3, 'Nick St', 'Sunnybank', 'Queensland', 4121),
+        (4, 'Whiting St', 'Buranda', 'Queensland', 4029),
+        (5, 'Alington St', 'Boronia Heights', 'Queensland', 4122),
+        (6, 'Werei Rd', 'Woodridge', 'Queensland', 4120),
+        (7, 'Maling St', 'Ferris', 'Queensland', 4304),
+        (8, 'Plansa St', 'Everton Park', 'Queensland', 4208),
+        (9, 'Mayfair Rd', 'New Market', 'Queensland', 4002);
 
 # Insert users.
 INSERT INTO `Helpdesk`.`USER` (`email`, `hash`, `firstName`, `lastName`, `addressID`, `phoneNo`, `typeID`)
@@ -302,12 +302,11 @@ VALUES (1, 1, '2015-10-23 12:00:00', '2015-10-23 14:00:00', '1 Bedroom only', '2
 */
 
 INSERT INTO VOLUNTEERFEEDBACK (requestID, volunteerID, rating, comment)
-VALUES  (1, 3, 4,'Friendly and helpful.'),
-        (2, 3, 5, 'Efficient.'),
+VALUES  (1, 13, 4,'Friendly and helpful.'),
+        (2, 13, 5, 'Efficient.'),
         (3, 5, 3, NULL);
 
 INSERT INTO SERVICEFEEDBACK (requestID, serviceProviderID, rating, comment)
 VALUES  (1, 3, 4,'Did an okay job.'),
         (2, 3, 2, 'Late and not very friendly. Would not use again.'),
         (3, 5, 3, NULL);
-
