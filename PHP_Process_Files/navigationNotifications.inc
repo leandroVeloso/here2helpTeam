@@ -11,7 +11,7 @@
 				$numRequestsResult = $newRequestCount->fetch();
 				$numRequests = $numRequestsResult;
 
-				$jobCount = $pdo->prepare('SELECT COUNT(*) FROM REQUEST WHERE volunteerID = :volunteerID');
+				$jobCount = $pdo->prepare('SELECT COUNT(*) FROM REQUEST WHERE volunteerID = :volunteerID and statusID !=2');
 				$jobCount->bindValue(':volunteerID', $_SESSION['userID']);
 				$jobCount->execute();
 				$numJobssResult = $jobCount->fetch();

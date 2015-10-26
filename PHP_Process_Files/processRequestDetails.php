@@ -1,10 +1,10 @@
 <?php
-	$request;
+	$myRequest;
 	requestDetails();
 
   // Selects help request details from DB
 	function requestDetails(){
-		global $request, $pdo;
+		global $myRequest, $pdo;
 		try{
 			$selectRequest = $pdo->prepare('SELECT * FROM ADDRESS A
         INNER JOIN REQUEST R ON R.locationID = A.addressID
@@ -15,7 +15,7 @@
         WHERE R.requestID = :requestID');
 			$selectRequest->bindValue(':requestID', $_GET['request']);
 			$selectRequest->execute();
-			$request = $selectRequest->fetch();
+			$myRequest = $selectRequest->fetch();
 		}
 		catch (PDOException $e)
 			{echo $e->getMessage();}

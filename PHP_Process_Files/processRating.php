@@ -1,4 +1,4 @@
-<?php
+<?php/*
 	 // Includes pdo file 
     include_once('../pdo.inc');
 	rating();
@@ -30,5 +30,5 @@
 
 	header("Location: ../listRequests.php");
 	die();
-
+*/
 ?>

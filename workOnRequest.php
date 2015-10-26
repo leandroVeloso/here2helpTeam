@@ -5,6 +5,7 @@
     include_once('PHP_Process_Files/processRequestDetails.php');
     include_once('PHP_Process_Files/processSelectAvailableRequests.php');
     include_once('PHP_Process_Files/processSelectServiceProviders.php');
+    include_once('PHP_Process_Files/processCheckForFeedback.php');
     verifyIfUserIsSignedIn();
 ?>
 
@@ -34,17 +35,17 @@
       <div class="row">
         <div class="col-lg-8 col-lg-offset-2">
             <?php
-                if($request['statusID'] == OPEN)
+                if($myRequest['statusID'] == OPEN)
                     echo "<img class='img-responsive' src='img/status_img/waiting_volunteer_open.png' alt='' style='width: 100%; height: 100%'>";
-                if($request['statusID'] == CLOSED)
+                if($myRequest['statusID'] == CLOSED)
                     echo "<img class='img-responsive' src='img/status_img/booked_closed.png' alt='' style='width: 100%; height: 100%'>";
-                if($request['statusID'] == WAITING_APROVAL)
+                if($myRequest['statusID'] == WAITING_APROVAL)
                     echo "<img class='img-responsive' src='img/status_img/waiting_approval.png' alt='' style='width: 100%; height: 100%'>";
-                if($request['statusID'] == IN_PROGRESS)
+                if($myRequest['statusID'] == IN_PROGRESS)
                     echo "<img class='img-responsive' src='img/status_img/waiting_quotes_inprogress.png' alt='' style='width: 100%; height: 100%'>";
-                if($request['statusID'] == CANCELLED)
+                if($myRequest['statusID'] == CANCELLED)
                     echo "<img class='img-responsive' src='img/status_img/cancelled.png' alt='' style='width: 100%; height: 100%'>";
-                if($request['statusID'] == WAITING_BOOKING)
+                if($myRequest['statusID'] == WAITING_BOOKING)
                     echo "<img class='img-responsive' src='img/status_img/waiting_booking_conf.png' alt='' style='width: 100%; height: 100%'>";
             ?>
           </div>
@@ -66,11 +67,11 @@
           <table class="table table-striped table-bordered table-hover" id="dataTables-example">
             <tr>
               <th class="col-md-3">ID</th>
-              <td class="col-md-8"><?php echo $request['clientID']; ?></td>
+              <td class="col-md-8"><?php echo $myRequest['clientID']; ?></td>
             </tr>
             <tr>
               <th>Name</th>
-              <td><?php echo $request['firstName']; ?> <?php echo $request['lastName']; ?></td>
+              <td><?php echo $myRequest['firstName']; ?> <?php echo $myRequest['lastName']; ?></td>
             </tr>
           </table>
         </div>
@@ -84,53 +85,53 @@
           </div>
         </div>
 
-      <!-- Create table to view request's details -->
+      <!-- Create table to view myRequest's details -->
       <div class="row">
         <div class="col-lg-6 col-lg-offset-3">
             <table class="table table-striped table-bordered table-hover" id="dataTables-example">
               <tr>
                 <th class="col-md-3">ID</th>
-                <td class="col-md-8"><?php echo $request['requestID']; ?></td>
+                <td class="col-md-8"><?php echo $myRequest['requestID']; ?></td>
               </tr>
               <tr>
                 <th>Request</th>
-                <td><?php echo $request['requestName']; ?></td>
+                <td><?php echo $myRequest['requestName']; ?></td>
               </tr>
               <tr>
                 <th>Date Range</th>
-                <td><?php echo date('d  M  Y', strtotime($request['startDate'])); ?> - <?php echo date('d  M  Y', strtotime($request['endDate']));?></td>
+                <td><?php echo date('d  M  Y', strtotime($myRequest['startDate'])); ?> - <?php echo date('d  M  Y', strtotime($myRequest['endDate']));?></td>
               </tr>
               <tr>
                 <th>Time Range</th>
-                <td><?php echo date('g:i a', strtotime($request['startTime'])); ?> - <?php echo date('g:i a', strtotime($request['endTime'])); ?></td>
+                <td><?php echo date('g:i a', strtotime($myRequest['startTime'])); ?> - <?php echo date('g:i a', strtotime($myRequest['endTime'])); ?></td>
               </tr>
               <tr>
                 <th>Price Range</th>
-                <td>$<?php echo $request['minPrice']; ?> - $<?php echo $request['maxPrice']; ?></td>
+                <td>$<?php echo $myRequest['minPrice']; ?> - $<?php echo $myRequest['maxPrice']; ?></td>
               </tr>
               <tr>
                 <th class="col-md-3">Description</th>
-                <td class="col-md-8"><?php echo $request['comment']; ?></td>
+                <td class="col-md-8"><?php echo $myRequest['comment']; ?></td>
               </tr>
               <tr>
                 <th>Priority</th>
-                <td><?php echo $request['priority']; ?></td>
+                <td><?php echo $myRequest['priority']; ?></td>
               </tr>
               <tr>
                 <th class="col-md-3">Location</th>
-                <td class="col-md-8"><?php echo $request['unitNumber']; ?> <?php echo $request['street']; ?>, <?php echo $request['suburb']; ?>, <?php echo $request['state']; ?> <?php echo $request['postcode']; ?></td>
+                <td class="col-md-8"><?php echo $myRequest['unitNumber']; ?> <?php echo $myRequest['street']; ?>, <?php echo $myRequest['suburb']; ?>, <?php echo $myRequest['state']; ?> <?php echo $myRequest['postcode']; ?></td>
               </tr>
               <tr>
                 <th>Status</th>
-                <td><?php echo $request['status']; ?></td>
+                <td><?php echo $myRequest['status']; ?></td>
               </tr>
               <tr>
                 <th>Creation Date</th>
-                <td><?php echo date('d-M-Y H:i:s', strtotime($request['creationDate'])); ?></td>
+                <td><?php echo date('d-M-Y H:i:s', strtotime($myRequest['creationDate'])); ?></td>
               </tr>
               <tr>
                 <th>Last Modified</th>
-                <td><?php echo date('d-M-Y H:i:s', strtotime($request['lastModified'])); ?></td>
+                <td><?php echo date('d-M-Y H:i:s', strtotime($myRequest['lastModified'])); ?></td>
               </tr>
             </table>
           </div>
@@ -150,7 +151,7 @@
               <?php 
               // Print quotes information
                 foreach ($quotes as $aQuote) {
-                  if(($request['statusID'] == WAITING_BOOKING && $aQuote['approved'] == 1) || $request['statusID'] == WAITING_APROVAL || ($request['statusID'] == IN_PROGRESS && $aQuote != null) || ($request['statusID'] == CLOSED && $aQuote['approved'] == 1)){
+                  if(($myRequest['statusID'] == WAITING_BOOKING && $aQuote['approved'] == 1) || $myRequest['statusID'] == WAITING_APROVAL || ($myRequest['statusID'] == IN_PROGRESS && $aQuote != null) || ($myRequest['statusID'] == CLOSED && $aQuote['approved'] == 1)){
                 ?>
                   <div class="row">
                   <div class="col-lg-6 col-lg-offset-3">
@@ -194,7 +195,7 @@
                       <tr><th>User Booking Comment:</th>
                     <td><?php echo $aQuote['clientComment']; ?></td></tr>
                       <?php } 
-                      if($aQuote['approved'] == 1 && $request['statusID'] == CLOSED){ ?>
+                      if($aQuote['approved'] == 1 && $myRequest['statusID'] == CLOSED){ ?>
                                       <tr><th>Volunteer Booking Comment:</th>
                                     <td><?php echo $aQuote['volunteerComment']; ?></td></tr>
                                       <?php } ?>
@@ -203,7 +204,7 @@
                       <input type="hidden" name="action" id="action" value="Remove">
                       <input type="hidden" name="quoteID" id="quoteID" value="<?php echo $aQuote['quoteID']; ?>">
                       <input type="hidden" name="requestID" id="requestID" value="<?php echo $_GET['request']; ?>">
-                      <?php if($request['statusID'] == IN_PROGRESS){ ?>
+                      <?php if($myRequest['statusID'] == IN_PROGRESS){ ?>
                       <td colspan="2"><button type="submit" class="btn btn-danger">Remove Quote</button></td>
                       <?php } ?>
                     </form>
@@ -218,7 +219,7 @@
         </div>
         <div class="row">
                   <div class="col-lg-6 col-lg-offset-3">
-        <?php if($request['statusID'] == IN_PROGRESS){ ?>
+        <?php if($myRequest['statusID'] == IN_PROGRESS){ ?>
         <div class="container">
         <div class="row">
           <div class="col-lg-4 text-center">
@@ -333,7 +334,7 @@
         </div>
         <?php
           }
-              if($request['statusID'] == WAITING_BOOKING){
+              if($myRequest['statusID'] == WAITING_BOOKING){
             ?>
               <div class="row">
                   <div class="col-lg-8 col-lg-offset-2">
@@ -343,7 +344,7 @@
                           <label>Booking Information</label>
                           <input type="hidden" name="action" id="action" value="FinishBooking">
                           <input type="hidden" name="requestID" id="requestID" value="<?php echo $_GET['request']; ?>">
-                          <textarea class="form-control" id="comment" name="comment" <?php if($request['status'] == "Closed") echo "readonly"; ?> rows="4" placeholder="Describe details of the final booking information" name="requestDescription" required></textarea>
+                          <textarea class="form-control" id="comment" name="comment" <?php if($myRequest['status'] == "Closed") echo "readonly"; ?> rows="4" placeholder="Describe details of the final booking information" name="requestDescription" required></textarea>
                           <p class="help-block text-danger"></p>
                       </div>
                     </div>
@@ -358,9 +359,21 @@
             </div>
           </div>
         </div>
-        <?php
-          }
-          ?>
+        <?php } 
+           if($myRequest['statusID'] == CLOSED && $feedbackVolunteer != NULL && $feedbackSP != NULL){ ?>
+           <div class="row">
+              <div class="col-lg-12 col-lg-offset-3">
+                <h3>FEEDBACK</h3>
+                    <div class="row control-group">
+                        <label>Servive Provider - <?php echo $feedbackSP[0][0];?></label><br>
+                    </div>
+                    <div class="row control-group">
+                        <label>Volunteer - <?php echo $feedbackVolunteer[0][0];?></label><br>
+                    </div>
+              </div>
+            </div>
+
+           <?php } ?>
 
           </div>
         </div>

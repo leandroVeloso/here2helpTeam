@@ -198,7 +198,7 @@
                               <button type="submit" class="btn btn-success btn-lg" id="approveBtn" name="approveBtn" >Send Quote Approval</button>
                             </div>
                         </div>
-                         <?php }if($myRequest['statusID'] == CLOSED){?>
+                         <?php }if($myRequest['statusID'] == CLOSED && $feedbackVolunteer == NULL && $feedbackSP == NULL){?>
                                 <form action="PHP_Process_Files/processInsertFeedbacks.php" method="POST">
                                     <div class="row">
                                       <div class="col-lg-6 col-lg-offset-3">
@@ -228,29 +228,21 @@
                                         </div>
                                     </div>
                                 
-                         <?php }}?>
-
-                         <?php if($myRequest['statusID'] == CLOSED && $feedback == NULL){ ?>
-                            <span class="rating">
-                                 <h3>Rate Your Service Provider</h3>
-                            </span>
-                            <hr>
-                            <div class = "serviceRating">
-                                <form action="PHP_Process_Files/processRating.php" method="POST" name="rate" id="rate">
-                                    <input type="radio" id="rating" name="rating" value="1"/>  
-                                    <input type="radio" id="rating" name="rating" value="2"/> 
-                                    <input type="radio" id="rating" name="rating" value="3"/> 
-                                    <input type="radio" id="rating" name="rating" value="4"/> 
-                                    <input type="radio" id="rating" name="rating" value="5"/><br/>
-                                    <input type="hidden" id="requestID" name="requestID" value = "<?php echo $myRequest['requestID']; ?>" />
-                                    1||2||3||4||5
-                                    <p><br /></p>
-                                    <button type="submit" value="submit" class="btn btn-success btn-lg" id="rateBtn" name="rateBtn" >Submit Rating</button>
-
-                                </form>
+                         <?php }
+                         if($myRequest['statusID'] == CLOSED && $feedbackVolunteer != NULL && $feedbackSP != NULL){ ?>
+                         <div class="row">
+                            <div class="col-lg-6 col-lg-offset-3">
+                              <h3>FEEDBACK</h3>
+                                  <div class="row control-group">
+                                      <label>Servive Provider - <?php echo $feedbackSP[0][0];?></label><br>
+                                  </div>
+                                  <div class="row control-group">
+                                      <label>Volunteer - <?php echo $feedbackVolunteer[0][0];?></label><br>
+                                  </div>
                             </div>
-                             <hr>
-                        <?php } ?>
+                          </div>
+
+                         <?php }} ?>
 
                     </div>
                 </div>
