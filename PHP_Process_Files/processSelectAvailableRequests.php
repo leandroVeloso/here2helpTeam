@@ -9,7 +9,7 @@
 				ON R.priorityID = P.priorityID 
 				INNER JOIN ADDRESS A 
 				ON R.locationID = A.addressID 
-				INNER JOIN ZONES Z 
+				INNER JOIN ZONE Z 
 				ON Z.zoneID = A.zoneID 
 				WHERE R.statusID = 1
 				ORDER BY A.zoneID, P.priorityID, R.startDate');
