@@ -12,9 +12,10 @@
                                       FROM USER U
 																			INNER JOIN ADDRESS A
                                       	ON U.addressID = A.addressID
-																			INNER JOIN VOLUNTEERFEEDBACK F
-																				ON F.volunteerID = U.userID
-                                      WHERE U.typeID = 2');
+																			LEFT JOIN VOLUNTEERFEEDBACK F
+																				ON U.userID = F.volunteerID
+                                      WHERE U.typeID = 2
+																			GROUP BY U.userID');
 			$volunteersSelect->execute();
 			$volunteers = $volunteersSelect->fetchAll();
 		}
