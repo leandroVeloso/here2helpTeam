@@ -4,6 +4,7 @@
     include_once('PHP_Process_Files/processViewQuotes.php');
     include_once('PHP_Process_Files/processRequestDetails.php');
     include_once('PHP_Process_Files/processSelectAvailableRequests.php');
+    include_once('PHP_Process_Files/processSelectServiceProviders.php');
     verifyIfUserIsSignedIn();
 ?>
 
@@ -162,6 +163,10 @@
                     <td class="col-md-8"><?php echo $aQuote['quoteID']; ?></td>
                   </tr>
                   <tr>
+                    <th class="col-md-3">Service Provider</th>
+                    <td class="col-md-8"><?php echo $aQuote['name']; ?></td>
+                  </tr>
+                  <tr>
                     <th>Date Range</th>
                     <td><?php echo date('d  M  Y', strtotime($aQuote['startDateTime'])); ?> - <?php echo date('d  M  Y', strtotime($aQuote['endDateTime']));?></td>
                   </tr>
@@ -224,6 +229,17 @@
             <div class="row">
               <div class="col-lg-6 col-lg-offset-2">
                   <form action="PHP_Process_Files/processQuote.php" onsubmit="return validateRequestDetails()" method="POST">
+                    <div class="row control-group">
+                          <div class="form-group col-xs-12 label-form-group controls">
+                              <label>Service Provider</label>
+                              <select class="form-control" id="serviceProvider" name="serviceProvider" required>
+                                  <?php foreach ($serviceProviders as $aServiceProvider) {
+                                    echo'<option value="'.$aServiceProvider['serviceProviderID'].'">'.$aServiceProvider['name'].'</option>';
+                                  }?>
+                              </select>
+                              <p class="help-block text-danger"></p>
+                          </div>
+                      </div>
                       <div class="row control-group">
                           <div class="form-group col-xs-12 label-form-group controls">
                               <label>Description</label>

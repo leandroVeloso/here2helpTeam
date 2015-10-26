@@ -1,5 +1,5 @@
 <?php
-	include_once('../pdo.inc');
+	//include_once('../pdo.inc');
 	requestCount();
 
 	function requestCount(){

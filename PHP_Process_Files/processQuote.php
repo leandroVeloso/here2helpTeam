@@ -19,8 +19,8 @@
 	function addQuote(){
 		global $pdo, $quoteInputs;
 		try{
-			$request = $pdo->prepare('INSERT INTO `QUOTE`(`requestID`,  `startDateTime`, `endDateTime`, `description`, `minPrice`, `maxPrice`, `creationDate`, `lastModified`, `startTime`, `endTime`) 
-				VALUES (:requestID ,:startDateTime, :endDateTime, :description, :minPrice, :maxPrice, NOW(), NOW(), :startTime, :endTime)');
+			$request = $pdo->prepare('INSERT INTO `QUOTE`(`requestID`,  `startDateTime`, `endDateTime`, `description`, `minPrice`, `maxPrice`, `creationDate`, `lastModified`, `startTime`, `endTime`, `serviceProviderID`) 
+				VALUES (:requestID ,:startDateTime, :endDateTime, :description, :minPrice, :maxPrice, NOW(), NOW(), :startTime, :endTime, :serviceProviderID)');
 
 			
 			$request->bindValue(':requestID', $quoteInputs['requestID']);
@@ -31,6 +31,7 @@
 			$request->bindValue(':endTime', $quoteInputs['endTime']);
 			$request->bindValue(':minPrice', $quoteInputs['minPrice']);
 			$request->bindValue(':maxPrice', $quoteInputs['maxPrice']);
+			$request->bindValue(':serviceProviderID', $quoteInputs['serviceProvider']);
 
 			$result = $request->execute();
 
