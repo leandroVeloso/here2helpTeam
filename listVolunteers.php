@@ -96,7 +96,7 @@
                         <th class="col-md-2">Last Name</th>
                         <th class="col-md-2">Email</th>
                         <th class="col-md-2">Phone Number</th>
-                        <th class="col-md-2">Suburb</th> <!-- CHANGE TO ZONE-->
+                        <th class="col-md-2">Suburb</th>
                         <th class="col-md-2">Average Rating</th>
                         <th class="col-md-2">Last Modified</th>
                       </tr>
@@ -112,7 +112,7 @@
                             <td>'.$volunteer['email'].'</td>
                             <td>'.$volunteer['phoneNo'].'</td>
                             <td>'.$volunteer['suburb'].'</td>
-                            <td>'.$volunteer['rating'].'</td>
+                            <td>'.($volunteer['rating'] == NULL ? 'N/A' : $volunteer['rating']).'</td>
                             <td>'.date("d/m/Y", strtotime($volunteer['lastModified'])).'</td>
                             </tr>';
 
