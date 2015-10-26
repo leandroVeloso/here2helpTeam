@@ -12,7 +12,7 @@
 				INNER JOIN ZONES Z 
 				ON Z.zoneID = A.zoneID 
 				WHERE R.statusID = 1
-				ORDER BY A.zoneID');
+				ORDER BY A.zoneID, P.priorityID, R.startDate');
 			$servicesSelect->execute();
 			$resultService = $servicesSelect->fetchAll();
 			$availableRequests = $resultService;

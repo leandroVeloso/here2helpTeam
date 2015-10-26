@@ -234,17 +234,17 @@ VALUES  ('CBD'),
         ('Inner');
 
 # Insert addresses.
-INSERT INTO ADDRESS (unitNumber, street, suburb, state, postcode)
-VALUES  (1, 'Picadilly St', 'Boronia Heights', 'Queensland', 4122),
-        (10, 'Starins St', 'Boronia Heights', 'Queensland', 4122),
-        (2, 'Body Ct', 'Redcliffe', 'Queensland', 4102),
-        (3, 'Nick St', 'Sunnybank', 'Queensland', 4121),
-        (4, 'Whiting St', 'Buranda', 'Queensland', 4029),
-        (5, 'Alington St', 'Boronia Heights', 'Queensland', 4122),
-        (6, 'Werei Rd', 'Woodridge', 'Queensland', 4120),
-        (7, 'Maling St', 'Ferris', 'Queensland', 4304),
-        (8, 'Plansa St', 'Everton Park', 'Queensland', 4208),
-        (9, 'Mayfair Rd', 'New Market', 'Queensland', 4002);
+INSERT INTO ADDRESS (unitNumber, street, suburb, state, postcode, zoneID)
+VALUES  (1, 'Picadilly St', 'Boronia Heights', 'Queensland', 4122,1),
+        (10, 'Starins St', 'Boronia Heights', 'Queensland', 4122,2),
+        (2, 'Body Ct', 'Redcliffe', 'Queensland', 4102,1),
+        (3, 'Nick St', 'Sunnybank', 'Queensland', 4121,1),
+        (4, 'Whiting St', 'Buranda', 'Queensland', 4029,1),
+        (5, 'Alington St', 'Boronia Heights', 'Queensland', 4122,1),
+        (6, 'Werei Rd', 'Woodridge', 'Queensland', 4120,2),
+        (7, 'Maling St', 'Ferris', 'Queensland', 4304,3),
+        (8, 'Plansa St', 'Everton Park', 'Queensland', 4208,4),
+        (9, 'Mayfair Rd', 'New Market', 'Queensland', 4002,2);
 
 # Insert users.
 INSERT INTO `Helpdesk`.`USER` (`email`, `hash`, `firstName`, `lastName`, `addressID`, `phoneNo`, `typeID`)
@@ -310,3 +310,4 @@ INSERT INTO SERVICEFEEDBACK (requestID, serviceProviderID, rating, comment)
 VALUES  (1, 3, 4,'Did an okay job.'),
         (2, 3, 2, 'Late and not very friendly. Would not use again.'),
         (3, 5, 3, NULL);
+
