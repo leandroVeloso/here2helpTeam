@@ -154,11 +154,6 @@
             // Includes Javascript files
             include 'javascripts.inc';
         ?>
-        <script>
-            document.getElementById('volunteer').onchange = function() {
-                document.getElementById("typeID").value = this.checked ? 4 : 1;
-            };
-        </script>
     </body>
 
 </html>
