@@ -1,0 +1,1 @@
+To start this test, please log in a client account and a volunteer account to complete all the previous processes to reach the final stage.
