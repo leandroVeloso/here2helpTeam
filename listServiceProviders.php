@@ -37,10 +37,10 @@
                                             <thead>
                                                 <tr>
                                                     <th class="col-md-1">ID</th>
-                                                    <th class="col-md-4">Name</th>
+                                                    <th class="col-md-2">Name</th>
                                                     <th class="col-md-2">Service type</th>
                                                     <th class="col-md-2">Suburb</th>
-                                                    <th class="col-md-4">Website</th>
+                                                    <th class="col-md-2">Website</th>
                                                     <th class="col-md-2">Phone</th>
                                                     <th class="col-md-2">Average Rating</th>
 
