@@ -4,12 +4,12 @@
 <head profile="http://selenium-ide.openqa.org/profiles/test-case">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link rel="selenium.base" href="http://54.206.56.104/" />
-<title>createVolunteerAccount_missing_inputs</title>
+<title>createVolunteerAccount_wrong_inputs</title>
 </head>
 <body>
 <table cellpadding="1" cellspacing="1" border="1">
 <thead>
-<tr><td rowspan="1" colspan="3">createVolunteerAccount_missing_inputs</td></tr>
+<tr><td rowspan="1" colspan="3">createVolunteerAccount_wrong_inputs</td></tr>
 </thead><tbody>
 <tr>
 	<td>open</td>
@@ -42,38 +42,23 @@
 	<td>Volunteer</td>
 </tr>
 <tr>
-	<td>click</td>
-	<td>id=submit</td>
-	<td></td>
-</tr>
-<tr>
-	<td>assertLocation</td>
-	<td>http://54.206.56.104/signup.php</td>
-	<td></td>
-</tr>
-<tr>
 	<td>type</td>
 	<td>id=lname</td>
 	<td>Volunteer Last Name</td>
 </tr>
 <tr>
-	<td>click</td>
-	<td>id=submit</td>
-	<td></td>
-</tr>
-<tr>
-	<td>assertLocation</td>
-	<td>http://54.206.56.104/signup.php</td>
-	<td></td>
-</tr>
-<tr>
 	<td>type</td>
 	<td>id=unumber</td>
-	<td>1</td>
+	<td>abc</td>
 </tr>
 <tr>
 	<td>click</td>
 	<td>id=submit</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=volunteer</td>
 	<td></td>
 </tr>
 <tr>
@@ -87,34 +72,14 @@
 	<td>Volunteer St</td>
 </tr>
 <tr>
-	<td>click</td>
-	<td>id=submit</td>
-	<td></td>
-</tr>
-<tr>
-	<td>assertLocation</td>
-	<td>http://54.206.56.104/signup.php</td>
-	<td></td>
-</tr>
-<tr>
 	<td>type</td>
 	<td>id=suburb</td>
 	<td>Volunteer Suburb</td>
 </tr>
 <tr>
-	<td>click</td>
-	<td>id=submit</td>
-	<td></td>
-</tr>
-<tr>
-	<td>assertLocation</td>
-	<td>http://54.206.56.104/signup.php</td>
-	<td></td>
-</tr>
-<tr>
 	<td>type</td>
 	<td>id=postcode</td>
-	<td>1000</td>
+	<td>abc</td>
 </tr>
 <tr>
 	<td>click</td>
@@ -129,7 +94,7 @@
 <tr>
 	<td>type</td>
 	<td>id=pnumber</td>
-	<td>11</td>
+	<td>abc</td>
 </tr>
 <tr>
 	<td>click</td>
@@ -144,7 +109,7 @@
 <tr>
 	<td>type</td>
 	<td>id=email</td>
-	<td>volunteer@mail.com</td>
+	<td>wrongmail</td>
 </tr>
 <tr>
 	<td>click</td>
@@ -159,7 +124,7 @@
 <tr>
 	<td>type</td>
 	<td>id=password</td>
-	<td>volunteer</td>
+	<td>12345</td>
 </tr>
 <tr>
 	<td>click</td>
@@ -173,12 +138,22 @@
 </tr>
 <tr>
 	<td>type</td>
+	<td>id=password</td>
+	<td>123456</td>
+</tr>
+<tr>
+	<td>type</td>
 	<td>id=conpassword</td>
-	<td>volunteer</td>
+	<td>1234567</td>
 </tr>
 <tr>
 	<td>click</td>
-	<td>id=volunteer</td>
+	<td>id=submit</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertLocation</td>
+	<td>http://54.206.56.104/signup.php</td>
 	<td></td>
 </tr>
 
