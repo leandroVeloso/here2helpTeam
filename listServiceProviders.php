@@ -36,21 +36,28 @@
                                         <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                             <thead>
                                                 <tr>
-                                                    <th class="col-md-1">Service Provider ID</th>
-                                                    <th class="col-md-6">Name</th>
+                                                    <th class="col-md-1">ID</th>
+                                                    <th class="col-md-4">Name</th>
                                                     <th class="col-md-2">Service type</th>
-                                                    <th class="col-md-7">Address</th>
-                                                    <th class="col-md-7">Website</th>
-                                                    <th class="col-md-7">Phone</th>
-                                                    <th class="col-md-7">Rating</th>
-                                                    
-                                                    
+                                                    <th class="col-md-2">Suburb</th>
+                                                    <th class="col-md-4">Website</th>
+                                                    <th class="col-md-2">Phone</th>
+                                                    <th class="col-md-2">Average Rating</th>
+
+
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <?php
                                                     foreach($serviceList as $service){
-                                                       echo '<tr class="odd gradeX"><td>'.$service['serviceProviderID'].'</td><td>'.$service['name'].'</td><td>'.$service['serviceID'].'</td><td>'.$service['addressID'].'</td><td>'.$service['website'].'</td><td>'.$service['phoneNo'].'</td><td>'.($service['avgRating'] == NULL ? 'N/A' : $service['avgRating']).'</td></tr>';
+                                                       echo '<tr class="odd gradeX"><td>'.$service['serviceProviderID'].'</td>
+                                                       <td>'.$service['name'].'</td>
+                                                       <td>'.$service['service'].'</td>
+                                                       <td>'.$service['suburb'].'</td>
+                                                       <td>'.$service['website'].'</td>
+                                                       <td>'.$service['phoneNo'].'</td>
+                                                       <td>'.($service['avgRating'] == NULL ? 'N/A' : $service['avgRating']).'</td>
+                                                       </tr>';
                                                     }
                                                 ?>
                                             </tbody>
@@ -67,7 +74,7 @@
             // Includes Javascript files
             include 'javascripts.inc';
         ?>
-        
+
         <!-- DataTables JavaScript -->
         <script src="js/jquery.dataTables.min.js"></script>
         <script src="js/dataTables.bootstrap.min.js"></script>
