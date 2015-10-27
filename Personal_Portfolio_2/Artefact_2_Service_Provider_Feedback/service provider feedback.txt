@@ -1,0 +1,35 @@
+Taken from viewRequest.php line 201                       
+
+  <?php }if($myRequest['statusID'] == CLOSED && $feedbackVolunteer == NULL && $feedbackSP == NULL){?>
+                                <form action="PHP_Process_Files/processInsertFeedbacks.php" method="POST">
+                                    <div class="row">
+                                      <div class="col-lg-6 col-lg-offset-3">
+                                        <h3>FEEDBACK</h3>
+                                            <div class="row control-group">
+                                                <label>Servive Provider</label><br>
+                                                <label><input type="radio" class="radio" name="serviceProviderFeedback" value="1" required>1</label>
+                                                <label><input type="radio" class="radio" name="serviceProviderFeedback" value="2" required>2</label>
+                                                <label><input type="radio" class="radio" name="serviceProviderFeedback" value="3" required>3</label>
+                                                <label><input type="radio" class="radio" name="serviceProviderFeedback" value="4" required>4</label>
+                                                <label><input type="radio" class="radio" name="serviceProviderFeedback" value="5" required>5</label>
+                                            </div>
+                                            <hr>
+                                            <br>                                          
+                                            <input type="hidden" name="requestID" id="requestID" value="<?php echo $myRequest['requestID']; ?>">
+                                            <input type="hidden" name="volunteerID" id="volunteerID" value="<?php echo $myRequest['volunteerID']; ?>">
+                                            <input type="hidden" name="serviceProviderID" id="serviceProviderID" value="<?php echo $serviceProviderID; ?>">
+                                            <button type="submit" class="btn btn-info btn-lg" id="approveBtn" name="approveBtn" >Send FeedBacks</button>
+                                        </div>
+                                    </div>
+                                
+                         <?php }	
+
+
+
+Taken from processInsertFeedbacks line 17
+
+      echo $_POST['serviceProviderID']."\n";
+      $insertServiceProviderFeedback = $pdo->prepare('INSERT INTO `SERVICEFEEDBACK` (`requestID`, `serviceProviderID`, `rating`) VALUES (:requestID, :serviceProviderID , :rating)');
+      $insertServiceProviderFeedback -> bindValue(':requestID', $_POST['requestID']);
+      $insertServiceProviderFeedback -> bindValue(':serviceProviderID', $_POST['serviceProviderID']);
+      $insertServiceProviderFeedback -> bindValue(':rating', $_POST['serviceProviderFeedback']);

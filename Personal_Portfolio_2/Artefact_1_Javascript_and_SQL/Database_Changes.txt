@@ -1,0 +1,21 @@
+Taken from DB line 10
+
+
+# Create table to store zones. Zones are [1] CBD, [2] North, [3] South, [4] Ipswich, [5] Southeast and [6] Inner.
+CREATE TABLE ZONE (
+    zoneID INT AUTO_INCREMENT,
+    zone VARCHAR(50) NOT NULL UNIQUE,
+    lastModified TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    PRIMARY KEY (zoneID)
+);
+
+Taken from DB line 227
+
+# Insert zones
+INSERT INTO ZONE (zone)
+VALUES  ('CBD'),
+        ('North'),
+        ('South'),
+        ('Ipswich'),
+        ('Southeast'),
+        ('Inner');
