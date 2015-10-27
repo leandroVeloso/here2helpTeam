@@ -1,6 +1,7 @@
 <?php
     if(isset($_SESSION['signin']) && $_SESSION['signin']){
 ?>
+<?php include 'PHP_Process_Files/navigationNotifications.inc'; ?>
         <!-- Navigation -->
         <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container">
@@ -42,10 +43,13 @@
                         ?>
                             <!-- Volunteer -->
                             <li>
-                                <a href="listUnassignedRequests.php">Unassigned Requests</a>
+                                <a href="listUnassignedRequests.php"> New Requests (<?php echo $numRequests[0]; ?>) </a>
                             </li>
                             <li>
-                                <a href="currentVolunteerJobs.php">My Jobs</a>
+                                <a href="currentVolunteerJobs.php">My Jobs (<?php echo $numJobs[0]; ?>) </a>
+                            </li>
+                            <li>
+                                <a href="listServiceProviders.php">Services Providers</a>
                             </li>
                         <?php
                             }
@@ -66,12 +70,12 @@
                         <?php
                             if($_SESSION['typeID'] == ADMIN){
                         ?>
-                            <!-- Admin 
+                            <!-- Admin -->
                             <li>
-                                <a href="viewVolunteer.php">Current Volunteers</a>
-                            </li>-->
+                                <a href="listVolunteers.php">Volunteers</a>
+                            </li>
                             <li>
-                                <a href="listVolunteers.php">Applications</a>
+                                <a href="listServiceProviders.php">Services Providers</a>
                             </li>
 
                         <?php

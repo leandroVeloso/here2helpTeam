@@ -19,7 +19,7 @@
                 <div class="row">
                     <div class="col-lg-12 text-center">
                         </br></br>
-                        <h2>Unassigned Requests</h2>
+                        <h2>New Requests</h2>
                         <hr class="star-primary">
                     </div>
                 </div>
@@ -40,12 +40,13 @@
                                                     <th class="col-md-4">Subject</th>
                                                     <th class="col-md-2">Priority</th>
                                                     <th class="col-md-2">Date Created</th>
+                                                    <th class="col-md-2">Zone</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <?php
                                                     foreach($availableRequests as $request){
-                                                       echo '<tr class="odd gradeX"><td>'.$request['requestID'].'</td><td><a href="startRequest.php?request='.$request['requestID'].'">'.$request['requestName'].'</td><td>'.$request['priority'].'</td><td>'.date("d/m/Y", strtotime($request['creationDate'])).'</td></tr>';
+                                                       echo '<tr class="odd gradeX"><td>'.$request['requestID'].'</td><td><a href="startRequest.php?request='.$request['requestID'].'">'.$request['requestName'].'</td><td>'.$request['priorityID'].'</td><td>'.date("d/m/Y", strtotime($request['startDate'])).'</td><td>'.$request['zone'].'</td><td>';
                                                     }
                                                 ?>
                                             </tbody>

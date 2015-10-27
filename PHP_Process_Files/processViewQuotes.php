@@ -11,7 +11,7 @@
 		
 		global $quotes, $pdo;
 		try{
-			$quotesSelect = $pdo->prepare('SELECT * FROM `QUOTE` WHERE `requestID`= :requestID');
+			$quotesSelect = $pdo->prepare('SELECT * FROM `QUOTE` Q INNER JOIN SERVICEPROVIDER S ON S.serviceProviderID = Q.serviceProviderID WHERE `requestID`= :requestID');
 			$quotesSelect->bindValue(':requestID', $_GET['request']);
 			$quotesSelect->execute();
 			$result = $quotesSelect->fetchAll();

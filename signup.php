@@ -113,7 +113,7 @@
                                     <p class="help-block text-danger" id= "passwordError"></p>
                                 </div>
                             </div>
-                            <input type="hidden" name="typeID" id="typeID" value="">
+                            <input type="hidden" name="typeID" id="typeID" value="1">
                             <input type="hidden" name="zone" id="zone" value="">
                             <br>
                             <button type="submit" value=" submit" class="btn btn-success btn-lg" id="submit"> Submit</button>

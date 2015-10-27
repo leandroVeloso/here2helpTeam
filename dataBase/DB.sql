@@ -6,6 +6,14 @@ CREATE DATABASE Helpdesk;
 
 USE Helpdesk;
 
+# Create table to store zones. Zones are [1] CBD, [2] North, [3] South, [4] Ipswich, [5] Southeast and [6] Inner.
+CREATE TABLE ZONE (
+    zoneID INT AUTO_INCREMENT,
+    zone VARCHAR(50) NOT NULL UNIQUE,
+    lastModified TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    PRIMARY KEY (zoneID)
+);
+
 # Create table to store users address and location of help request.
 CREATE TABLE ADDRESS (
     addressID INT AUTO_INCREMENT,
@@ -14,8 +22,12 @@ CREATE TABLE ADDRESS (
     suburb VARCHAR(50),
     state VARCHAR(20),
     postcode INT(4),
+    zoneID INT(1),
     lastModified TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    PRIMARY KEY (addressID)
+    PRIMARY KEY (addressID),
+    FOREIGN KEY(zoneID) REFERENCES ZONE(zoneID)
+      ON UPDATE CASCADE
+      ON DELETE SET NULL
 );
 
 # Create table to store user types. User may be a [1] Customer, [2] Volunteer or [3] ServiceProvider
@@ -189,32 +201,7 @@ CREATE TABLE QUOTE(
       ON DELETE CASCADE
 );
 
-/*
-# Create table to store bookings.
-CREATE TABLE BOOKING(
-    bookingID INT AUTO_INCREMENT,
-    quoteID INT,
-    requestID INT NOT NULL,
-    serviceProviderID INT NOT NULL,
-    startDateTime DATETIME,
-    endDateTime DATETIME,
-    description VARCHAR(500),
-    price DECIMAL(8,2),
-    comment VARCHAR(500),
-    creationDate TIMESTAMP NOT NULL,
-    lastModified TIMESTAMP NOT NULL ON UPDATE CURRENT_TIMESTAMP,
-    PRIMARY KEY (bookingID),
-    FOREIGN KEY (requestID) REFERENCES REQUEST(requestID)
-      ON UPDATE CASCADE
-      ON DELETE CASCADE,
-    FOREIGN KEY (quoteID) REFERENCES QUOTE(quoteID)
-      ON UPDATE CASCADE
-      ON DELETE SET NULL,
-    FOREIGN KEY (serviceProviderID) REFERENCES SERVICEPROVIDER(serviceProviderID)
-      ON UPDATE CASCADE
-      ON DELETE CASCADE
-);
-*/
+
 # Insert user types [1] Customer, [2] Volunteer, [3] Service Provider and [4] Someone requesting a volunteer account.
 INSERT INTO USERTYPE (typeID, type)
 VALUES  (1, 'Customer'),
@@ -232,7 +219,19 @@ VALUES  ('Open'),
         ('Waiting Booking');
 
 # Insert priorities [1] High, [2] Medium and [3] Low.
-INSERT INTO PRIORITY (priority) VALUES ('High'), ('Medium'), ('Low');
+INSERT INTO PRIORITY (priority)
+VALUES ('High'),
+       ('Medium'),
+       ('Low');
+
+# Insert zones
+INSERT INTO ZONE (zone)
+VALUES  ('CBD'),
+        ('North'),
+        ('South'),
+        ('Ipswich'),
+        ('Southeast'),
+        ('Inner');
 
 # Insert addresses.
 INSERT INTO ADDRESS (unitNumber, street, suburb, state, postcode)
@@ -300,16 +299,14 @@ VALUES (1, 1, '2015-10-23 12:00:00', '2015-10-23 14:00:00', '1 Bedroom only', '2
 (1, 1, '2015-10-23 12:00:00', '2015-10-23 14:00:00', '2 Bedroom', '250', '400', 'Cheaper price only available until March 2015.', NULL),
 (1, 2, '2015-10-20 09:00:00', '2015-10-25 14:00:00', 'Whole House', '500', NULL, 'Client must provide the paint.', NULL),
 (1, 2, '2015-10-28 14:00:00', '2015-10-30 17:30:00', 'Toilet issue', '20', '1000', 'Price will vary. Initial consult is $20 but additional work will cost more.', NULL);
-
-
-/*
-# Insert bookings.
-INSERT INTO BOOKING (quoteID, requestID, serviceProviderID, startDateTime, endDateTime, description, price, comment)
-VALUES (1, 1, 1, '2015-10-23 12:00:00', '2015-10-23 13:00:00', 'PaintPaintings 1 Bedroom only', '200', 'Booked for the loungeroom. They will bring all materials'),
-(4, 2, 2, '2015-10-30 14:00:00', '2015-10-30 17:30:00', 'Consultation', '20', 'Booked to identify issue. Will fix on date if job isn\'t too large and provide you with a new quote');
 */
 
 INSERT INTO VOLUNTEERFEEDBACK (requestID, volunteerID, rating, comment)
-VALUES  (1, 3, 4,'Friendly and helpful.'),
-        (2, 3, 5, 'Efficient.'),
+VALUES  (1, 13, 4,'Friendly and helpful.'),
+        (2, 13, 5, 'Efficient.'),
+        (3, 5, 3, NULL);
+
+INSERT INTO SERVICEFEEDBACK (requestID, serviceProviderID, rating, comment)
+VALUES  (1, 3, 4,'Did an okay job.'),
+        (2, 3, 2, 'Late and not very friendly. Would not use again.'),
         (3, 5, 3, NULL);

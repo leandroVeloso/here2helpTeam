@@ -28,17 +28,17 @@
       <div class="row">
         <div class="col-lg-8 col-lg-offset-2">
             <?php
-                if($request['statusID'] == OPEN)
+                if($myRequest['statusID'] == OPEN)
                     echo "<img class='img-responsive' src='img/status_img/waiting_volunteer_open.png' alt='' style='width: 100%; height: 100%'>";
-                if($request['statusID'] == CLOSED)
+                if($myRequest['statusID'] == CLOSED)
                     echo "<img class='img-responsive' src='img/status_img/booked_closed.png' alt='' style='width: 100%; height: 100%'>";
-                if($request['statusID'] == WAITING_APROVAL)
+                if($myRequest['statusID'] == WAITING_APROVAL)
                     echo "<img class='img-responsive' src='img/status_img/waiting_approval.png' alt='' style='width: 100%; height: 100%'>";
-                if($request['statusID'] == IN_PROGRESS)
+                if($myRequest['statusID'] == IN_PROGRESS)
                     echo "<img class='img-responsive' src='img/status_img/waiting_quotes_inprogress.png' alt='' style='width: 100%; height: 100%'>";
-                if($request['statusID'] == CANCELLED)
+                if($myRequest['statusID'] == CANCELLED)
                     echo "<img class='img-responsive' src='img/status_img/cancelled.png' alt='' style='width: 100%; height: 100%'>";
-                if($request['statusID'] == WAITING_BOOKING)
+                if($myRequest['statusID'] == WAITING_BOOKING)
                     echo "<img class='img-responsive' src='img/status_img/waiting_booking_conf.png' alt='' style='width: 100%; height: 100%'>";
             ?>
           </div>
@@ -57,11 +57,11 @@
           <table class="table table-striped table-bordered table-hover" id="dataTables-example">
             <tr>
               <th class="col-md-3">ID</th>
-              <td class="col-md-8"><?php echo $request['clientID']; ?></td>
+              <td class="col-md-8"><?php echo $myRequest['clientID']; ?></td>
             </tr>
             <tr>
               <th>Name</th>
-              <td><?php echo $request['firstName']; ?> <?php echo $request['lastName']; ?></td>
+              <td><?php echo $myRequest['firstName']; ?> <?php echo $myRequest['lastName']; ?></td>
             </tr>
           </table>
         </div>
@@ -81,47 +81,47 @@
             <table class="table table-striped table-bordered table-hover" id="dataTables-example">
               <tr>
                 <th class="col-md-3">ID</th>
-                <td class="col-md-8"><?php echo $request['requestID']; ?></td>
+                <td class="col-md-8"><?php echo $myRequest['requestID']; ?></td>
               </tr>
               <tr>
                 <th>Request</th>
-                <td><?php echo $request['requestName']; ?></td>
+                <td><?php echo $myRequest['requestName']; ?></td>
               </tr>
               <tr>
                 <th>Date Range</th>
-                <td><?php echo date('d  M  Y', strtotime($request['startDate'])); ?> - <?php echo date('d  M  Y', strtotime($request['endDate']));?></td>
+                <td><?php echo date('d  M  Y', strtotime($myRequest['startDate'])); ?> - <?php echo date('d  M  Y', strtotime($myRequest['endDate']));?></td>
               </tr>
               <tr>
                 <th>Time Range</th>
-                <td><?php echo date('g:i a', strtotime($request['startTime'])); ?> - <?php echo date('g:i a', strtotime($request['endTime'])); ?></td>
+                <td><?php echo date('g:i a', strtotime($myRequest['startTime'])); ?> - <?php echo date('g:i a', strtotime($myRequest['endTime'])); ?></td>
               </tr>
               <tr>
                 <th>Price Range</th>
-                <td>$<?php echo $request['minPrice']; ?> - $<?php echo $request['maxPrice']; ?></td>
+                <td>$<?php echo $myRequest['minPrice']; ?> - $<?php echo $myRequest['maxPrice']; ?></td>
               </tr>
               <tr>
                 <th class="col-md-3">Description</th>
-                <td class="col-md-8"><?php echo $request['comment']; ?></td>
+                <td class="col-md-8"><?php echo $myRequest['comment']; ?></td>
               </tr>
               <tr>
                 <th>Priority</th>
-                <td><?php echo $request['priority']; ?></td>
+                <td><?php echo $myRequest['priority']; ?></td>
               </tr>
               <tr>
                 <th class="col-md-3">Location</th>
-                <td class="col-md-8"><?php echo $request['unitNumber']; ?> <?php echo $request['street']; ?>, <?php echo $request['suburb']; ?>, <?php echo $request['state']; ?> <?php echo $request['postcode']; ?></td>
+                <td class="col-md-8"><?php echo $myRequest['unitNumber']; ?> <?php echo $myRequest['street']; ?>, <?php echo $myRequest['suburb']; ?>, <?php echo $myRequest['state']; ?> <?php echo $myRequest['postcode']; ?></td>
               </tr>
               <tr>
                 <th>Status</th>
-                <td><?php echo $request['status']; ?></td>
+                <td><?php echo $myRequest['status']; ?></td>
               </tr>
               <tr>
                 <th>Creation Date</th>
-                <td><?php echo date('d-M-Y H:i:s', strtotime($request['creationDate'])); ?></td>
+                <td><?php echo date('d-M-Y H:i:s', strtotime($myRequest['creationDate'])); ?></td>
               </tr>
               <tr>
                 <th>Last Modified</th>
-                <td><?php echo date('d-M-Y H:i:s', strtotime($request['lastModified'])); ?></td>
+                <td><?php echo date('d-M-Y H:i:s', strtotime($myRequest['lastModified'])); ?></td>
               </tr>
             </table>
           </div>

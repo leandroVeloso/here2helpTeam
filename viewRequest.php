@@ -4,6 +4,7 @@
     redirectUser((verifyUserType(VOLUNTEER) || verifyUserType(CUSTOMER) || verifyUserType(ADMIN)),"index.php");
     include_once('PHP_Process_Files/processViewQuotes.php');
     include_once('PHP_Process_Files/processViewRequest.php');
+    include_once('PHP_Process_Files/processCheckForFeedback.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -37,143 +38,60 @@
                             if($myRequest['statusID'] == WAITING_BOOKING)
                                 echo "<img class='img-responsive' src='img/status_img/waiting_booking_conf.png' alt='' style='width: 100%; height: 100%'>";
                         ?>
-                        <h4>WHAT</h4>
-                        <hr>
-                        <div class="row control-group">
-                            <div class="form-group col-xs-12 label-form-group controls">
-                                <label>Subject</label>
-                                <input type="text" class="form-control" disabled value="<?php echo $myRequest['requestName'];?>" placeholder="Help Request Subject" id="requestName" name="requestName" required data-validation-required-message="Please enter help request's subject">
-                                <p class="help-block text-danger"></p>
+                    
+                        <div class="container">
+                        <div class="row">
+                            <div class="col-lg-8 text-center">
+                                <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                  <tr>
+                                    <th class="col-md-3">ID</th>
+                                    <td class="col-md-8"><?php echo $myRequest['requestID']; ?></td>
+                                  </tr>
+                                  <tr>
+                                    <th>Request</th>
+                                    <td><?php echo $myRequest['requestName']; ?></td>
+                                  </tr>
+                                  <tr>
+                                    <th>Date Range</th>
+                                    <td><?php echo date('d  M  Y', strtotime($myRequest['startDate'])); ?> - <?php echo date('d  M  Y', strtotime($myRequest['endDate']));?></td>
+                                  </tr>
+                                  <tr>
+                                    <th>Time Range</th>
+                                    <td><?php echo date('g:i a', strtotime($myRequest['startTime'])); ?> - <?php echo date('g:i a', strtotime($myRequest['endTime'])); ?></td>
+                                  </tr>
+                                  <tr>
+                                    <th>Price Range</th>
+                                    <td>$<?php echo $myRequest['minPrice']; ?> - $<?php echo $myRequest['maxPrice']; ?></td>
+                                  </tr>
+                                  <tr>
+                                    <th class="col-md-3">Description</th>
+                                    <td class="col-md-8"><?php echo $myRequest['comment']; ?></td>
+                                  </tr>
+                                  <tr>
+                                    <th>Priority</th>
+                                    <td><?php echo $myRequest['priority']; ?></td>
+                                  </tr>
+                                  <tr>
+                                    <th class="col-md-3">Location</th>
+                                    <td class="col-md-8"><?php echo $myRequest['unitNumber']; ?> <?php echo $myRequest['street']; ?>, <?php echo $myRequest['suburb']; ?>, <?php echo $myRequest['state']; ?> <?php echo $myRequest['postcode']; ?></td>
+                                  </tr>
+                                  <tr>
+                                    <th>Status</th>
+                                    <td><?php echo $myRequest['status']; ?></td>
+                                  </tr>
+                                  <tr>
+                                    <th>Creation Date</th>
+                                    <td><?php echo date('d-M-Y H:i:s', strtotime($myRequest['creationDate'])); ?></td>
+                                  </tr>
+                                  <tr>
+                                    <th>Last Modified</th>
+                                    <td><?php echo date('d-M-Y H:i:s', strtotime($myRequest['lastModified'])); ?></td>
+                                  </tr>
+                                </table>
+                              </div>
                             </div>
                         </div>
-                        <div class="row control-group">
-                            <div class="form-group col-xs-8 label-form-group controls">
-                                <label>Service Category</label>
-                                <select class="form-control" id="serviceID" disabled name="serviceID" required>
-                                    <?php echo "<option value='".$myRequest['serviceID']."'>".$myRequest['service']."</option>";?>
-                                </select>
-                                <p class="help-block text-danger"></p>
-                            </div>
-                        </div>
-                        <div class="row control-group">
-                            <div class="form-group col-xs-8 label-form-group controls">
-                                <label>Service Priority</label>
-                                <select class="form-control" id="priorityID" disabled name="priorityID" required>
-                                    <?php echo "<option value='".$myRequest['priorityID']."'>".$myRequest['priority']."</option>"; ?>
-                                </select>
-                                <p class="help-block text-danger"></p>
-                            </div>
-                        </div>
-                        <div class="row control-group">
-                            <div class="form-group col-xs-12 label-form-group controls">
-                                <label>Description</label>
-                                <textarea class="form-control" id="comment" rows="4" disabled placeholder="Describe details of your request" name="requestDescription" required data-validation-required-message="Please enter a description for your request"><?php echo $myRequest['comment'];?></textarea>
-                                <p class="help-block text-danger"></p>
-                            </div>
-                        </div>
-                        <div class="row control-group">
-                            <div class="form-group col-xs-4 label-form-group controls">
-                                <label>Minimum Quote Price</label>
-                                <input type="number" min="0" step="1" maxlength="10" disabled onkeypress="return isNumber(event)" value='<?php echo $myRequest['minPrice'];?>' class="form-control" placeholder="Minimum Quote Price" id="minPrice" name="minPrice" required data-validation-required-message="Please enter minimum quote price">
-                                <p class="help-block text-danger"></p>
-                            </div>
-                        </div>
-                        <div class="row control-group">
-                            <div class="form-group col-xs-4 label-form-group controls">
-                                <label>Maximum Quote Price</label>
-                                <input type="number" min="0" step="1" maxlength="10" disabled onkeypress="return isNumber(event)" value='<?php echo $myRequest['maxPrice'];?>' class="form-control" placeholder="Maximum Quote Price" id="maxPrice" name="maxPrice" required data-validation-required-message="Please enter maximum quote price">
-                                <p class="help-block text-danger"></p>
-                            </div>
-                        </div>
-                        <h4 >WHEN</h4>
-                        <hr>
-                        <div class="row control-group">
-                            <div class="control col-xs-12">
-                                <label>Date</label>
-                                <br>
-                                Define here the date period that the service can be executed
-                            </div>
-                            <div class="control col-xs-4">
-                                <div class="input-group">
-                                    <input id="startDate" type="text" disabled  placeholder="Start Date" value="<?php echo  date("d-m-Y", strtotime($myRequest['startDate']));?>" required  name="startDate" class="date-picker form-control" />
-                                    <label for="startDate" class="input-group-addon btn">
-                                        <span class="glyphicon glyphicon-calendar"></span>
-                                    </label>
-                                </div>
-                                <div class="input-group">
-                                    <input id="endDate" type="text" disabled placeholder="End Date" required value="<?php echo date("d-m-Y", strtotime($myRequest['endDate']));?>" name="endDate" class="date-picker form-control" />
-                                    <label for="endDate" class="input-group-addon btn">
-                                        <span class="glyphicon glyphicon-calendar"></span>
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="control col-xs-12">
-                                <label>Time</label>
-                                <br>
-                                Define here the time period that the service can be executed
-                            </div>
-                            <div class="control col-xs-4">
-                                <div class="input-group">
-                                    <input type="time" step='1' min="00:00:00" max="24:00:00" disabled value="<?php echo $myRequest['startTime'];?>" name="startTime" id="startTime" class="form-control clockpicker" required placeholder="Start Time">
-                                    <span class="input-group-addon">
-                                        <span class="glyphicon glyphicon-time"></span>
-                                    </span>
-                                </div>
-                                <div class="input-group">
-                                    <input type="time" step='1' min="00:00:00" max="24:00:00" disabled value="<?php echo $myRequest['endTime'];?>" name="endTime" id="endTime" class="form-control clockpicker" required placeholder="End Time ">
-                                    <span class="input-group-addon">
-                                        <span class="glyphicon glyphicon-time"></span>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                        <br><br>
-                        <h4 >WHERE</h4>
-                        <hr>
-                        <div id="adressForm">
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox" value="yes" onclick="return false" name="addressCheckBox" <?php if($myRequest['locationID'] == $myRequest['addressID']) echo "checked";?> id="addressCheckBox">Use my account address
-                                </label>
-                            </div>
-                            <div class="row control-group">
-                                <div class="form-group col-xs-4 label-form-group controls">
-                                    <label>Unit number</label>
-                                    <input type="text" maxlength="10" onkeypress="return isNumber(event)"value='<?php echo $myRequest['unitNumber'];?>'  disabled class="form-control" placeholder="Unit Number" id="unumber" name="unumber" data-validation-required-message="Please enter your unit number.">
-                                    <p class="help-block text-danger"></p>
-                                </div>
-                            </div>
-                            <div class="row control-group">
-                                <div class="form-group col-xs-12 label-form-group controls">
-                                    <label>Street</label>
-                                    <input type="text" class="form-control" maxlength="50" placeholder="Street" value='<?php echo $myRequest['street'];?>' disabled  id="street" name="street" data-validation-required-message="Please enter your street name.">
-                                    <p class="help-block text-danger"></p>
-                                </div>
-                            </div>
-                            <div class="row control-group">
-                                <div class="form-group col-xs-12 label-form-group controls">
-                                    <label>Suburb</label>
-                                    <input type="text" class="form-control" maxlength="50" placeholder="Suburb" value='<?php echo $myRequest['suburb'];?>' disabled id="suburb" name="suburb" data-validation-required-message="Please enter your suburb.">
-                                    <p class="help-block text-danger"></p>
-                                </div>
-                            </div>
-                            <div class="row control-group">
-                                <div class="form-group col-xs-4 label-form-group controls">
-                                    <label>State</label>
-                                    <select class="form-control" id="state" disabled name="state" >
-                                        <?php echo "<option value='".$myRequest['state']."'>".$myRequest['state']."</option>"; ?>
-                                    </select>
-                                    <p class="help-block text-danger"></p>
-                                </div>
-                            </div>
-                            <div class="row control-group">
-                                <div class="form-group col-xs-4 label-form-group controls">
-                                    <label>Postcode</label>
-                                    <input type="text" onkeypress="return isNumber(event)" disabled maxlength="4" value='<?php echo $myRequest['postcode'];?>' class="form-control" placeholder="Postcode" id="postcode"name="postcode" data-validation-required-message="Please enter your post code.">
-                                    <p class="help-block text-danger"></p>
-                                </div>
-                            </div>
-                        </div>
+                        
                         <br><br>
                         <?php
                             if($myRequest['statusID'] == OPEN){
@@ -207,12 +125,18 @@
                                   <div class="row">
                                   <div class="col-lg-6 col-lg-offset-3">
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
-                                    <?php if($aQuote['approved'] == 1){ ?>
+                                    <?php $serviceProviderID;
+                                    if($aQuote['approved'] == 1){ 
+                                      $serviceProviderID= $aQuote['serviceProviderID'] ?>
                                   <tr><td colspan="2">APPROVED QUOTE</button></td></tr>
                                   <?php } ?>
                                   <tr>
                                     <th class="col-md-3">ID</th>
                                     <td class="col-md-8"><?php echo $aQuote['quoteID']; ?></td>
+                                  </tr>
+                                  <tr>
+                                    <th class="col-md-3">Service Provider</th>
+                                    <td class="col-md-8"><?php echo $aQuote['name']; ?></td>
                                   </tr>
                                   <tr>
                                     <th>Date Range</th>
@@ -256,11 +180,10 @@
                                       <tr><th>Volunteer Booking Comment:</th>
                                     <td><?php echo $aQuote['volunteerComment']; ?></td></tr>
                                       <?php } ?>
-
-
                                 </table>
                               </div>
                             </div>
+
                             <hr>
                          <?php }} if($myRequest['statusID'] == WAITING_APROVAL){  ?>
                          <div class="row">
@@ -275,7 +198,51 @@
                               <button type="submit" class="btn btn-success btn-lg" id="approveBtn" name="approveBtn" >Send Quote Approval</button>
                             </div>
                         </div>
-                         <?php } }?>
+                         <?php }if($myRequest['statusID'] == CLOSED && $feedbackVolunteer == NULL && $feedbackSP == NULL){?>
+                                <form action="PHP_Process_Files/processInsertFeedbacks.php" method="POST">
+                                    <div class="row">
+                                      <div class="col-lg-6 col-lg-offset-3">
+                                        <h3>FEEDBACK</h3>
+                                            <div class="row control-group">
+                                                <label>Servive Provider</label><br>
+                                                <label><input type="radio" class="radio" name="serviceProviderFeedback" value="1" required>1</label>
+                                                <label><input type="radio" class="radio" name="serviceProviderFeedback" value="2" required>2</label>
+                                                <label><input type="radio" class="radio" name="serviceProviderFeedback" value="3" required>3</label>
+                                                <label><input type="radio" class="radio" name="serviceProviderFeedback" value="4" required>4</label>
+                                                <label><input type="radio" class="radio" name="serviceProviderFeedback" value="5" required>5</label>
+                                            </div>
+                                            <hr>
+                                            <div class="row control-group">
+                                                <label>Volunteer</label><br>
+                                                <label><input type="radio" class="radio" name="volunteerFeedback" value="1" required>1</label>
+                                                <label><input type="radio" class="radio" name="volunteerFeedback" value="2" required>2</label>
+                                                <label><input type="radio" class="radio" name="volunteerFeedback" value="3" required>3</label>
+                                                <label><input type="radio" class="radio" name="volunteerFeedback" value="4" required>4</label>
+                                                <label><input type="radio" class="radio" name="volunteerFeedback" value="5" required>5</label>
+                                            </div
+                                            <br>                                          
+                                            <input type="hidden" name="requestID" id="requestID" value="<?php echo $myRequest['requestID']; ?>">
+                                            <input type="hidden" name="volunteerID" id="volunteerID" value="<?php echo $myRequest['volunteerID']; ?>">
+                                            <input type="hidden" name="serviceProviderID" id="serviceProviderID" value="<?php echo $serviceProviderID; ?>">
+                                            <button type="submit" class="btn btn-info btn-lg" id="approveBtn" name="approveBtn" >Send FeedBacks</button>
+                                        </div>
+                                    </div>
+                                
+                         <?php }
+                         if($myRequest['statusID'] == CLOSED && $feedbackVolunteer != NULL && $feedbackSP != NULL){ ?>
+                         <div class="row">
+                            <div class="col-lg-6 col-lg-offset-3">
+                              <h3>FEEDBACK</h3>
+                                  <div class="row control-group">
+                                      <label>Servive Provider - <?php echo $feedbackSP[0][0];?></label><br>
+                                  </div>
+                                  <div class="row control-group">
+                                      <label>Volunteer - <?php echo $feedbackVolunteer[0][0];?></label><br>
+                                  </div>
+                            </div>
+                          </div>
+
+                         <?php }} ?>
 
                     </div>
                 </div>
